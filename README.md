@@ -1,2 +1,2 @@
 # COMP3800
-website for TaskBee
+Web application for Regional District Kitimat-Stikine.
