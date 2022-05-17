@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./permit_input.css" />
+  </head>
+  <body>
+    <h1>Permit Input</h1>
+    <form>
+      <h3>1.Facility</h3>
+      <label for="facility_Forceman_Ridge_WMF">Forceman_Ridge_WMF</label>
+      <input type="radio" id="facility_Forceman_Ridge_WMF" />
+      <label for="facility_Meziadin_Landfill">Meziadin_Landfill</label>
+      <input type="radio" id="facility_Meziadin_Landfill" />
+      <label for="facility_Hazelton_WMF">Hazelton_WMF</label>
+      <input type="radio" id="facility_Hazelton_WMF" />
+      <label for="facility_Steward_Transfer_station"
+        >Steward_Transfer_station</label
+      >
+      <input type="radio" id="facility_Steward_Transfer_station" />
+      <label for="facility_Kitwanga_Transfer_Station"
+        >Kitwanga_Transfer_Station</label
+      >
+      <input type="radio" id="facility_Kitwanga_Transfer_Station" /><br /><br />
+      <h3>2.Applicant</h3>
+
+      <label for="Company_name">Company:</label>
+      <input type="text" id="Company_name" />
+
+      <label for="Applicatnt_name">Name:</label>
+      <input type="text" id="Applicatnt_name" />
+
+      <label for="Mailing_address">Mailing Address:</label>
+      <input
+        type="text"
+        id="Mailing_address"
+        style="width: 700px"
+      /><br /><br />
+
+      <label for="City">City:</label>
+      <input type="text" id="City" />
+
+      <label for="Province">Province:</label>
+      <input list="provinces" id="Province" name="provinces_abbr" />
+      <datalist id="provinces">
+        <option value="BC">BC</option>
+        <option value="NB">NB</option>
+        <option value="NL">NL</option>
+        <option value="QC">QC</option>
+        <option value="ON">ON</option>
+      </datalist>
+
+      <label for="Postal_Code">Postal Code:</label>
+      <input type="text" id="Postal_Code" />
+      <label for="Email">Email:</label>
+      <input type="email" placeholder="email@example.com" id="Email" />
+
+      <label for="Phone">Phone:</label>
+      <input type="text" id="Phone" /><br /><br />
+
+      <h3>3.Waste Generator</h3>
+      <input type="checkbox" id="Same_as_applicant" />
+      <label for="Same_as_applicant">Same_as_applicant:</label><br /><br />
+
+      <label for="Waste_first_name">First Name:</label>
+      <input type="text" id="Waste_first_name" />
+      <label for="Waste_last_name">Last Name:</label>
+      <input type="text" id="Waste_last_name" />
+      <label for="Waste_Company_name">Company:</label>
+      <input type="text" id="Waste_Company_name" />
+      <label for="Mailing_address">Mailing Address:</label>
+      <input type="text" id="Mailing_address" style="width: 700px" /><br />
+      <label for="City">City:</label>
+      <input type="text" id="City" />
+
+      <label for="Province">Province:</label>
+      <input list="provinces" id="Province" name="provinces_abbr" />
+      <datalist id="provinces">
+        <option value="BC">BC</option>
+        <option value="NB">NB</option>
+        <option value="NL">NL</option>
+        <option value="QC">QC</option>
+        <option value="ON">ON</option>
+      </datalist>
+
+      <label for="Postal_Code">Postal Code:</label>
+      <input type="text" id="Postal_Code" />
+      <label for="Email">Email:</label>
+      <input type="email" placeholder="email@example.com" id="Email" />
+
+      <label for="Phone">Phone:</label>
+      <input type="text" id="Phone" /><br /><br />
+    </form>
+    <br />
+    <h3>4.Waste Details</h3>
+    <input type="checkbox" id="Animal_Carcass" />
+    <label for="Animal_Carcass">Animal Carcass(>50kg) </label>
+    <input type="checkbox" id="Demolition" />
+    <label for="Demolition">Demolition(>5m^3) </label>
+    <input type="checkbox" id="Asbestos" />
+    <label for="Asbestos">Asbestos </label>
+    <input type="checkbox" id="Landing_Clearing_Waste" />
+    <label for="Landing_Clearing_Waste">Landing Clearing Waste</label>
+    <input type="checkbox" id="Broken_Asphalt" />
+    <label for="Broken_Asphalt">Broken Asphalt</label>
+    <input type="checkbox" id="Septage" />
+    <label for="Septage">Septage </label>
+    <input type="checkbox" id="Broken_Concrete_no_rebar" />
+    <label for="Broken_Concrete_no_rebar">Broken Concrete no rebar </label>
+    <input type="checkbox" id="Soil" />
+    <label for="Soil">Soil</label>
+    <input type="checkbox" id="Broken_Concrete_with_rebar" />
+    <label for="Broken_Concrete_with_rebar">Broken Concrete with rebar </label>
+    <input type="checkbox" id="Waste_Ash_from_Incinerators" />
+    <label for="Waste_Ash_from_Incinerators">Waste Ash from Incinerators</label>
+    <br />
+    <br />
+    <input type="date" id="Application_Dates" />
+    <label for="Application_Dates">Application Date</label>
+    <input type="number" id="Estimate_Loads" />
+    <label for="Estimate_Loads">Estimate Loads</label>
+    <input type="number" id="Estimate_Volumne" />
+    <label for="Estimate_Volumne">Estimate Volumne</label>
+    <input list="units" id="Units" />
+    <datalist id="units">
+      <option value="Bags">Bags</option>
+      <option value="Imperial Gallon">Imperial Gallon</option>
+      <option value="Kg">Kg</option>
+      <option value="lbs">lbs</option>
+      <option value="Litre">Litre</option>
+      <option value="m^3">m^3</option>
+      <option value="Tonnes">Tonnes</option>
+      <option value="US Gallon">US Gallon</option>
+      <option value="yd^3">yd^3</option>
+    </datalist>
+    <label for="units">Units</label>
+    <input list="frequency" id="Frequency" />
+    <datalist id="frequency">
+      <option value="Bi-Weekly">Bi-Weekly</option>
+      <option value="Bi-Monthly">Bi-Monthly</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Monthly">Monthly</option>
+      <option value="Daily">Daily</option>
+      <option value="Once">Once</option>
+    </datalist>
+    <label for="Frequency">Frequency</label>
+    <br />
+    <br />
+    <input type="date" id="Contaminated_loads_Date" />
+    <label for="Contaminated_loads_Date">Contaminated_loads_Date</label>
+    <br />
+
+    <label for="Contaminated_loads_Date">Contaminated_loads_Comments</label>
+    <label for="Contaminated_loads_Date" style="margin-left: 15rem"
+      >Comments</label
+    >
+    <br />
+    <input
+      type="text"
+      id="Contaminated_loads_Comments"
+      style="height: 10rem; width: 30rem"
+    />
+    <input type="text" id="Comments" style="height: 10rem; width: 30rem" />
+    <br />
+    <br />
+    <label for="Permit_Sent_To_Operator_and_WMF"
+      >Permit_Sent_To_Operator_and_WMF</label
+    >
+    <select
+      name="permit_Sent_To_Operator_and_WMF"
+      id="Permit_Sent_To_Operator_and_WMF"
+    >
+      <option value="Yes">Yes</option>
+      <option value="Pending">Pending</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Permit_Save_On_Server_And_Filed"
+      >Permit_Save_On_Server_And_Filed</label
+    >
+    <select
+      name="permit_Save_On_Server_And_Filed"
+      id="Permit_Save_On_Server_And_Filed"
+    >
+      <option value="Y">Y</option>
+      <option value="N">N</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Hard_Copy_Permit_Save_In_File"
+      >Hard_Copy_Permit_Save_In_File</label
+    >
+    <select
+      name="hard_Copy_Permit_Save_In_File"
+      id="Hard_Copy_Permit_Save_In_File"
+    >
+      <option value="Y">Y</option>
+      <option value="N">N</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Estimate_Volumne">Approved_By</label>
+    <input type="number" id="Estimate_Volumne" />
+    <label
+      style="margin-left: 2rem"
+      for="Permit_Closed_Card_Permissions_Revoked"
+      >Permit_Closed_Card_Permissions_Revoked</label
+    >
+    <input type="number" id="Permit_Closed_Card_Permissions_Revoked" />
+    <br />
+    <br />
+    <label for="Permit_Status">Permit_Status</label>
+    <select name="permit_Status" id="Permit_Status">
+      <option value="Abandoned">Abandoned</option>
+      <option value="Permit Issued">Permit Issued</option>
+      <option value="Permit Issued">Permit Issued</option>
+      <option value="Permit refused">Permit refused</option>
+      <option value="Complete">Complete</option>
+      <option value="In progress">In progress</option>
+      <option value="Tipping Date Not Scheduled">
+        Tipping Date Not Scheduled
+      </option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Permit_Type">Permit_Type</label>
+    <select name="permit_Type" id="Permit_Type">
+      <option value="Semi-Annual">Semi-Annual</option>
+      <option value="Single event">Single event</option>
+      <option value="Multi-day">Multi-day</option>
+      <option value="Annual">Annual</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Permit_Fee">Permit_Fee</label>
+    <select name="permit_Fee" id="Permit_Fee">
+      <option value="25.00">25.00</option>
+      <option value="50.00">50.00</option>
+      <option value="100.00">100.00</option>
+      <option value="N/A">N/A</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Expirtation_Date"
+      >Expirtation_Date</label
+    >
+    <input type="date" id="Expirtation_Date" />
+
+    <label style="margin-left: 2rem" for="APPLICATION_FEE_INVOICED"
+      >Application_Fee_Invoiced</label
+    >
+    <select name="aPPLICATION_FEE_INVOICED" id="APPLICATION_FEE_INVOICED">
+      <option value="Y">Y</option>
+      <option value="N">N</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Contaminate_Loads"
+      >Contaminate_Loads</label
+    >
+    <select name="contaminate_Loads" id="Contaminate_Loads">
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+
+    <label style="margin-left: 2rem" for="Approved_Tipping_Date"
+      >Approved_Tipping_Date</label
+    >
+    <input type="date" id="Approved_Tipping_Date" />
+    <br />
+    <br />
+    <label for="Hauler">Hauler</label>
+    <input type="text" id="Hauler" />
+    <label style="margin-left: 2rem" for="Hauler2">Hauler2</label>
+    <input type="text" id="Hauler2" />
+    <br />
+    <br />
+    <input type="submit" value="Submit" />
+    <button class="goToOtherPages">
+      <a href="index.html">Go to index page</a>
+    </button>
+  </body>
+</html>
