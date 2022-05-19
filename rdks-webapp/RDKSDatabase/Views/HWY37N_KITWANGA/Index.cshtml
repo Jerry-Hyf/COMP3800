@@ -1,0 +1,167 @@
+﻿@model IEnumerable<RDKS.Models.HWY37N_KITWANGA>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_OCC_TONNAGE_EST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_PPP_TONNAGE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_OCC_HAULING_BIN_RENTAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_PPP_HAULING)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_RECYCLE_BC_TONNAGE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_CESA_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_EPRA_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_LIGHT_RECYCLE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_PAINT_RECYCLE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_SCRAP_METAL_MARR_INCLUDED)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_LAB_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_TIRE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_TIRE_CHARGES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_FREON_REMOVAL_CHARGES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_RECYCLE_BC_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_CESA_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_EPRA_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_LIGHT_RECYCLE_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_PAINT_RECYCLE_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_MARR_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_LAB_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_TOTAL_TONNES_EPR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_NET_INCOME)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_OCC_TONNAGE_EST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_PPP_TONNAGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_OCC_HAULING_BIN_RENTAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_PPP_HAULING)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_RECYCLE_BC_TONNAGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_CESA_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_EPRA_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_LIGHT_RECYCLE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_PAINT_RECYCLE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_SCRAP_METAL_MARR_INCLUDED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_LAB_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_TIRE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_TIRE_CHARGES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_FREON_REMOVAL_CHARGES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_RECYCLE_BC_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_CESA_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_EPRA_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_LIGHT_RECYCLE_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_PAINT_RECYCLE_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_MARR_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_LAB_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_TOTAL_TONNES_EPR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_NET_INCOME)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HWY_KIT_DATE">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HWY_KIT_DATE">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HWY_KIT_DATE">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
