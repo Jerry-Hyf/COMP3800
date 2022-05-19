@@ -35,7 +35,7 @@ namespace RDKSDatabase.Models
         [Column("ABC_TOTAL_METRIC_TON")]
         public float TOTAL_TONNAGE_MATERIAL { get; set; }
 
-
+        public bool ABC_COMPLETED { get; set; }
 
 
 
