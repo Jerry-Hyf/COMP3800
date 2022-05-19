@@ -89,7 +89,7 @@ namespace RDKSDatabase.Models
 
         [Display(Name ="Facility Code")]
         [Required]
-        public string FacilityCode { get; set; }
+        public FacilityCode facilityCode { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:MM-dd-yyyy}",ApplyFormatInEditMode =true)]
@@ -101,12 +101,12 @@ namespace RDKSDatabase.Models
         public float EstimatedVolume { get; set; }
 
         
-        public string? Units { get; set; }
+        public Units? units { get; set; }
 
         [Range(0,int.MaxValue)]
         public int EstimatedLoads { get; set; }
 
-        public string? Frequency { get; set; }
+        public Frequency frequency { get; set; }
 
         public string? Comments { get; set; }
 
@@ -121,18 +121,18 @@ namespace RDKSDatabase.Models
         [Display(Name = "Contaminated Loads")]
         [Range(0,int.MaxValue)]
 
-        public int ContaminatedLoads { get; set; }
+        public ContaminatedLoads contaminatedLoads { get; set; }
 
         [Display(Name = "Permit Sent To Operator And WMF")]
-        public string? PermitSentToOperatorAndWMF { get; set; }
+        public PermitSentToOperatorAndWMF? permitSentToOperatorAndWMF { get; set; }
 
         [Display(Name = "Permit Saved On Server And Filed")]
 
-        public char? PermitSavedOnServerAndFiled { get; set; }
+        public PermitSavedOnServerAndFiled? permitSavedOnServerAndFiled { get; set; }
 
         [Display(Name = "Hard Copy Permit Saved In File")]
 
-        public char HardCopyPermitSavedInFile { get; set; }
+        public HardCopyPermitSavedInFile hardCopyPermitSavedInFile { get; set; }
 
         [Display(Name = "Approved By")]
 
@@ -148,7 +148,7 @@ namespace RDKSDatabase.Models
 
         [Required]
         [Display(Name = "Permit Type")]
-        public string PermitType { get; set; }
+        public string? PermitType { get; set; }
 
         [Required]
         [Display(Name = "Permit Fee")]
@@ -161,22 +161,22 @@ namespace RDKSDatabase.Models
 
         [Required]
         [Display(Name = "Application Fee Invoiced")]
-        public bool ApplicationFeeInvoiced { get; set; }
+        public ApplicationFeeInvoiced applicationFeeInvoiced { get; set; }
 
 
         [Display(Name = "Applicant Name")]
         [Required]
-        public string ApplicantName { get; set; }
+        public string? ApplicantName { get; set; }
 
         [Display(Name = "Applicant Phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         [Required]
-        public string ApplicantPhone { get; set; }
+        public string? ApplicantPhone { get; set; }
 
         [Display(Name = "Applicant Email")]
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string ApplicantEmail { get; set; }
+        public string? ApplicantEmail { get; set; }
 
         
         public string? Hauler { get; set; }
