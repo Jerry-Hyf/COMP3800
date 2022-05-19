@@ -12,6 +12,7 @@ namespace RDKSDatabase.Models
         public int CUS_ID { get; set; }
 
         [StringLength(12)]
+        [Display(Name ="Customer Account Number")]
         public string? CUS_ACCNUM { get; set; }
 
         [StringLength(30)]
