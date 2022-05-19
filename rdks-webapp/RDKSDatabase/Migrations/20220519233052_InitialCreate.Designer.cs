@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RDKSDatabase.Data;
 
@@ -11,9 +12,10 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    partial class RDKSDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220519233052_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,42 +63,6 @@ namespace RDKSDatabase.Migrations
                     b.Property<DateTime>("HWY_KIT_DATE")
                         .HasColumnType("datetime2");
 
-<<<<<<< HEAD
-                    b.Property<float>("HWY_KIT_CESA_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_CESA_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_EPRA_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_EPRA_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_FREON_REMOVAL_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_LAB_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_LAB_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_LIGHT_RECYCLE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_LIGHT_RECYCLE_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_MARR_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_NET_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_OCC_HAULING_BIN_RENTAL")
-=======
                     b.Property<float?>("HWY_KIT_CESA_INCOME")
                         .HasColumnType("real");
 
@@ -131,42 +97,11 @@ namespace RDKSDatabase.Migrations
                         .HasColumnType("real");
 
                     b.Property<float?>("HWY_KIT_OCC_HAULING_BIN_RENTAL")
->>>>>>> 44387029fe816ec6fb0056b79f7f473e5aa9bd2c
                         .HasColumnType("real");
 
                     b.Property<float?>("HWY_KIT_OCC_TONNAGE_EST")
                         .HasColumnType("real");
 
-<<<<<<< HEAD
-                    b.Property<float>("HWY_KIT_PAINT_RECYCLE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_PAINT_RECYCLE_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_PPP_HAULING")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_PPP_TONNAGE")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_RECYCLE_BC_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_RECYCLE_BC_TONNAGE")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_SCRAP_METAL_MARR_INCLUDED")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_TIRE_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_TIRE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_KIT_TOTAL_TONNES_EPR")
-=======
                     b.Property<float?>("HWY_KIT_PAINT_RECYCLE_COUNTS")
                         .HasColumnType("real");
 
@@ -195,7 +130,6 @@ namespace RDKSDatabase.Migrations
                         .HasColumnType("real");
 
                     b.Property<float?>("HWY_KIT_TOTAL_TONNES_EPR")
->>>>>>> 44387029fe816ec6fb0056b79f7f473e5aa9bd2c
                         .HasColumnType("real");
 
                     b.HasKey("HWY_KIT_DATE");
@@ -208,72 +142,6 @@ namespace RDKSDatabase.Migrations
                     b.Property<DateTime>("HWY_STE_DATE")
                         .HasColumnType("datetime2");
 
-<<<<<<< HEAD
-                    b.Property<float>("HWY_STE_BANDSTRA_OCC_HAULING")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_CESA_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_CESA_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_EPRA_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_EPRA_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_FREON_REMOVAL_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_LAB_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_LAB_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_LIGHT_RECYCLE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_LIGHT_RECYCLE_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_MARR_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_NET_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_OCC_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_OCC_TOTAL")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_PAINT_RECYCLE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_RECYCLE_BC_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_RECYCLE_BC_TONNAGE")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_RECYCLE_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_SCRAP_METAL_MARR_TONNE_EST")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_TIRE_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_TIRE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("HWY_STE_TOTAL_TONNES_EPR")
-=======
                     b.Property<float?>("HWY_STE_BANDSTRA_OCC_HAULING")
                         .HasColumnType("real");
 
@@ -338,7 +206,6 @@ namespace RDKSDatabase.Migrations
                         .HasColumnType("real");
 
                     b.Property<float?>("HWY_STE_TOTAL_TONNES_EPR")
->>>>>>> 44387029fe816ec6fb0056b79f7f473e5aa9bd2c
                         .HasColumnType("real");
 
                     b.HasKey("HWY_STE_DATE");
@@ -490,35 +357,6 @@ namespace RDKSDatabase.Migrations
                     b.ToTable("Customer", (string)null);
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
-                {
-                    b.Property<string>("LICENSE_PLATE")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<int>("BADGE")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CUS_ID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DESCRIPTION")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NOTES")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NOTES_2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LICENSE_PLATE");
-
-                    b.ToTable("Vehicle");
-                });
-
-=======
->>>>>>> 44387029fe816ec6fb0056b79f7f473e5aa9bd2c
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
                 {
                     b.HasOne("RDKSDatabase.Models.Customer", null)
