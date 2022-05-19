@@ -1,0 +1,167 @@
+﻿@model IEnumerable<RDKS.Models.HWY37N_STEWART>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_OCC_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_BANDSTRA_OCC_HAULING)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_OCC_TOTAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_RECYCLE_BC_TONNAGE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_CESA_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_EPRA_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_LIGHT_RECYCLE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_PAINT_RECYCLE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_SCRAP_METAL_MARR_TONNE_EST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_LAB_TONNES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_TIRE_COUNTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_TIRE_CHARGES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_FREON_REMOVAL_CHARGES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_RECYCLE_BC_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_CESA_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_EPRA_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_LIGHT_RECYCLE_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_RECYCLE_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_MARR_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_LAB_INCOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_TOTAL_TONNES_EPR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HWY_STE_NET_INCOME)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_OCC_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_BANDSTRA_OCC_HAULING)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_OCC_TOTAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_RECYCLE_BC_TONNAGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_CESA_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_EPRA_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_LIGHT_RECYCLE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_PAINT_RECYCLE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_SCRAP_METAL_MARR_TONNE_EST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_LAB_TONNES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_TIRE_COUNTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_TIRE_CHARGES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_FREON_REMOVAL_CHARGES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_RECYCLE_BC_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_CESA_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_EPRA_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_LIGHT_RECYCLE_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_RECYCLE_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_MARR_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_LAB_INCOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_TOTAL_TONNES_EPR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_STE_NET_INCOME)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HWY_STE_DATE">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HWY_STE_DATE">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HWY_STE_DATE">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

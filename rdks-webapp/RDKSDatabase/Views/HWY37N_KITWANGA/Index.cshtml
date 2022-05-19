@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.HWY_KIT_DATE)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.HWY_KIT_OCC_TONNAGE_EST)
             </th>
             <th>
@@ -87,6 +90,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HWY_KIT_DATE)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HWY_KIT_OCC_TONNAGE_EST)
             </td>
