@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UwXTDg+v6p37yb8Y1uJxy1wv7YnoqQl1XFQ7D5fKX3ARaO0fqQyLOLa5mtHYNL1SSY3/egypOp67EJlFAvbLLw==",
+  "dgSpecHash": "x3xiSJTizSPwamvArChlnhtzvwXQ1iem/jiHkOqnsIY3LZg4q3x8UPlduD/VCIAaN8+1gb1eSf/G6vLbJRSeAA==",
   "success": true,
-  "projectFilePath": "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
+  "projectFilePath": "C:\\BCIT\\COMP3800\\test\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
