@@ -30,5 +30,7 @@ namespace RDKSDatabase.Data
         public DbSet<RDKSDatabase.Models.ABCRecycling>? ABCRecycling { get; set; }
 
         public DbSet<RDKS.Models.HWY37N_STEWART>? HWY37N_STEWART { get; set; }
+
+        public DbSet<RDKSDatabase.Models.Vehicle>? Vehicle { get; set; }
     }
 }
