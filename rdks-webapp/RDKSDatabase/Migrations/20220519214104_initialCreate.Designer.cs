@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RDKSDatabase.Data;
 
@@ -11,9 +12,10 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    partial class RDKSDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220519214104_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,40 +24,6 @@ namespace RDKSDatabase.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-<<<<<<< HEAD
-            modelBuilder.Entity("RDKS.Models.HWY37N_HAZELTON", b =>
-                {
-                    b.Property<DateTime>("HWY_HAZ_DATE")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float?>("HWY_HAZ_ABC_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_EST_OCC_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_FREON_REMOVAL_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_MARR_INCOME")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_OCC_BIN_BILLING")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_SCRAP_METAL_TONNES")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_TIRE_COLLECTION_CHARGES")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("HWY_HAZ_TIRE_COUNTS")
-                        .HasColumnType("real");
-
-                    b.HasKey("HWY_HAZ_DATE");
-
-                    b.ToTable("HWY37N_HAZELTON");
-=======
             modelBuilder.Entity("RDKSDatabase.Models.ABCRecycling", b =>
                 {
                     b.Property<DateTime?>("ABCDateID")
@@ -210,7 +178,6 @@ namespace RDKSDatabase.Migrations
             modelBuilder.Entity("RDKSDatabase.Models.Customer", b =>
                 {
                     b.Navigation("Addresses");
->>>>>>> 868077c4c1d65f7f3fd07ae451970ff19bbdb629
                 });
 #pragma warning restore 612, 618
         }

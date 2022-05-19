@@ -4,6 +4,11 @@ using RDKSDatabase.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RDKSDatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RDKSDatabaseContext") ?? throw new InvalidOperationException("Connection string 'RDKSDatabaseContext' not found.")));
+<<<<<<< HEAD
+=======
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+>>>>>>> 868077c4c1d65f7f3fd07ae451970ff19bbdb629
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
