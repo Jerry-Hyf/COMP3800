@@ -69,13 +69,23 @@ namespace RDKSDatabase.Models
         Two = 2
     }
     public class Permit
-    {
-        [Key]
+    {   
+       
         [Required]
-        public string PermitNumberPrefix { get; set; }
+        public int PermitNumberPrefix { get; set; }
+
+        public int PermitNumber { get; set; }
 
         [Key]
-        public int PermitNumber { get; set; }
+        public string PermitNum {
+            get {
+               
+                     return  PermitNumberPrefix + "-" + PermitNumber;    
+                    
+                }
+                
+            }
+       
 
         [Display(Name ="Facility Code")]
         [Required]
@@ -133,7 +143,7 @@ namespace RDKSDatabase.Models
 
         [Required]
         [Display(Name = "Permit Status")]
-        public string PermitStatus { get; set; }
+        public PermitStatus permitStatus{ get; set; }
 
 
         [Required]
@@ -177,8 +187,5 @@ namespace RDKSDatabase.Models
         public WasteSource WasteSource { get; set; }
 
         public Material Material { get; set; }
-
-        
-
     }
 }
