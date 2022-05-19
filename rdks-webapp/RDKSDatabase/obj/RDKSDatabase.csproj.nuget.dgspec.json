@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj": {}
+    "C:\\Users\\lunat\\Desktop\\BCIT-CST\\4.term_3_Winter\\Comp3800_Procedual_Project\\3800Project\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj": {}
   },
   "projects": {
-    "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj": {
+    "C:\\Users\\lunat\\Desktop\\BCIT-CST\\4.term_3_Winter\\Comp3800_Procedual_Project\\3800Project\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
+        "projectUniqueName": "C:\\Users\\lunat\\Desktop\\BCIT-CST\\4.term_3_Winter\\Comp3800_Procedual_Project\\3800Project\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
         "projectName": "RDKSDatabase",
-        "projectPath": "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
-        "packagesPath": "C:\\Users\\kms_dt\\.nuget\\packages\\",
-        "outputPath": "C:\\ksong34\\Projects\\COMP3800\\rdks-webapp\\RDKSDatabase\\obj\\",
+        "projectPath": "C:\\Users\\lunat\\Desktop\\BCIT-CST\\4.term_3_Winter\\Comp3800_Procedual_Project\\3800Project\\COMP3800\\rdks-webapp\\RDKSDatabase\\RDKSDatabase.csproj",
+        "packagesPath": "C:\\Users\\lunat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lunat\\Desktop\\BCIT-CST\\4.term_3_Winter\\Comp3800_Procedual_Project\\3800Project\\COMP3800\\rdks-webapp\\RDKSDatabase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kms_dt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lunat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
