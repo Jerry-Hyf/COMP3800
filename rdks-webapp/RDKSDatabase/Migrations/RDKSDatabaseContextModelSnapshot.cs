@@ -22,6 +22,44 @@ namespace RDKSDatabase.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("RDKSDatabase.Models.ABCRecycling", b =>
+                {
+                    b.Property<DateTime?>("ABCDateID")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("ABC_COMPLETED")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ABC_LOCATION")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("ABC_MATERIAL")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<float?>("TOTAL_POUND_NETWEIGHT")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_NET_WEIGHT_IN_POUND");
+
+                    b.Property<float?>("TOTAL_TONNAGE_MATERIAL")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_TOTAL_METRIC_TON");
+
+                    b.Property<float?>("TOTAL_TONNAGE_NETWEIGHT")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_TOTAL_NET_WEIGHT_IN_TONNAGE");
+
+                    b.HasKey("ABCDateID");
+
+                    b.ToTable("ABCRecycling");
+                });
+
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
                 {
                     b.Property<int>("ADDR_ID")

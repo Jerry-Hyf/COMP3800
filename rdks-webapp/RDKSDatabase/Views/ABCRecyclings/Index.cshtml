@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RDKSDatabase.Models.ABCRecycling>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ABCDateID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABC_LOCATION)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABC_MATERIAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTAL_POUND_NETWEIGHT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTAL_TONNAGE_NETWEIGHT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TOTAL_TONNAGE_MATERIAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABC_COMPLETED)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABCDateID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABC_LOCATION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABC_MATERIAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOTAL_POUND_NETWEIGHT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOTAL_TONNAGE_NETWEIGHT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOTAL_TONNAGE_MATERIAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABC_COMPLETED)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ABCDateID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ABCDateID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ABCDateID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

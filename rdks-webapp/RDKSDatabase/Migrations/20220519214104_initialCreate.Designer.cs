@@ -12,8 +12,8 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    [Migration("20220519180002_Initial-Update")]
-    partial class InitialUpdate
+    [Migration("20220519214104_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,44 @@ namespace RDKSDatabase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("RDKSDatabase.Models.ABCRecycling", b =>
+                {
+                    b.Property<DateTime?>("ABCDateID")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("ABC_COMPLETED")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ABC_LOCATION")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("ABC_MATERIAL")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<float?>("TOTAL_POUND_NETWEIGHT")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_NET_WEIGHT_IN_POUND");
+
+                    b.Property<float?>("TOTAL_TONNAGE_MATERIAL")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_TOTAL_METRIC_TON");
+
+                    b.Property<float?>("TOTAL_TONNAGE_NETWEIGHT")
+                        .IsRequired()
+                        .HasColumnType("real")
+                        .HasColumnName("ABC_TOTAL_NET_WEIGHT_IN_TONNAGE");
+
+                    b.HasKey("ABCDateID");
+
+                    b.ToTable("ABCRecycling");
+                });
 
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
                 {

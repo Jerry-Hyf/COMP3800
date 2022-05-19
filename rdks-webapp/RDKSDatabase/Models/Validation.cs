@@ -11,6 +11,7 @@ namespace RDKSDatabase.Models
 
 
         [Key]
+        [Display(Name = "Facility Code")]
         public String? VALID_IMPORT_CODE { get; set; }
 
         [Required]

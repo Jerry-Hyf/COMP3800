@@ -22,5 +22,7 @@ namespace RDKSDatabase.Data
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Address>().ToTable("Address");
         }
+
+        public DbSet<RDKSDatabase.Models.ABCRecycling>? ABCRecycling { get; set; }
     }
 }
