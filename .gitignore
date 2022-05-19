@@ -1,1 +1,3 @@
 .vs/
+./rdks-webapp/RDKSDatabase/bin/
+./rdks-webapp/RDKSDatabase/obj/
