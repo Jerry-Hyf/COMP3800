@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKSDatabase.Models
 {
-    public class Vehicle_badge
+    public class Vehicle
     {
         [Key]
         [Display(Name = "License Plate")]
