@@ -46,13 +46,13 @@ namespace RDKSDatabase.Models
         public int ALT_ADDR_ID { get; set; }
 
         [Required]
-        public Boolean CUS_FR { get; set; }
+        public bool CUS_FR { get; set; }
 
         [Required]
-        public Boolean CUS_TTS { get; set; }
+        public bool CUS_TTS { get; set; }
 
         [Required]
-        public Boolean CUS_MEZ { get; set; }
+        public bool CUS_MEZ { get; set; }
 
         [Required]
         public int CUS_DEACTIVATED_COUNT { get; set; }
