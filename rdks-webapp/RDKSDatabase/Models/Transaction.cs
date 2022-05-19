@@ -102,8 +102,8 @@ namespace RDKSDatabase.Models
         public string? TRANS_SERVICE_AREA { get; set; }
 
         public Customer? Customer { get; set; }
-        //public Vehicle? Vehicle { get; set; }
-        //public Validation? Validation { get; set; }
+        public Vehicle? Vehicle { get; set; }
+        public Validation? Validation { get; set; }
 
     }
 }
