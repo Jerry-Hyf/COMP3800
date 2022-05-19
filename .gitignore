@@ -1,5 +1,11 @@
 /rdks-webapp/RDKSDatabase/.vs/
 /rdks-webapp/RDKSDatabase/bin/
 /rdks-webapp/RDKSDatabase/obj/
+/rdks-webapp/RDKSDatabase/Properties/
+/rdks-webapp/RDKSDatabase/wwwroot/
+/rdks-webapp/RDKSDatabase/appsettings.Development.json
+/rdks-webapp/RDKSDatabase/appsettings.json
+/rdks-webapp/RDKSDatabase/RDKSDatabase.csproj
 /rdks-webapp/RDKSDatabase/RDKSDatabase.csproj.user
+/rdks-webapp/RDKSDatabase/RDKSDatabase.sln
 .vs/
