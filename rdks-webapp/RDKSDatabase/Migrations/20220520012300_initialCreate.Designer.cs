@@ -12,8 +12,8 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    [Migration("20220519233052_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220520012300_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -357,11 +357,126 @@ namespace RDKSDatabase.Migrations
                     b.ToTable("Customer", (string)null);
                 });
 
+            modelBuilder.Entity("RDKSDatabase.Models.Validation", b =>
+                {
+                    b.Property<string>("VALID_IMPORT_CODE")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("VALID_AIRSPACE_OR_NONAIRSPACE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int?>("VALID_CODE")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("VALID_CURBSIDE_STREAM")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_CURBSIED_AREA")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FACILITY")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FR_ANNUAL_REPORTING_GROUP")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FR_ANNUAL_REPORT_WASTE_TYPE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FUNCTION")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_IN_AND_OUT")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_MATERIAL_GROUP")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_MATERIAL_NAME")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_SERVICE_AREA")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<float?>("VALID_TIPPING_RATE")
+                        .IsRequired()
+                        .HasColumnType("real");
+
+                    b.HasKey("VALID_IMPORT_CODE");
+
+                    b.ToTable("Validation");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
+                {
+                    b.Property<string>("LICENSE_PLATE")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("BADGE")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerCUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DESCRIPTION")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOTES")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOTES_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LICENSE_PLATE");
+
+                    b.HasIndex("CustomerCUS_ID");
+
+                    b.ToTable("Vehicle");
+                });
+
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
                 {
                     b.HasOne("RDKSDatabase.Models.Customer", null)
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerCUS_ID");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
+                {
+                    b.HasOne("RDKSDatabase.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerCUS_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("RDKSDatabase.Models.Customer", b =>

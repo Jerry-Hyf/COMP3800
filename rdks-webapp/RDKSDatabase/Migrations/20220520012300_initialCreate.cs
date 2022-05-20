@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RDKSDatabase.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,6 +140,30 @@ namespace RDKSDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Validation",
+                columns: table => new
+                {
+                    VALID_IMPORT_CODE = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    VALID_CODE = table.Column<int>(type: "int", nullable: false),
+                    VALID_MATERIAL_NAME = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_IN_AND_OUT = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_AIRSPACE_OR_NONAIRSPACE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_FUNCTION = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_FACILITY = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_MATERIAL_GROUP = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_CURBSIED_AREA = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_CURBSIDE_STREAM = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_FR_ANNUAL_REPORTING_GROUP = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_FR_ANNUAL_REPORT_WASTE_TYPE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VALID_TIPPING_RATE = table.Column<float>(type: "real", nullable: false),
+                    VALID_SERVICE_AREA = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Validation", x => x.VALID_IMPORT_CODE);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Address",
                 columns: table => new
                 {
@@ -161,9 +185,37 @@ namespace RDKSDatabase.Migrations
                         principalColumn: "CUS_ID");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Vehicle",
+                columns: table => new
+                {
+                    LICENSE_PLATE = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    CUS_ID = table.Column<int>(type: "int", nullable: false),
+                    CustomerCUS_ID = table.Column<int>(type: "int", nullable: false),
+                    DESCRIPTION = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BADGE = table.Column<int>(type: "int", nullable: false),
+                    NOTES = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NOTES_2 = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicle", x => x.LICENSE_PLATE);
+                    table.ForeignKey(
+                        name: "FK_Vehicle_Customer_CustomerCUS_ID",
+                        column: x => x.CustomerCUS_ID,
+                        principalTable: "Customer",
+                        principalColumn: "CUS_ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Address_CustomerCUS_ID",
                 table: "Address",
+                column: "CustomerCUS_ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehicle_CustomerCUS_ID",
+                table: "Vehicle",
                 column: "CustomerCUS_ID");
         }
 
@@ -183,6 +235,12 @@ namespace RDKSDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "HWY37N_STEWART");
+
+            migrationBuilder.DropTable(
+                name: "Validation");
+
+            migrationBuilder.DropTable(
+                name: "Vehicle");
 
             migrationBuilder.DropTable(
                 name: "Customer");
