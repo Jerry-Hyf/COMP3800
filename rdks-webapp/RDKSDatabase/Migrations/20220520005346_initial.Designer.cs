@@ -12,8 +12,8 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    [Migration("20220519233052_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220520005346_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -355,6 +355,32 @@ namespace RDKSDatabase.Migrations
                     b.HasKey("CUS_ID");
 
                     b.ToTable("Customer", (string)null);
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
+                {
+                    b.Property<string>("LICENSE_PLATE")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("BADGE")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DESCRIPTION")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOTES")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOTES_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LICENSE_PLATE");
+
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
