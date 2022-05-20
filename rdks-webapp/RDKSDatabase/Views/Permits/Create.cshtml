@@ -13,6 +13,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="PermitId" class="control-label"></label>
+                <input asp-for="PermitId" class="form-control" />
+                <span asp-validation-for="PermitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="PermitNumberPrefix" class="control-label"></label>
                 <input asp-for="PermitNumberPrefix" class="form-control" />
                 <span asp-validation-for="PermitNumberPrefix" class="text-danger"></span>
@@ -23,9 +28,9 @@
                 <span asp-validation-for="PermitNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="facilityCode" class="control-label"></label>
-                <select asp-for="facilityCode" class="form-control"></select>
-                <span asp-validation-for="facilityCode" class="text-danger"></span>
+                <label asp-for="FacilityCode" class="control-label"></label>
+                <select asp-for="FacilityCode" class="form-control"></select>
+                <span asp-validation-for="FacilityCode" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PermitApplicationDate" class="control-label"></label>
@@ -48,9 +53,9 @@
                 <span asp-validation-for="EstimatedLoads" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="frequency" class="control-label"></label>
-                <select asp-for="frequency" class="form-control"></select>
-                <span asp-validation-for="frequency" class="text-danger"></span>
+                <label asp-for="Frequency" class="control-label"></label>
+                <select asp-for="Frequency" class="form-control"></select>
+                <span asp-validation-for="Frequency" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Comments" class="control-label"></label>
@@ -68,24 +73,24 @@
                 <span asp-validation-for="ContaminateLoadsComments" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="contaminatedLoads" class="control-label"></label>
-                <select asp-for="contaminatedLoads" class="form-control"></select>
-                <span asp-validation-for="contaminatedLoads" class="text-danger"></span>
+                <label asp-for="ContaminatedLoads" class="control-label"></label>
+                <select asp-for="ContaminatedLoads" class="form-control"></select>
+                <span asp-validation-for="ContaminatedLoads" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="permitSentToOperatorAndWMF" class="control-label"></label>
-                <input asp-for="permitSentToOperatorAndWMF" class="form-control" />
-                <span asp-validation-for="permitSentToOperatorAndWMF" class="text-danger"></span>
+                <label asp-for="PermitSentToOperatorAndWMF" class="control-label"></label>
+                <input asp-for="PermitSentToOperatorAndWMF" class="form-control" />
+                <span asp-validation-for="PermitSentToOperatorAndWMF" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="permitSavedOnServerAndFiled" class="control-label"></label>
-                <input asp-for="permitSavedOnServerAndFiled" class="form-control" />
-                <span asp-validation-for="permitSavedOnServerAndFiled" class="text-danger"></span>
+                <label asp-for="PermitSavedOnServerAndFiled" class="control-label"></label>
+                <input asp-for="PermitSavedOnServerAndFiled" class="form-control" />
+                <span asp-validation-for="PermitSavedOnServerAndFiled" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="hardCopyPermitSavedInFile" class="control-label"></label>
-                <select asp-for="hardCopyPermitSavedInFile" class="form-control"></select>
-                <span asp-validation-for="hardCopyPermitSavedInFile" class="text-danger"></span>
+                <label asp-for="HardCopyPermitSavedInFile" class="control-label"></label>
+                <select asp-for="HardCopyPermitSavedInFile" class="form-control"></select>
+                <span asp-validation-for="HardCopyPermitSavedInFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ApprovedBy" class="control-label"></label>
@@ -98,9 +103,9 @@
                 <span asp-validation-for="PermitClosedCardPermissionsRevolked" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="permitStatus" class="control-label"></label>
-                <select asp-for="permitStatus" class="form-control"></select>
-                <span asp-validation-for="permitStatus" class="text-danger"></span>
+                <label asp-for="PermitStatus" class="control-label"></label>
+                <select asp-for="PermitStatus" class="form-control"></select>
+                <span asp-validation-for="PermitStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PermitType" class="control-label"></label>
@@ -118,9 +123,9 @@
                 <span asp-validation-for="ExpirationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="applicationFeeInvoiced" class="control-label"></label>
-                <select asp-for="applicationFeeInvoiced" class="form-control"></select>
-                <span asp-validation-for="applicationFeeInvoiced" class="text-danger"></span>
+                <label asp-for="ApplicationFeeInvoiced" class="control-label"></label>
+                <select asp-for="ApplicationFeeInvoiced" class="form-control"></select>
+                <span asp-validation-for="ApplicationFeeInvoiced" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ApplicantName" class="control-label"></label>

@@ -56,7 +56,7 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,ADDR_ID,AddressesId,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,ADDR_ID,AddressesId,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
         {
             if (id != customer.CUS_ID)
             {

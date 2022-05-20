@@ -47,15 +47,6 @@ namespace RDKSDatabase.Models
         public string? CUS_ALT_EMAIL { get; set; }
 
         [Required]
-        [Column("CUS_ADDRESS")]
-        [Display(Name = "Main Address")]
-        public int ADDR_ID { get; set; }
-
-        [Column("CUS_ALT_ADDRESS")]
-        [Display(Name = "Alt. Address")]
-        public int AddressesId { get; set; }
-
-        [Required]
         [Display(Name = "Access to FR")]
         public bool CUS_FR { get; set; }
 
@@ -76,6 +67,8 @@ namespace RDKSDatabase.Models
         public string? CUS_NOTE { get; set; }
 
         public ICollection<Address>? Addresses { get; set; }
+        public Vehicle? Vehicle { get; set; }
+        public Transaction? Transaction { get; set; }
 
     }
 }

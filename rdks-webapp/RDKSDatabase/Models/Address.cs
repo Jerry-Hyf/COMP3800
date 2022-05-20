@@ -11,7 +11,6 @@ namespace RDKSDatabase.Models
     /// </summary>
     public class Address
     {
-
         [Key]
         public int ADDR_ID { get; set; }
 
@@ -29,7 +28,12 @@ namespace RDKSDatabase.Models
 
         [StringLength(6)]
         [Display(Name = "Postal Code")]
-        public string? ADDR_POCODE { get; set; }          
+        public string? ADDR_POCODE { get; set; }
+
+        [Display(Name = "Customer ID")]
+        public int CUS_ID { get; set; }
+
+        public Customer? Customer { get; set; }
 
     }
 }

@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RDKSDatabase.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RDKSDatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RDKSDatabaseContext") ?? throw new InvalidOperationException("Connection string 'RDKSDatabaseContext' not found.")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

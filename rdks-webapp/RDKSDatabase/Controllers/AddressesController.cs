@@ -22,20 +22,20 @@ namespace RDKSDatabase.Controllers
         // GET: Addresses
         public async Task<IActionResult> Index()
         {
-              return _context.Addresses != null ? 
-                          View(await _context.Addresses.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Addresses'  is null.");
+              return _context.Address != null ? 
+                          View(await _context.Address.ToListAsync()) :
+                          Problem("Entity set 'RDKSDatabaseContext.Address'  is null.");
         }
 
         // GET: Addresses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Addresses == null)
+            if (id == null || _context.Address == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Addresses
+            var address = await _context.Address
                 .FirstOrDefaultAsync(m => m.ADDR_ID == id);
             if (address == null)
             {
@@ -56,7 +56,7 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE")] Address address)
+        public async Task<IActionResult> Create([Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE,CUS_ID")] Address address)
         {
             if (ModelState.IsValid)
             {
@@ -70,12 +70,12 @@ namespace RDKSDatabase.Controllers
         // GET: Addresses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Addresses == null)
+            if (id == null || _context.Address == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Addresses.FindAsync(id);
+            var address = await _context.Address.FindAsync(id);
             if (address == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE")] Address address)
+        public async Task<IActionResult> Edit(int id, [Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE,CUS_ID")] Address address)
         {
             if (id != address.ADDR_ID)
             {
@@ -121,12 +121,12 @@ namespace RDKSDatabase.Controllers
         // GET: Addresses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Addresses == null)
+            if (id == null || _context.Address == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Addresses
+            var address = await _context.Address
                 .FirstOrDefaultAsync(m => m.ADDR_ID == id);
             if (address == null)
             {
@@ -141,14 +141,14 @@ namespace RDKSDatabase.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Addresses == null)
+            if (_context.Address == null)
             {
-                return Problem("Entity set 'RDKSDatabaseContext.Addresses'  is null.");
+                return Problem("Entity set 'RDKSDatabaseContext.Address'  is null.");
             }
-            var address = await _context.Addresses.FindAsync(id);
+            var address = await _context.Address.FindAsync(id);
             if (address != null)
             {
-                _context.Addresses.Remove(address);
+                _context.Address.Remove(address);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +157,7 @@ namespace RDKSDatabase.Controllers
 
         private bool AddressExists(int id)
         {
-          return (_context.Addresses?.Any(e => e.ADDR_ID == id)).GetValueOrDefault();
+          return (_context.Address?.Any(e => e.ADDR_ID == id)).GetValueOrDefault();
         }
     }
 }

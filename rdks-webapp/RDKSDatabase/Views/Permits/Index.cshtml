@@ -13,7 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.facilityCode)
+                @Html.DisplayNameFor(model => model.PermitId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitNumberPrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacilityCode)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PermitApplicationDate)
@@ -28,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.EstimatedLoads)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.frequency)
+                @Html.DisplayNameFor(model => model.Frequency)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Comments)
@@ -40,16 +49,16 @@
                 @Html.DisplayNameFor(model => model.ContaminateLoadsComments)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.contaminatedLoads)
+                @Html.DisplayNameFor(model => model.ContaminatedLoads)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.permitSentToOperatorAndWMF)
+                @Html.DisplayNameFor(model => model.PermitSentToOperatorAndWMF)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.permitSavedOnServerAndFiled)
+                @Html.DisplayNameFor(model => model.PermitSavedOnServerAndFiled)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.hardCopyPermitSavedInFile)
+                @Html.DisplayNameFor(model => model.HardCopyPermitSavedInFile)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApprovedBy)
@@ -58,7 +67,7 @@
                 @Html.DisplayNameFor(model => model.PermitClosedCardPermissionsRevolked)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.permitStatus)
+                @Html.DisplayNameFor(model => model.PermitStatus)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PermitType)
@@ -70,7 +79,7 @@
                 @Html.DisplayNameFor(model => model.ExpirationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.applicationFeeInvoiced)
+                @Html.DisplayNameFor(model => model.ApplicationFeeInvoiced)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApplicantName)
@@ -103,7 +112,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.facilityCode)
+                @Html.DisplayFor(modelItem => item.PermitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermitNumberPrefix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermitNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacilityCode)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PermitApplicationDate)
@@ -118,7 +136,7 @@
                 @Html.DisplayFor(modelItem => item.EstimatedLoads)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.frequency)
+                @Html.DisplayFor(modelItem => item.Frequency)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comments)
@@ -130,16 +148,16 @@
                 @Html.DisplayFor(modelItem => item.ContaminateLoadsComments)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contaminatedLoads)
+                @Html.DisplayFor(modelItem => item.ContaminatedLoads)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.permitSentToOperatorAndWMF)
+                @Html.DisplayFor(modelItem => item.PermitSentToOperatorAndWMF)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.permitSavedOnServerAndFiled)
+                @Html.DisplayFor(modelItem => item.PermitSavedOnServerAndFiled)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.hardCopyPermitSavedInFile)
+                @Html.DisplayFor(modelItem => item.HardCopyPermitSavedInFile)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApprovedBy)
@@ -148,7 +166,7 @@
                 @Html.DisplayFor(modelItem => item.PermitClosedCardPermissionsRevolked)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.permitStatus)
+                @Html.DisplayFor(modelItem => item.PermitStatus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PermitType)
@@ -160,7 +178,7 @@
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.applicationFeeInvoiced)
+                @Html.DisplayFor(modelItem => item.ApplicationFeeInvoiced)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicantName)
@@ -187,9 +205,9 @@
                 @Html.DisplayFor(modelItem => item.MaterialCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="Edit" asp-route-id="@item.PermitId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PermitId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PermitId">Delete</a>
             </td>
         </tr>
 }

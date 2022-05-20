@@ -22,9 +22,8 @@ namespace RDKSDatabase.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-              return _context.Vehicle != null ? 
-                          View(await _context.Vehicle.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Vehicle'  is null.");
+            var rDKSDatabaseContext = _context.Vehicle.Include(v => v.Customer);
+            return View(await rDKSDatabaseContext.ToListAsync());
         }
 
         // GET: Vehicles/Details/5
@@ -36,6 +35,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var vehicle = await _context.Vehicle
+                .Include(v => v.Customer)
                 .FirstOrDefaultAsync(m => m.LICENSE_PLATE == id);
             if (vehicle == null)
             {
@@ -48,6 +48,7 @@ namespace RDKSDatabase.Controllers
         // GET: Vehicles/Create
         public IActionResult Create()
         {
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME");
             return View();
         }
 
@@ -64,6 +65,7 @@ namespace RDKSDatabase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", vehicle.CUS_ID);
             return View(vehicle);
         }
 
@@ -80,6 +82,7 @@ namespace RDKSDatabase.Controllers
             {
                 return NotFound();
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", vehicle.CUS_ID);
             return View(vehicle);
         }
 
@@ -115,6 +118,7 @@ namespace RDKSDatabase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", vehicle.CUS_ID);
             return View(vehicle);
         }
 
@@ -127,6 +131,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var vehicle = await _context.Vehicle
+                .Include(v => v.Customer)
                 .FirstOrDefaultAsync(m => m.LICENSE_PLATE == id);
             if (vehicle == null)
             {

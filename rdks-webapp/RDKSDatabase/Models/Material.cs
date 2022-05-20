@@ -11,5 +11,7 @@ namespace RDKSDatabase.Models
         [Required]
         [Display(Name ="Material Type")]
         public string MaterialType { get; set; }
+
+        public ICollection<Permit> Permits { get; set; }
     }
 }

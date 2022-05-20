@@ -8,11 +8,9 @@ namespace RDKSDatabase.Models
     public class Validation
     {
 
-
-
         [Key]
-        [Display(Name = "Facility Code")]
-        public String? VALID_IMPORT_CODE { get; set; }
+        [Display(Name = "Material Code")]
+        public string? VALID_IMPORT_CODE { get; set; }
 
         [Required]
         public int? VALID_CODE { get; set; }
@@ -57,22 +55,15 @@ namespace RDKSDatabase.Models
         [StringLength(20)]
         public string? VALID_FR_ANNUAL_REPORT_WASTE_TYPE { get; set; }
 
-
         [Required]
         [Range(0.0, float.MaxValue)]
         public float? VALID_TIPPING_RATE { get; set; }
-
 
         [Required]
         [StringLength(20)]
         public string? VALID_SERVICE_AREA { get; set; }
 
-
-
-
-
-
-
+        public ICollection<Transaction>? Transactions { get; set; }
 
     }
 }

@@ -28,7 +28,7 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Permits/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -36,7 +36,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var permit = await _context.Permit
-                .FirstOrDefaultAsync(m => m.PermitNumberPrefix == id);
+                .FirstOrDefaultAsync(m => m.PermitId == id);
             if (permit == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PermitNumberPrefix,PermitNumber,facilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,contaminatedLoads,permitSentToOperatorAndWMF,permitSavedOnServerAndFiled,hardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,permitStatus,PermitType,PermitFee,ExpirationDate,applicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
+        public async Task<IActionResult> Create([Bind("PermitId,PermitNumberPrefix,PermitNumber,FacilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,Frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,ContaminatedLoads,PermitSentToOperatorAndWMF,PermitSavedOnServerAndFiled,HardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,PermitStatus,PermitType,PermitFee,ExpirationDate,ApplicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Permits/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -88,9 +88,9 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PermitNumberPrefix,PermitNumber,facilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,contaminatedLoads,permitSentToOperatorAndWMF,permitSavedOnServerAndFiled,hardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,permitStatus,PermitType,PermitFee,ExpirationDate,applicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
+        public async Task<IActionResult> Edit(string id, [Bind("PermitId,PermitNumberPrefix,PermitNumber,FacilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,Frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,ContaminatedLoads,PermitSentToOperatorAndWMF,PermitSavedOnServerAndFiled,HardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,PermitStatus,PermitType,PermitFee,ExpirationDate,ApplicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
         {
-            if (id != permit.PermitNumberPrefix)
+            if (id != permit.PermitId)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace RDKSDatabase.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PermitExists(permit.PermitNumberPrefix))
+                    if (!PermitExists(permit.PermitId))
                     {
                         return NotFound();
                     }
@@ -119,7 +119,7 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Permits/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -127,7 +127,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var permit = await _context.Permit
-                .FirstOrDefaultAsync(m => m.PermitNumberPrefix == id);
+                .FirstOrDefaultAsync(m => m.PermitId == id);
             if (permit == null)
             {
                 return NotFound();
@@ -139,7 +139,7 @@ namespace RDKSDatabase.Controllers
         // POST: Permits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Permit == null)
             {
@@ -155,9 +155,9 @@ namespace RDKSDatabase.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PermitExists(int id)
+        private bool PermitExists(string id)
         {
-          return (_context.Permit?.Any(e => e.PermitNumberPrefix == id)).GetValueOrDefault();
+          return (_context.Permit?.Any(e => e.PermitId == id)).GetValueOrDefault();
         }
     }
 }

@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VALID_IMPORT_CODE)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.VALID_CODE)
             </th>
             <th>
@@ -60,9 +57,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VALID_IMPORT_CODE)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VALID_CODE)
             </td>

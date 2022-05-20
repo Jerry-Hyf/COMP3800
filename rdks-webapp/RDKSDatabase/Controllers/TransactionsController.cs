@@ -22,9 +22,8 @@ namespace RDKSDatabase.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-              return _context.Transaction != null ? 
-                          View(await _context.Transaction.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Transaction'  is null.");
+            var rDKSDatabaseContext = _context.Transaction.Include(t => t.Customer);
+            return View(await rDKSDatabaseContext.ToListAsync());
         }
 
         // GET: Transactions/Details/5
@@ -36,6 +35,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var transaction = await _context.Transaction
+                .Include(t => t.Customer)
                 .FirstOrDefaultAsync(m => m.TRANS_NUM == id);
             if (transaction == null)
             {
@@ -48,6 +48,7 @@ namespace RDKSDatabase.Controllers
         // GET: Transactions/Create
         public IActionResult Create()
         {
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME");
             return View();
         }
 
@@ -64,6 +65,7 @@ namespace RDKSDatabase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
@@ -80,6 +82,7 @@ namespace RDKSDatabase.Controllers
             {
                 return NotFound();
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
@@ -115,6 +118,7 @@ namespace RDKSDatabase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
@@ -127,6 +131,7 @@ namespace RDKSDatabase.Controllers
             }
 
             var transaction = await _context.Transaction
+                .Include(t => t.Customer)
                 .FirstOrDefaultAsync(m => m.TRANS_NUM == id);
             if (transaction == null)
             {

@@ -13,12 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TRANS_NUM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_ID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.LICENSE_PLATE)
             </th>
             <th>
@@ -99,18 +93,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.TRANS_SERVICE_AREA)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_NUM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_ID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LICENSE_PLATE)
             </td>
@@ -191,6 +182,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TRANS_SERVICE_AREA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CUS_FNAME)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TRANS_NUM">Edit</a> |

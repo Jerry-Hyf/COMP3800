@@ -16,11 +16,8 @@ namespace RDKSDatabase.Models
         [Required]
         [Display(Name = "Customer account number")]
         public int CUS_ID { get; set; }
-        public Customer Customer { get; set; }
-
-
-
-
+        [ForeignKey("CUS_ID")]
+        public Customer? Customer { get; set; }
 
         [Display(Name = "Description")]
         public string? DESCRIPTION { get; set; }
@@ -34,6 +31,7 @@ namespace RDKSDatabase.Models
         [Display(Name = "Notes2")]
         public string? NOTES_2 { get; set; }
 
+        public ICollection<Transaction>? Transactions { get; set; }
 
 
     }

@@ -214,6 +214,7 @@ namespace RDKSDatabase.Models
         [Display(Name = "Service Area")]
         public ServiceRegion? TRANS_SERVICE_AREA { get; set; }
 
+        [ForeignKey("CUS_ID")]
         public Customer? Customer { get; set; }
         public Vehicle? Vehicle { get; set; }
         public Validation? Validation { get; set; }

@@ -69,27 +69,20 @@ namespace RDKSDatabase.Models
         Two = 2
     }
     public class Permit
-    {   
-       
+    {
+        [Key]
+        [Display(Name = "Permit Id")]
+        public string? PermitId { get; set; }
+
         [Required]
         public int PermitNumberPrefix { get; set; }
 
+        [Required]
         public int PermitNumber { get; set; }
-
-        [Key]
-        public string PermitNum {
-            get {
-               
-                     return  PermitNumberPrefix + "-" + PermitNumber;    
-                    
-                }
-                
-            }
-       
 
         [Display(Name ="Facility Code")]
         [Required]
-        public FacilityCode facilityCode { get; set; }
+        public FacilityCode FacilityCode { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:MM-dd-yyyy}",ApplyFormatInEditMode =true)]
@@ -106,7 +99,7 @@ namespace RDKSDatabase.Models
         [Range(0,int.MaxValue)]
         public int EstimatedLoads { get; set; }
 
-        public Frequency frequency { get; set; }
+        public Frequency Frequency { get; set; }
 
         public string? Comments { get; set; }
 
@@ -121,18 +114,18 @@ namespace RDKSDatabase.Models
         [Display(Name = "Contaminated Loads")]
         [Range(0,int.MaxValue)]
 
-        public ContaminatedLoads contaminatedLoads { get; set; }
+        public ContaminatedLoads ContaminatedLoads { get; set; }
 
         [Display(Name = "Permit Sent To Operator And WMF")]
-        public PermitSentToOperatorAndWMF? permitSentToOperatorAndWMF { get; set; }
+        public PermitSentToOperatorAndWMF? PermitSentToOperatorAndWMF { get; set; }
 
         [Display(Name = "Permit Saved On Server And Filed")]
 
-        public PermitSavedOnServerAndFiled? permitSavedOnServerAndFiled { get; set; }
+        public PermitSavedOnServerAndFiled? PermitSavedOnServerAndFiled { get; set; }
 
         [Display(Name = "Hard Copy Permit Saved In File")]
 
-        public HardCopyPermitSavedInFile hardCopyPermitSavedInFile { get; set; }
+        public HardCopyPermitSavedInFile HardCopyPermitSavedInFile { get; set; }
 
         [Display(Name = "Approved By")]
 
@@ -143,7 +136,7 @@ namespace RDKSDatabase.Models
 
         [Required]
         [Display(Name = "Permit Status")]
-        public PermitStatus permitStatus{ get; set; }
+        public PermitStatus PermitStatus{ get; set; }
 
         [Required]
         [Display(Name = "Permit Type")]
@@ -160,7 +153,7 @@ namespace RDKSDatabase.Models
 
         [Required]
         [Display(Name = "Application Fee Invoiced")]
-        public ApplicationFeeInvoiced applicationFeeInvoiced { get; set; }
+        public ApplicationFeeInvoiced ApplicationFeeInvoiced { get; set; }
 
         [Display(Name = "Applicant Name")]
         [Required]
@@ -191,8 +184,7 @@ namespace RDKSDatabase.Models
         public WasteSource WasteSource { get; set; }
 
         [Required]
-        [Column("Material Code")]
-        public int MaterialCode { get; set; }
+        public string MaterialCode { get; set; }
         public Material Material { get; set; }
     }
 }

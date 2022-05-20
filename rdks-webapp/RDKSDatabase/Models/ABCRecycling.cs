@@ -45,9 +45,5 @@ namespace RDKSDatabase.Models
         [Display(Name = "Is completed")]
         public bool? ABC_COMPLETED { get; set; }
 
-
-
-
-
     }
 }
