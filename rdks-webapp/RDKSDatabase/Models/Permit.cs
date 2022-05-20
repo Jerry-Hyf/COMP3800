@@ -145,7 +145,6 @@ namespace RDKSDatabase.Models
         [Display(Name = "Permit Status")]
         public PermitStatus permitStatus{ get; set; }
 
-
         [Required]
         [Display(Name = "Permit Type")]
         public string? PermitType { get; set; }
@@ -163,7 +162,6 @@ namespace RDKSDatabase.Models
         [Display(Name = "Application Fee Invoiced")]
         public ApplicationFeeInvoiced applicationFeeInvoiced { get; set; }
 
-
         [Display(Name = "Applicant Name")]
         [Required]
         public string? ApplicantName { get; set; }
@@ -177,7 +175,6 @@ namespace RDKSDatabase.Models
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string? ApplicantEmail { get; set; }
-
         
         public string? Hauler { get; set; }
         public string? Hauler2 { get; set; } 

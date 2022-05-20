@@ -28,7 +28,7 @@ namespace RDKSDatabase.Models
         public string? ADDR_PROV { get; set; }
 
         [StringLength(6)]
-
+        [Display(Name = "Postal Code")]
         public string? ADDR_POCODE { get; set; }          
 
     }

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RDKSDatabase.Models.Address>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDR_STREET)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDR_CITY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDR_PROV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ADDR_POCODE)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDR_STREET)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDR_CITY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDR_PROV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDR_POCODE)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ADDR_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ADDR_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ADDR_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

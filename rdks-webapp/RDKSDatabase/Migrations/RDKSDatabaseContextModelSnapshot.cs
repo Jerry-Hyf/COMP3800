@@ -295,7 +295,7 @@ namespace RDKSDatabase.Migrations
                         .HasColumnType("int")
                         .HasColumnName("CUS_ADDRESS");
 
-                    b.Property<int>("ALT_ADDR_ID")
+                    b.Property<int>("AddressesId")
                         .HasColumnType("int")
                         .HasColumnName("CUS_ALT_ADDRESS");
 
@@ -339,8 +339,8 @@ namespace RDKSDatabase.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("CUS_NOTE")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("CUS_PHONE")
                         .IsRequired()
@@ -353,6 +353,206 @@ namespace RDKSDatabase.Migrations
                     b.HasKey("CUS_ID");
 
                     b.ToTable("Customer", (string)null);
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Transaction", b =>
+                {
+                    b.Property<string>("TRANS_NUM")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("CUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CustomerCUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LICENSE_PLATE")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal>("TRANS_ADJUSTED_PRICE")
+                        .HasColumnType("money");
+
+                    b.Property<string>("TRANS_ANNUAL_REPORTING_GROUP")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("TRANS_ANNUAL_REPORTING_SOURCE")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int?>("TRANS_ASC_NON_ASC")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("TRANS_COMPLETION_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TRANS_COMPLETION_TIME")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TRANS_CONTRACT")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<float?>("TRANS_CUBIC_METERS")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("TRANS_CURBSIDE_AREA")
+                        .HasMaxLength(15)
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TRANS_CURBSIDE_STREAM")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TRANS_DRIVER_EXEMPT_STATUS")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TRANS_FACILITY_CODE")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int?>("TRANS_FUNCTION")
+                        .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TRANS_HASEXCEPTION")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TRANS_HAULER")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("TRANS_IN_SERVICE_AREA")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TRANS_ISMANUAL")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TRANS_LOAD_NUM")
+                        .HasColumnType("int");
+
+                    b.Property<float>("TRANS_NETWEIGHT")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("TRANS_OPERATION")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TRANS_SERVICE_AREA")
+                        .HasMaxLength(15)
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TRANS_SOURCE_TYPE")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TRANS_STATUS")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<float>("TRANS_TONNES")
+                        .HasColumnType("real");
+
+                    b.Property<decimal>("TRANS_TOTALPRICE")
+                        .HasColumnType("money");
+
+                    b.Property<string>("VALID_IMPORT_CODE")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ValidationVALID_IMPORT_CODE")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("VehicleLICENSE_PLATE")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("TRANS_NUM");
+
+                    b.HasIndex("CustomerCUS_ID");
+
+                    b.HasIndex("ValidationVALID_IMPORT_CODE");
+
+                    b.HasIndex("VehicleLICENSE_PLATE");
+
+                    b.ToTable("Transaction");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Validation", b =>
+                {
+                    b.Property<string>("VALID_IMPORT_CODE")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("VALID_AIRSPACE_OR_NONAIRSPACE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int?>("VALID_CODE")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("VALID_CURBSIDE_STREAM")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_CURBSIED_AREA")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FACILITY")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FR_ANNUAL_REPORTING_GROUP")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FR_ANNUAL_REPORT_WASTE_TYPE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_FUNCTION")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_IN_AND_OUT")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_MATERIAL_GROUP")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_MATERIAL_NAME")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("VALID_SERVICE_AREA")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<float?>("VALID_TIPPING_RATE")
+                        .IsRequired()
+                        .HasColumnType("real");
+
+                    b.HasKey("VALID_IMPORT_CODE");
+
+                    b.ToTable("Validation");
                 });
 
             modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
@@ -386,6 +586,27 @@ namespace RDKSDatabase.Migrations
                     b.HasOne("RDKSDatabase.Models.Customer", null)
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerCUS_ID");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Transaction", b =>
+                {
+                    b.HasOne("RDKSDatabase.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerCUS_ID");
+
+                    b.HasOne("RDKSDatabase.Models.Validation", "Validation")
+                        .WithMany()
+                        .HasForeignKey("ValidationVALID_IMPORT_CODE");
+
+                    b.HasOne("RDKSDatabase.Models.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleLICENSE_PLATE");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Validation");
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("RDKSDatabase.Models.Customer", b =>

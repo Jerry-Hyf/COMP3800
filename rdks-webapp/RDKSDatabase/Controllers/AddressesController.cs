@@ -10,87 +10,87 @@ using RDKSDatabase.Models;
 
 namespace RDKSDatabase.Controllers
 {
-    public class CustomersController : Controller
+    public class AddressesController : Controller
     {
         private readonly RDKSDatabaseContext _context;
 
-        public CustomersController(RDKSDatabaseContext context)
+        public AddressesController(RDKSDatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
+        // GET: Addresses
         public async Task<IActionResult> Index()
         {
-              return _context.Customer != null ? 
-                          View(await _context.Customer.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Customer'  is null.");
+              return _context.Addresses != null ? 
+                          View(await _context.Addresses.ToListAsync()) :
+                          Problem("Entity set 'RDKSDatabaseContext.Addresses'  is null.");
         }
 
-        // GET: Customers/Details/5
+        // GET: Addresses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Customer == null)
+            if (id == null || _context.Addresses == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customer
-                .FirstOrDefaultAsync(m => m.CUS_ID == id);
-            if (customer == null)
+            var address = await _context.Addresses
+                .FirstOrDefaultAsync(m => m.ADDR_ID == id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(address);
         }
 
-        // GET: Customers/Create
+        // GET: Addresses/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Addresses/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,ADDR_ID,AddressesId,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
+        public async Task<IActionResult> Create([Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE")] Address address)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(address);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(address);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Addresses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Customer == null)
+            if (id == null || _context.Addresses == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customer.FindAsync(id);
-            if (customer == null)
+            var address = await _context.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            return View(address);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Addresses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CUS_ID,CUS_ACCNUM,CUS_COMPNAME,CUS_FNAME,CUS_LNAME,CUS_PHONE,CUS_ALT_PHONE,CUS_EMAIL,CUS_ALT_EMAIL,ADDR_ID,AddressesId,CUS_FR,CUS_TTS,CUS_MEZ,CUS_DEACTIVATED_COUNT,CUS_NOTE")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("ADDR_ID,ADDR_STREET,ADDR_CITY,ADDR_PROV,ADDR_POCODE")] Address address)
         {
-            if (id != customer.CUS_ID)
+            if (id != address.ADDR_ID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace RDKSDatabase.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(address);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.CUS_ID))
+                    if (!AddressExists(address.ADDR_ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace RDKSDatabase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(address);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Addresses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Customer == null)
+            if (id == null || _context.Addresses == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customer
-                .FirstOrDefaultAsync(m => m.CUS_ID == id);
-            if (customer == null)
+            var address = await _context.Addresses
+                .FirstOrDefaultAsync(m => m.ADDR_ID == id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(address);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Customer == null)
+            if (_context.Addresses == null)
             {
-                return Problem("Entity set 'RDKSDatabaseContext.Customer'  is null.");
+                return Problem("Entity set 'RDKSDatabaseContext.Addresses'  is null.");
             }
-            var customer = await _context.Customer.FindAsync(id);
-            if (customer != null)
+            var address = await _context.Addresses.FindAsync(id);
+            if (address != null)
             {
-                _context.Customer.Remove(customer);
+                _context.Addresses.Remove(address);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        private bool AddressExists(int id)
         {
-          return (_context.Customer?.Any(e => e.CUS_ID == id)).GetValueOrDefault();
+          return (_context.Addresses?.Any(e => e.ADDR_ID == id)).GetValueOrDefault();
         }
     }
 }
