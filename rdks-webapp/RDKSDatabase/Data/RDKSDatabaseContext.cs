@@ -21,10 +21,14 @@ namespace RDKSDatabase.Data
         public DbSet<RDKSDatabase.Models.Customer>? Customer { get; set; }
         public DbSet<RDKSDatabase.Models.Address>? Addresses { get; set; }
 
+        public DbSet<RDKSDatabase.Models.Permit>? Permit { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Address>().ToTable("Address");
+            modelBuilder.Entity<Permit>().ToTable("Permit").HasKey(c=>new {c.PermitNumberPrefix,c.PermitNumber});
         }
 
         public DbSet<RDKSDatabase.Models.ABCRecycling>? ABCRecycling { get; set; }
@@ -32,6 +36,8 @@ namespace RDKSDatabase.Data
         public DbSet<RDKS.Models.HWY37N_STEWART>? HWY37N_STEWART { get; set; }
 
         public DbSet<RDKSDatabase.Models.Vehicle>? Vehicle { get; set; }
+
+        public DbSet<RDKSDatabase.Models.Validation>? Validation { get; set; }
 
         public DbSet<RDKSDatabase.Models.Transaction>? Transaction { get; set; }
     }

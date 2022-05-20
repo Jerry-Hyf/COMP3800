@@ -16,6 +16,11 @@ namespace RDKSDatabase.Models
         [Required]
         [Display(Name = "Customer account number")]
         public int CUS_ID { get; set; }
+        public Customer Customer { get; set; }
+
+
+
+
 
         [Display(Name = "Description")]
         public string? DESCRIPTION { get; set; }
