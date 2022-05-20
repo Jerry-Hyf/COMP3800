@@ -12,8 +12,8 @@ using RDKSDatabase.Data;
 namespace RDKSDatabase.Migrations
 {
     [DbContext(typeof(RDKSDatabaseContext))]
-    [Migration("20220520005346_initial")]
-    partial class initial
+    [Migration("20220520020844_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -357,6 +357,144 @@ namespace RDKSDatabase.Migrations
                     b.ToTable("Customer", (string)null);
                 });
 
+            modelBuilder.Entity("RDKSDatabase.Models.Material", b =>
+                {
+                    b.Property<int>("MaterialCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialCode"), 1L, 1);
+
+                    b.Property<string>("MaterialType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaterialCode");
+
+                    b.ToTable("Material");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Permit", b =>
+                {
+                    b.Property<int>("PermitNumberPrefix")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PermitNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicantEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApplicantName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApplicantPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CUS_ID")
+                        .HasColumnType("int")
+                        .HasColumnName("Customer ID");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContaminateLoadsComments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ContaminateLoadsDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerCUS_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EstimatedLoads")
+                        .HasColumnType("int");
+
+                    b.Property<float>("EstimatedVolume")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Hauler")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hauler2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaterialCode")
+                        .HasColumnType("int")
+                        .HasColumnName("Material Code");
+
+                    b.Property<int>("MaterialCode1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PermitApplicationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PermitClosedCardPermissionsRevolked")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("PermitFee")
+                        .HasColumnType("real");
+
+                    b.Property<string>("PermitType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WasteGenerator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Waste Generator");
+
+                    b.Property<string>("WasteSourceWasteGenerator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("applicationFeeInvoiced")
+                        .HasColumnType("int");
+
+                    b.Property<int>("contaminatedLoads")
+                        .HasColumnType("int");
+
+                    b.Property<int>("facilityCode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("frequency")
+                        .HasColumnType("int");
+
+                    b.Property<int>("hardCopyPermitSavedInFile")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("permitSavedOnServerAndFiled")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("permitSentToOperatorAndWMF")
+                        .HasColumnType("int");
+
+                    b.Property<int>("permitStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("units")
+                        .HasColumnType("int");
+
+                    b.HasKey("PermitNumberPrefix", "PermitNumber");
+
+                    b.HasIndex("CustomerCUS_ID");
+
+                    b.HasIndex("MaterialCode1");
+
+                    b.HasIndex("WasteSourceWasteGenerator");
+
+                    b.ToTable("Permit", (string)null);
+                });
+
             modelBuilder.Entity("RDKSDatabase.Models.Vehicle", b =>
                 {
                     b.Property<string>("LICENSE_PLATE")
@@ -383,11 +521,52 @@ namespace RDKSDatabase.Migrations
                     b.ToTable("Vehicle");
                 });
 
+            modelBuilder.Entity("RDKSDatabase.Models.WasteSource", b =>
+                {
+                    b.Property<string>("WasteGenerator")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("WasteSourceSiteAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WasteGenerator");
+
+                    b.ToTable("WasteSource");
+                });
+
             modelBuilder.Entity("RDKSDatabase.Models.Address", b =>
                 {
                     b.HasOne("RDKSDatabase.Models.Customer", null)
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerCUS_ID");
+                });
+
+            modelBuilder.Entity("RDKSDatabase.Models.Permit", b =>
+                {
+                    b.HasOne("RDKSDatabase.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerCUS_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RDKSDatabase.Models.Material", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialCode1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RDKSDatabase.Models.WasteSource", "WasteSource")
+                        .WithMany()
+                        .HasForeignKey("WasteSourceWasteGenerator")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Material");
+
+                    b.Navigation("WasteSource");
                 });
 
             modelBuilder.Entity("RDKSDatabase.Models.Customer", b =>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RDKSDatabase.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,6 +140,19 @@ namespace RDKSDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Material",
+                columns: table => new
+                {
+                    MaterialCode = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MaterialType = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Material", x => x.MaterialCode);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vehicle",
                 columns: table => new
                 {
@@ -153,6 +166,18 @@ namespace RDKSDatabase.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicle", x => x.LICENSE_PLATE);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WasteSource",
+                columns: table => new
+                {
+                    WasteGenerator = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    WasteSourceSiteAddress = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WasteSource", x => x.WasteGenerator);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,10 +202,86 @@ namespace RDKSDatabase.Migrations
                         principalColumn: "CUS_ID");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Permit",
+                columns: table => new
+                {
+                    PermitNumberPrefix = table.Column<int>(type: "int", nullable: false),
+                    PermitNumber = table.Column<int>(type: "int", nullable: false),
+                    facilityCode = table.Column<int>(type: "int", nullable: false),
+                    PermitApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstimatedVolume = table.Column<float>(type: "real", nullable: false),
+                    units = table.Column<int>(type: "int", nullable: true),
+                    EstimatedLoads = table.Column<int>(type: "int", nullable: false),
+                    frequency = table.Column<int>(type: "int", nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContaminateLoadsDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ContaminateLoadsComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    contaminatedLoads = table.Column<int>(type: "int", nullable: false),
+                    permitSentToOperatorAndWMF = table.Column<int>(type: "int", nullable: true),
+                    permitSavedOnServerAndFiled = table.Column<int>(type: "int", nullable: true),
+                    hardCopyPermitSavedInFile = table.Column<int>(type: "int", nullable: false),
+                    ApprovedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PermitClosedCardPermissionsRevolked = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    permitStatus = table.Column<int>(type: "int", nullable: false),
+                    PermitType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PermitFee = table.Column<float>(type: "real", nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    applicationFeeInvoiced = table.Column<int>(type: "int", nullable: false),
+                    ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApplicantPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApplicantEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Hauler = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Hauler2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerID = table.Column<int>(name: "Customer ID", type: "int", nullable: false),
+                    CustomerCUS_ID = table.Column<int>(type: "int", nullable: false),
+                    WasteGenerator = table.Column<string>(name: "Waste Generator", type: "nvarchar(max)", nullable: false),
+                    WasteSourceWasteGenerator = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MaterialCode = table.Column<int>(name: "Material Code", type: "int", nullable: false),
+                    MaterialCode1 = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Permit", x => new { x.PermitNumberPrefix, x.PermitNumber });
+                    table.ForeignKey(
+                        name: "FK_Permit_Customer_CustomerCUS_ID",
+                        column: x => x.CustomerCUS_ID,
+                        principalTable: "Customer",
+                        principalColumn: "CUS_ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Permit_Material_MaterialCode1",
+                        column: x => x.MaterialCode1,
+                        principalTable: "Material",
+                        principalColumn: "MaterialCode",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Permit_WasteSource_WasteSourceWasteGenerator",
+                        column: x => x.WasteSourceWasteGenerator,
+                        principalTable: "WasteSource",
+                        principalColumn: "WasteGenerator",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Address_CustomerCUS_ID",
                 table: "Address",
                 column: "CustomerCUS_ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permit_CustomerCUS_ID",
+                table: "Permit",
+                column: "CustomerCUS_ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permit_MaterialCode1",
+                table: "Permit",
+                column: "MaterialCode1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Permit_WasteSourceWasteGenerator",
+                table: "Permit",
+                column: "WasteSourceWasteGenerator");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -201,10 +302,19 @@ namespace RDKSDatabase.Migrations
                 name: "HWY37N_STEWART");
 
             migrationBuilder.DropTable(
+                name: "Permit");
+
+            migrationBuilder.DropTable(
                 name: "Vehicle");
 
             migrationBuilder.DropTable(
                 name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "Material");
+
+            migrationBuilder.DropTable(
+                name: "WasteSource");
         }
     }
 }

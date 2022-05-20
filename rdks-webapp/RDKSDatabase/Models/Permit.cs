@@ -180,12 +180,22 @@ namespace RDKSDatabase.Models
 
         
         public string? Hauler { get; set; }
-        public string? Hauler2 { get; set; } 
+        public string? Hauler2 { get; set; }
 
+
+        [Required]
+        [Column("Customer ID")]
+        public int CUS_ID { get; set; }
         public Customer Customer { get; set; }
 
+        [Required]
+        [Column("Waste Generator")]
+        public string WasteGenerator { get; set; }
         public WasteSource WasteSource { get; set; }
 
+        [Required]
+        [Column("Material Code")]
+        public int MaterialCode { get; set; }
         public Material Material { get; set; }
     }
 }
