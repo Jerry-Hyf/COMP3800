@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RDKSDatabase.Data;
 using RDKSDatabase.Models;
+using RDKSDatabase.Models.ViewModels;
 
 namespace RDKSDatabase.Controllers
 {
@@ -19,12 +20,46 @@ namespace RDKSDatabase.Controllers
             _context = context;
         }
 
+
+
         // GET: Validations
         public async Task<IActionResult> Index()
         {
-              return _context.Validation != null ? 
-                          View(await _context.Validation.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Validation'  is null.");
+            return _context.Validation != null ?
+                        View(await _context.Validation.ToListAsync()) :
+                        Problem("Entity set 'RDKSDatabaseContext.Validation'  is null.");
+        }
+
+        public async Task<IActionResult> GenerateCode(string? material_type, string? matrial_group, string? facility)
+        {
+            var viewModel = new ImportCode();
+            viewModel.Validations = await _context.Validation
+                .Include(c => c.Transactions)
+                .Include(c => c.Material)
+                .AsNoTracking()
+                .OrderBy(i => i.VALID_CODE)
+                .ToListAsync();
+
+            if(material_type != null)
+            {
+                ViewData["material_type"] = material_type;
+                Material matrial = viewModel.Materials.Single(c => c.MaterialCode.Equals(material_type));
+
+            }
+
+            if(matrial_group != null)
+            {
+                ViewData["matrial_group"] = matrial_group;
+                Material matrial = viewModel.Materials.Single(c => c.MaterialType.Equals(material_type));
+            }
+
+            if (facility != null)
+            {
+                ViewData["facility"] = facility;
+                Validation validation = viewModel.Validations.Single(c => c.VALID_FACILITY.Equals(facility));
+            }
+
+            return View(viewModel);
         }
 
         // GET: Validations/Details/5

@@ -6,9 +6,15 @@ namespace RDKSDatabase.Models
 
 {
     /// <summary>
+<<<<<<< HEAD
     /// This class represents a Permit model
     /// </summary>
     
+=======
+    /// The Permit class which has all the attributes of the Permit table.
+    /// PermitId is the primary key.
+    /// </summary>
+>>>>>>> f0465070f968104d2cf7b64353f70a2a4080a411
     public enum FacilityCode
     {
         

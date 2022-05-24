@@ -10,6 +10,9 @@ using RDKSDatabase.Models;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of ABCRecycling.
+    /// </summary>
     public class ABCRecyclingsController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,27 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: ABCRecyclings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-              return _context.ABCRecycling != null ? 
-                          View(await _context.ABCRecycling.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.ABCRecycling'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var abcRecycling = from abc in _context.ABCRecycling
+                               select abc;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                abcRecycling = abcRecycling.Where(abc => abc.ABCDateID.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    abcRecycling = abcRecycling.OrderByDescending(abc => abc.ABCDateID);
+                    break;
+                default:
+                    abcRecycling = abcRecycling.OrderBy(abc => abc.ABCDateID);
+                    break;
+            }
+            return View(await abcRecycling.AsNoTracking().ToListAsync());
         }
 
         // GET: ABCRecyclings/Details/5

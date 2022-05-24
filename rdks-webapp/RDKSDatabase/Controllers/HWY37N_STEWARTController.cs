@@ -10,6 +10,9 @@ using RDKSDatabase.Data;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of HWY37N_STEWART.
+    /// </summary>
     public class HWY37N_STEWARTController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,27 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_STEWART
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-              return _context.HWY37N_STEWART != null ? 
-                          View(await _context.HWY37N_STEWART.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.HWY37N_STEWART'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var stewart = from ste in _context.HWY37N_STEWART
+                               select ste;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                stewart = stewart.Where(ste => ste.HWY_STE_DATE.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    stewart = stewart.OrderByDescending(ste => ste.HWY_STE_DATE);
+                    break;
+                default:
+                    stewart = stewart.OrderBy(ste => ste.HWY_STE_DATE);
+                    break;
+            }
+            return View(await stewart.AsNoTracking().ToListAsync());
         }
 
         // GET: HWY37N_STEWART/Details/5
