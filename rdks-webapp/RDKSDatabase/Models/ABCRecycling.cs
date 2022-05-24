@@ -6,12 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RDKSDatabase.Models
 {
     /// <summary>
-<<<<<<< HEAD
-    /// The model of ABCRecycling which has all the attributes of the ABCRecycling table.
-    /// ABCDateID is the primary key.
-=======
     /// ABCRecycling class tracks ABC recycling tonnaged by year.
->>>>>>> 86dfbd741f1251af04be7d2ae96f41378f6294f6
     /// </summary>
     public class ABCRecycling
     {
