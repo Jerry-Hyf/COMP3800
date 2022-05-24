@@ -175,11 +175,58 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Customer)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.CUS_FNAME)
-        </dd>
     </dl>
 </div>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.CUS_ACCNUM)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_COMPNAME)
+        </dd>
+        <dt class = "col-sm-2">
+           @Html.DisplayNameFor(model => model.Customer.CUS_FNAME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_LNAME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.CUS_PHONE)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_ALT_PHONE)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.CUS_EMAIL)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_ALT_EMAIL)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Addresses)
+        </dt>
+        <dd class = "col-sm-10">
+           @Html.DisplayNameFor(model => model.Customer.CUS_FR)
+        </dd>
+        <dt class = "col-sm-2">
+           @Html.DisplayNameFor(model => model.Customer.CUS_TTS)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_MEZ)
+        </dd>
+        <dt class = "col-sm-2">
+           @Html.DisplayNameFor(model => model.Customer.CUS_DEACTIVATED_COUNT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Customer.CUS_NOTE)
+        </dd> 
+    </dl>
+</div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.TRANS_NUM">Edit</a> |
     <a asp-action="Index">Back to List</a>

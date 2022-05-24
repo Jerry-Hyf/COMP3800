@@ -29,7 +29,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="FacilityCode" class="control-label"></label>
-                <select asp-for="FacilityCode" class="form-control"></select>
+                <select asp-for="FacilityCode" class="form-control" asp-items="Html.GetEnumSelectList<FacilityCode>()">
+                  <option>Select Facility code</option>
+                </select>
                 <span asp-validation-for="FacilityCode" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,7 +46,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="units" class="control-label"></label>
-                <input asp-for="units" class="form-control" />
+                <select asp-for="units" class="form-control" asp-items="Html.GetEnumSelectList<Units>()">
+                     <option>Select Units</option>
+                </select>
                 <span asp-validation-for="units" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -54,7 +58,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Frequency" class="control-label"></label>
-                <select asp-for="Frequency" class="form-control"></select>
+                <select asp-for="Frequency" class="form-control" asp-items="Html.GetEnumSelectList<Frequency>()">
+                    <option>Select Frequency</option>
+
+                </select>
                 <span asp-validation-for="Frequency" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -74,22 +81,30 @@
             </div>
             <div class="form-group">
                 <label asp-for="ContaminatedLoads" class="control-label"></label>
-                <select asp-for="ContaminatedLoads" class="form-control"></select>
+                <select asp-for="ContaminatedLoads" class="form-control" asp-items="Html.GetEnumSelectList<ContaminatedLoads>()">
+                    <option>Select Contaminated Loads</option>
+                </select>
                 <span asp-validation-for="ContaminatedLoads" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PermitSentToOperatorAndWMF" class="control-label"></label>
-                <input asp-for="PermitSentToOperatorAndWMF" class="form-control" />
+                <select asp-for="PermitSentToOperatorAndWMF" class="form-control" asp-items="Html.GetEnumSelectList<PermitSentToOperatorAndWMF>()" >
+                    <option>Permit Sent To Operato rAnd WMF?</option>
+                </select>
                 <span asp-validation-for="PermitSentToOperatorAndWMF" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PermitSavedOnServerAndFiled" class="control-label"></label>
-                <input asp-for="PermitSavedOnServerAndFiled" class="form-control" />
+                <select asp-for="PermitSavedOnServerAndFiled" class="form-control" asp-items="Html.GetEnumSelectList<HardCopyPermitSavedInFile>()">
+                    <option>Hard Copy Permit Saved In File?</option>
+                </select>
                 <span asp-validation-for="PermitSavedOnServerAndFiled" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HardCopyPermitSavedInFile" class="control-label"></label>
-                <select asp-for="HardCopyPermitSavedInFile" class="form-control"></select>
+                <select asp-for="HardCopyPermitSavedInFile" class="form-control" asp-items="Html.GetEnumSelectList<PermitSavedOnServerAndFiled>()">
+                     <option>Permit Saved On Server And Filed?</option>
+                </select>
                 <span asp-validation-for="HardCopyPermitSavedInFile" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -104,7 +119,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="PermitStatus" class="control-label"></label>
-                <select asp-for="PermitStatus" class="form-control"></select>
+                <select asp-for="PermitStatus" class="form-control" asp-items="Html.GetEnumSelectList<PermitStatus>()">
+                    <option>Select Permit Status</option>
+                </select>
                 <span asp-validation-for="PermitStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -124,7 +141,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="ApplicationFeeInvoiced" class="control-label"></label>
-                <select asp-for="ApplicationFeeInvoiced" class="form-control"></select>
+                <select asp-for="ApplicationFeeInvoiced" class="form-control" asp-items="Html.GetEnumSelectList<ApplicationFeeInvoiced>()">
+                    <option>Application Fee Invoiced</option>
+                </select>
                 <span asp-validation-for="ApplicationFeeInvoiced" class="text-danger"></span>
             </div>
             <div class="form-group">
