@@ -69,6 +69,7 @@ namespace RDKSDatabase.Models
         public ICollection<Address>? Addresses { get; set; }
         public Vehicle? Vehicle { get; set; }
         public Transaction? Transaction { get; set; }
-
+        
+        public ICollection<Permit>? Permit { get; set; }
     }
 }

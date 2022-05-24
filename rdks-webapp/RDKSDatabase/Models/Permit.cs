@@ -82,7 +82,7 @@ namespace RDKSDatabase.Models
 
         [Display(Name ="Facility Code")]
         [Required]
-        public FacilityCode FacilityCode { get; set; }
+        public FacilityCode? FacilityCode { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:MM-dd-yyyy}",ApplyFormatInEditMode =true)]
@@ -176,15 +176,16 @@ namespace RDKSDatabase.Models
         [Required]
         [Column("Customer ID")]
         public int CUS_ID { get; set; }
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
 
         [Required]
         [Column("Waste Generator")]
         public string WasteGenerator { get; set; }
-        public WasteSource WasteSource { get; set; }
+        public WasteSource? WasteSource { get; set; }
 
         [Required]
         public string MaterialCode { get; set; }
-        public Material Material { get; set; }
+        public Material? Material { get; set; }
+       
     }
 }
