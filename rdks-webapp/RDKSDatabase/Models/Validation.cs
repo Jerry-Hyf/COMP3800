@@ -84,6 +84,7 @@ namespace RDKSDatabase.Models
         //The Transactions property is a navigation property.
         //The validation entity can be related to any number of Transactions entities.
         public ICollection<Transaction>? Transactions { get; set; }
+        public ICollection<Material> Material { get; set; }
 
 
     }

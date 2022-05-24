@@ -5,7 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RDKSDatabase.Models
 
 {
-    
+    /// <summary>
+    /// The Permit class which has all the attributes of the Permit table.
+    /// PermitId is the primary key.
+    /// </summary>
     public enum FacilityCode
     {
         

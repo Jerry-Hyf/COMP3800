@@ -14,11 +14,8 @@
     <WebStackScaffolding_DbContextTypeFullName>RDKSDatabase.Data.RDKSDatabaseContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-<<<<<<< HEAD
     <NameOfLastUsedPublishProfile>D:\Family Doc\Jerry BCIT Courses\CST term3\COMP 3800\RDKS\COMP3800\rdks-webapp\RDKSDatabase\Properties\PublishProfiles\RDKSDatabase - Zip Deploy.pubxml</NameOfLastUsedPublishProfile>
-=======
     <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
->>>>>>> 86dfbd741f1251af04be7d2ae96f41378f6294f6
   </PropertyGroup>
 </Project>

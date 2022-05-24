@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RDKSDatabase.Models
 {
     /// <summary>
-    /// 
+    /// The Address class which has all the attributes of the Customer's address info.
+    /// ADDR_ID is the primary key.
     /// </summary>
     public class Address
     {

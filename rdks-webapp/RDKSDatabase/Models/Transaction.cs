@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKSDatabase.Models
 {
+    /// <summary>
+    /// The Transaction class which has all the attributes of the master table.
+    /// TRANS_NUM is the primary key.
+    /// </summary>
     public class Transaction
     {
 
