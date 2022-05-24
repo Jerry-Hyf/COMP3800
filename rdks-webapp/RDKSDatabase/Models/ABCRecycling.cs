@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKSDatabase.Models
 {
+    /// <summary>
+    /// The model of ABCRecycling which has all the attributes of the ABCRecycling table.
+    /// ABCDateID is the primary key.
+    /// </summary>
     public class ABCRecycling
     {
         [Key]

@@ -10,6 +10,9 @@ using RDKSDatabase.Data;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of HWY37N_KITWANGA.
+    /// </summary>
     public class HWY37N_KITWANGAController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,27 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_KITWANGA
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-              return _context.HWY37N_KITWANGA != null ? 
-                          View(await _context.HWY37N_KITWANGA.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.HWY37N_KITWANGA'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var kitwanga = from kit in _context.HWY37N_KITWANGA
+                               select kit;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                kitwanga = kitwanga.Where(kit => kit.HWY_KIT_DATE.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    kitwanga = kitwanga.OrderByDescending(kit => kit.HWY_KIT_DATE);
+                    break;
+                default:
+                    kitwanga = kitwanga.OrderBy(kit => kit.HWY_KIT_DATE);
+                    break;
+            }
+            return View(await kitwanga.AsNoTracking().ToListAsync());
         }
 
         // GET: HWY37N_KITWANGA/Details/5

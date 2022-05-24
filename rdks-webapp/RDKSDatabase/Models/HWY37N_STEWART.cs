@@ -5,6 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKS.Models
 {
+    /// <summary>
+    /// The model of HWY37N_STEWART which has all the attributes of the HWY37N_STEWART table.
+    /// HWY_STE_DATE is the primary key.
+    /// </summary>
     public class HWY37N_STEWART
     {
         [Key]
