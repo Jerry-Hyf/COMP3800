@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RDKSDatabase.Data;
 using RDKSDatabase.Models;
+using RDKSDatabase.Models.ViewModels;
 
 namespace RDKSDatabase.Controllers
 {
@@ -20,11 +21,36 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Validations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? materialCode, string? facility)
+        /*        {
+                    var viewModel = new ImportCode();
+                    viewModel.Validations = await _context.Validation
+                          .Include(i => i.Transactions)
+                          .AsNoTracking()
+                          .OrderBy(i => i.VALID_IMPORT_CODE)
+                          .ToListAsync();
+
+                    if (materialCode != null)
+                    {
+                        ViewData["VALID_IMPORT_CODE"] = materialCode.Value;
+                        Validation validation = viewModel.Validations.Where(
+                            i => i.ID == id.Value).Single();
+                        viewModel.Courses = instructor.CourseAssignments.Select(s => s.Course);
+                    }
+
+                    if (facility != null)
+                    {
+                        ViewData["CourseID"] = courseID.Value;
+                        viewModel.Enrollments = viewModel.Courses.Where(
+                            x => x.CourseID == courseID).Single().Enrollments;
+                    }
+
+                    return View(viewModel);
+                }*/
         {
-              return _context.Validation != null ? 
-                          View(await _context.Validation.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Validation'  is null.");
+            return _context.Validation != null ?
+                        View(await _context.Validation.ToListAsync()) :
+                        Problem("Entity set 'RDKSDatabaseContext.Validation'  is null.");
         }
 
         // GET: Validations/Details/5
