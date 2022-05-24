@@ -67,8 +67,8 @@ namespace RDKSDatabase.Models
         public string? CUS_NOTE { get; set; }
 
         public ICollection<Address>? Addresses { get; set; }
-        public Vehicle? Vehicle { get; set; }
-        public Transaction? Transaction { get; set; }
+        public ICollection<Vehicle>? Vehicle { get; set; }
+        public ICollection<Transaction>? Transaction { get; set; }
         
         public ICollection<Permit>? Permit { get; set; }
     }

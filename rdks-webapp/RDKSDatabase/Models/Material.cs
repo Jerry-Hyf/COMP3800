@@ -2,6 +2,9 @@
 
 namespace RDKSDatabase.Models
 {
+    /// <summary>
+    /// This class represents Material Model
+    /// </summary>
     public class Material
     {
         [Key]

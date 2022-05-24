@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RDKSDatabase.Models
 
 {
+    /// <summary>
+    /// This class represents a Permit model
+    /// </summary>
     
     public enum FacilityCode
     {

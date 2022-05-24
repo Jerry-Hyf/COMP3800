@@ -11,6 +11,9 @@ using RDKSDatabase.Models.ViewModels;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// This class is Transaction model controller
+    /// </summary>
     public class TransactionsController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,22 +23,35 @@ namespace RDKSDatabase.Controllers
             _context = context;
         }
         // GET: Transactions
+       /// <summary>
+       /// The index page shows the transaction records in the database
+       /// </summary>
+       /// <param name="tranNum">The user input transanction number</param>
+       /// <returns>All the transanction records if parameter if null, ohterwise return the record which transaction 
+       /// number contains tranNum</returns>
         public async Task<IActionResult> Index(string? tranNum)
         {
             var transactions = from m in _context.Transaction select m;
-
+            
             if (!String.IsNullOrEmpty(tranNum))
             {
-                 transactions = transactions.Where(x => x.TRANS_NUM.Contains(tranNum));
+                transactions = transactions.Where(x => x.TRANS_NUM.Contains(tranNum));
+                return View(await transactions.ToListAsync());
             }
-
-            return View(await transactions.ToListAsync());
-
+            else
+            {
+                return _context.Transaction != null ?
+                                         View(await _context.Transaction.ToListAsync()) :
+                                         Problem("Entity set 'RDKSDatabaseContext.Transaction'  is null.");
+            }
         }
 
-      
-
         // GET: Transactions/Details/5
+        /// <summary>
+        /// The details page shows all the attributes of a certain transaction and related record of customer informaiton
+        /// </summary>
+        /// <param name="id">The transaction number</param>
+        /// <returns>Transaction attributes in view and related customer record</returns>
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Transaction == null)

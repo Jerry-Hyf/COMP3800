@@ -2,6 +2,9 @@
 
 namespace RDKSDatabase.Models
 {
+    /// <summary>
+    /// This class represent a Waste Source model
+    /// </summary>
     public class WasteSource
     {
         [Key]

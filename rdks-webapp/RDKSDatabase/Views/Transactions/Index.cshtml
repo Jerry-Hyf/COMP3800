@@ -12,8 +12,14 @@
 
 <form asp-action="Index" asp-controller="Transactions">
     <p>
-        Title: <input type="text" name="tranNum"/>
-        <input type="submit" value="Filter"/>
+        Transanction Number: <input type="text" name="tranNum"/>
+        <input type="submit" value="Search"/>
+
+    </p>
+</form>
+<form asp-action="Index" asp-controller="Transactions">
+    <p>
+        <input type="submit" value="Back to full list"/>
     </p>
 </form>
 <table class="table">
