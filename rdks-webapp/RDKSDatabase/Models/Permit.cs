@@ -230,8 +230,9 @@ namespace RDKSDatabase.Models
 
         //The MaterialCode property represents FK referencing Material table
         [Required]
-        public string MaterialCode { get; set; }
-        public Material? Material { get; set; }
-       
+        public int MaterialCode { get; set; }
+        [ForeignKey("MaterialCode")]
+        public Material Material { get; set; }
+        public string MaterialType { get; internal set; }
     }
 }
