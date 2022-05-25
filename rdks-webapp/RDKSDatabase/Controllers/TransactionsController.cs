@@ -32,7 +32,7 @@ namespace RDKSDatabase.Controllers
         public async Task<IActionResult> Index(string? tranNum)
         {
             var transactions = from m in _context.Transaction select m;
-            
+
             if (!String.IsNullOrEmpty(tranNum))
             {
                 transactions = transactions.Where(x => x.TRANS_NUM.Contains(tranNum));

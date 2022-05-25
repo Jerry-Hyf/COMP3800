@@ -12,6 +12,12 @@ namespace RDKSDatabase.Models
     public class Transaction
     {
 
+        public enum OStatus
+        {
+            Received,
+            Shipped,
+            Either
+        }
 
         public enum TStatus { 
             Complete,
@@ -156,7 +162,7 @@ namespace RDKSDatabase.Models
             }
         }
 
-        [StringLength(10)]
+        [StringLength(20)]
         [Display(Name = "Source Type")]
         public string? TRANS_SOURCE_TYPE { get; set; }
 
