@@ -86,6 +86,5 @@ namespace RDKSDatabase.Models
         public ICollection<Transaction>? Transactions { get; set; }
         public ICollection<Material> Material { get; set; }
 
-
     }
 }
