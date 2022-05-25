@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKSDatabase.Models
 {
@@ -11,6 +12,7 @@ namespace RDKSDatabase.Models
     public class Material
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name ="Material Code")]
         public int MaterialCode { get; set; }
 

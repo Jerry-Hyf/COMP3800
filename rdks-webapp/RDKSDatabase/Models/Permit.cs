@@ -96,7 +96,7 @@ namespace RDKSDatabase.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:MM-dd-yyyy}",ApplyFormatInEditMode =true)]
         [Display(Name ="Permit Application Date")]
-        public  DateTime PermitApplicationDate { get; set; }
+        public  DateTime? PermitApplicationDate { get; set; }
 
         //The EstimatedVolume property represents the estimated waste volume
         [Range(0,float.MaxValue)]
@@ -109,7 +109,7 @@ namespace RDKSDatabase.Models
         //The EstimatedLoads property represents the estimated waste load
 
         [Range(0,int.MaxValue)]
-        public int EstimatedLoads { get; set; }
+        public int? EstimatedLoads { get; set; }
 
         //The Frequency property represents the period the permit is valid for.
         public string? Frequency { get; set; }
@@ -122,7 +122,7 @@ namespace RDKSDatabase.Models
         [Display(Name ="Contaminated Loads Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ContaminateLoadsDate { get; set; }
+        public DateTime? ContaminateLoadsDate { get; set; }
 
         //The ContaminateLoadsComments property represents the comment about the contaminated waste
 
@@ -133,7 +133,7 @@ namespace RDKSDatabase.Models
 
         [Display(Name = "Contaminated Loads")]
         [Range(0,int.MaxValue)]
-        public int ContaminatedLoads { get; set; }
+        public int? ContaminatedLoads { get; set; }
 
 
         //The PermitSentToOperatorAndWMF property represents whether the permit has been sent to the operator and WMF
@@ -202,12 +202,12 @@ namespace RDKSDatabase.Models
         //The ApplicantPhone property represents the phone of the applicant
         [Display(Name = "Applicant Phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
-        [Required]
+        
         public string? ApplicantPhone { get; set; }
 
         //The ApplicantEmail property represents the ApplicantEmail of the applicant
         [Display(Name = "Applicant Email")]
-        [Required]
+       
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string? ApplicantEmail { get; set; }
 
@@ -217,7 +217,7 @@ namespace RDKSDatabase.Models
         public string? Hauler2 { get; set; }
 
         //The CUS_ID property represents FK referencing Customer table
-        [Required]
+        
         [Column("Customer ID")]
         public int CUS_ID { get; set; }
         public Customer? Customer { get; set; }
@@ -233,6 +233,6 @@ namespace RDKSDatabase.Models
         public int MaterialCode { get; set; }
         [ForeignKey("MaterialCode")]
         public Material Material { get; set; }
-        public string MaterialType { get; internal set; }
+        public string? MaterialType { get; internal set; }
     }
 }
