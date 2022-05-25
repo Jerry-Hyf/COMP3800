@@ -15,11 +15,13 @@ namespace RDKSDatabase.Models
         public int CUS_ID { get; set; }
 
         //The CUS_ACCNUM property represents the customer's account number.
+        [Required]
         [StringLength(12)]
         [Display(Name ="Customer Account Number")]
         public string? CUS_ACCNUM { get; set; }
 
         //The CUS_COMPNAME property represents the customer's company name.
+        [Required]
         [StringLength(30)]
         [Display(Name = "Company Name")]
         public string? CUS_COMPNAME { get; set; }
@@ -85,11 +87,12 @@ namespace RDKSDatabase.Models
         //The Addresses property is a navigation property.
         //The customer entity can be related to any number of Addresses entities.
 
-        public ICollection<Vehicle>? Vehicle { get; set; }
-        public ICollection<Transaction>? Transaction { get; set; }
-        
         //The Permit property is a navigation property.
         //The customer entity can be related to any number of Permit entities.
-        public ICollection<Permit>? Permit { get; set; }
+        public ICollection<Address>? Addresses { get; set; }
+        public ICollection<Vehicle>? Vehicles { get; set; }
+        public ICollection<Transaction>? Transactions { get; set; }
+        public ICollection<Permit>? Permits { get; set; }
+
     }
 }

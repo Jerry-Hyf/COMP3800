@@ -9,68 +9,68 @@ namespace RDKSDatabase.Models
     /// The Permit class which has all the attributes of the Permit table.
     /// PermitId is the primary key.
     /// </summary>
-    //public enum FacilityCode
-    //{
-        
-    //    ML=53600902,
-    //    HWMF=53600901,
-    //    FRWMF=536008
+    public enum FacilityCode
+    {
 
-    //}
-    //public enum Units
-    //{
-    //    Bags,
-    //    Imperial_Gallon,
-    //    Kg,Lbs,Litre,
-    //    Cubic_Meter,Tonnes,US_Gallon,Cubic_Yard
-    //}
+        ML = 53600902,
+        HWMF = 53600901,
+        FRWMF = 536008
 
-    //public enum Frequency
-    //{
-    //    Bi_Weekly,
-    //    Bi_Monthly,
-    //    Weekly,
-    //    Monthly,
-    //    Daily,
-    //    Once
+    }
+    public enum Units
+    {
+        Bags,
+        Imperial_Gallon,
+        Kg, Lbs, Litre,
+        Cubic_Meter, Tonnes, US_Gallon, Cubic_Yard
+    }
 
-    //}
+    public enum Frequency
+    {
+        Bi_Weekly,
+        Bi_Monthly,
+        Weekly,
+        Monthly,
+        Daily,
+        Once
 
-    //public enum PermitSentToOperatorAndWMF
-    //{
-    //    Yes,
-    //    Pending
-    //}
+    }
 
-    //public enum HardCopyPermitSavedInFile
-    //{
-    //    Y,N
-    //}
+    public enum PermitSentToOperatorAndWMF
+    {
+        Yes,
+        Pending
+    }
 
-    //public enum PermitSavedOnServerAndFiled
-    //{
-    //    Y, N
-    //}
+    public enum HardCopyPermitSavedInFile
+    {
+        Y, N
+    }
 
-    //public enum PermitStatus
-    //{
-    //    Semi_Annual,
-    //    Single_Event,
-    //    Annual,
-    //    Multi_Day
+    public enum PermitSavedOnServerAndFiled
+    {
+        Y, N
+    }
 
-    //}
+    public enum PermitStatus
+    {
+        Semi_Annual,
+        Single_Event,
+        Annual,
+        Multi_Day
 
-    //public enum ApplicationFeeInvoiced
-    //{
-    //    Y,N
-    //}
+    }
 
-    //public enum ContaminatedLoads
-    //{
-    //    One = 1,
-    //    Two = 2
-    //}
+    public enum ApplicationFeeInvoiced
+    {
+        Y, N
+    }
+
+    public enum ContaminatedLoads
+    {
+        One = 1,
+        Two = 2
+    }
     public class Permit
     {
         //The PermitId property which is the PK represents the Permit ID.
@@ -230,8 +230,8 @@ namespace RDKSDatabase.Models
 
         //The MaterialCode property represents FK referencing Material table
         [Required]
-        public string MaterialCode { get; set; }
-        public Material? Material { get; set; }
-       
+        public int MaterialCode { get; set; }
+        [ForeignKey("MaterialCode")]
+        public Material Material { get; set; }
     }
 }

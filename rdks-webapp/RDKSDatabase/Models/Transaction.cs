@@ -124,7 +124,7 @@ namespace RDKSDatabase.Models
         [Display(Name = "Driver's Exempt Status")]
         public bool TRANS_DRIVER_EXEMPT_STATUS { get; set; }
 
-        [StringLength(10)]
+        [Required]
         [Display(Name = "Material Code")]
         public string? VALID_IMPORT_CODE { get; set; }
 
@@ -213,8 +213,9 @@ namespace RDKSDatabase.Models
         [Display(Name = "Customer ID")]
         public int CUS_ID { get; set; }
         public Customer? Customer { get; set; }
+        [ForeignKey("LICENSE_PLATE")]
         public Vehicle? Vehicle { get; set; }
+        [ForeignKey("VALID_IMPORT_CODE")]
         public Validation? Validation { get; set; }
-
     }
 }

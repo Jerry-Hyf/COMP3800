@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RDKSDatabase.Data;
 using RDKSDatabase.Models;
+using RDKSDatabase.ViewModels;
 
 namespace RDKSDatabase.Controllers
 {
@@ -22,10 +23,75 @@ namespace RDKSDatabase.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-              return _context.Customer != null ? 
-                          View(await _context.Customer.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Customer'  is null.");
+            return _context.Customer != null ?
+                      View(await _context.Customer.ToListAsync()) :
+                      Problem("Entity set 'RDKSDatabaseContext.Customer'  is null.");
         }
+
+        /// <summary>
+        /// Search controller to search for customer rows and related tables using a view model
+        /// </summary>
+        /// <param name="cus_accnum">Customer account number to search for</param>
+        /// <param name="cus_compname">Customer company name to search for</param>
+        /// <returns></returns>
+        public async Task<IActionResult> Search(string? cus_accnum, string? cus_compname)
+        {
+            var viewModel = new CustomerInfo();
+            viewModel.Customers = await _context.Customer
+                  .AsNoTracking()
+                  .OrderBy(c => c.CUS_COMPNAME)
+                  .ToListAsync();
+
+            if (cus_accnum != null)
+            {
+                ViewData["cus_accnum"] = cus_accnum;
+                viewModel.Results = viewModel.Customers.Where(c => c.CUS_ACCNUM.Contains(cus_accnum));
+
+                ViewData["recordFound"] = viewModel.Results.Any();
+
+                if (ViewData["recordFound"].Equals(false))
+                {
+                    return View();
+                }
+                return View(viewModel);
+            }
+            else
+            {
+                ViewData["cus_compname"] = cus_compname;
+                viewModel.Results = viewModel.Customers.Where(c => c.CUS_COMPNAME.Contains(cus_compname));
+
+                ViewData["recordFound"] = viewModel.Results.Any();
+
+                if (ViewData["recordFound"].Equals(false)) 
+                {
+                    return View();
+                } 
+                return View(viewModel);
+            }
+        }
+
+
+        public async Task<IActionResult> InfoPage(int? id)
+        {
+            var viewModel = new CustomerInfo();
+            viewModel.SelectedCustomer = await _context.Customer
+                .SingleAsync(c => c.CUS_ID.Equals(id));
+            viewModel.Addresses = await _context.Address
+                .Where(a => a.CUS_ID.Equals(id))
+                .AsNoTracking()
+                .ToListAsync();
+            viewModel.Permits = await _context.Permit
+                .Where(p => p.CUS_ID.Equals(id))
+                .AsNoTracking()
+                .ToListAsync();
+            viewModel.Vehicles = await _context.Vehicle
+                .Where(v => v.CUS_ID.Equals(id))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return View(viewModel);
+        }
+
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)

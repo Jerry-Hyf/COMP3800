@@ -4,11 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Customers</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<p>Find Customer Related Info</p>
+
+<form asp-action="Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Account Number: <input type="text" name="cus_accnum" value="@ViewData["cus_acc"]" required/>
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+<form asp-action="Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Company Name: <input type="text" name="cus_compname" value="@ViewData["cus_compname"]" required/>
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>

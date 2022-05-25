@@ -16,12 +16,6 @@
                 @Html.DisplayNameFor(model => model.PermitId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PermitNumberPrefix)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitNumber)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FacilityCode)
             </th>
             <th>
@@ -103,7 +97,7 @@
                 @Html.DisplayNameFor(model => model.WasteGenerator)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaterialCode)
+                @Html.DisplayNameFor(model => model.Material)
             </th>
             <th></th>
         </tr>
@@ -113,12 +107,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.PermitId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitNumberPrefix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FacilityCode)
@@ -202,12 +190,12 @@
                 @Html.DisplayFor(modelItem => item.WasteGenerator)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaterialCode)
+                @Html.DisplayFor(modelItem => item.Material.MaterialType)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PermitId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PermitId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PermitId">Delete</a>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
