@@ -19,6 +19,17 @@ namespace RDKSDatabase.Data
                 return;   // DB has been seeded
             }
 
+            /* 
+             * abc, hwy37 x3
+             * 
+             * address, customer, transaction, validation
+             * 
+             * material, permit, vehicle, waste
+             * 
+             */
+            
+
+
             var customers = new Customer[]
                 {
                     new Customer{StudentID=1,CourseID=1050,Grade=Grade.A},
