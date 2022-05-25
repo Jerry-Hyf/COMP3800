@@ -10,6 +10,9 @@ using RDKSDatabase.Data;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of HWY37N_HAZELTON.
+    /// </summary>
     public class HWY37N_HAZELTONController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,35 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_HAZELTON
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
         {
-              return _context.HWY37N_HAZELTON != null ? 
-                          View(await _context.HWY37N_HAZELTON.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.HWY37N_HAZELTON'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter1"] = searchString1;
+            ViewData["CurrentFilter2"] = searchString2;
+            String defaultDate = "0001-01-01 12:00:00 AM";
+
+            var hazelton = from haz in _context.HWY37N_HAZELTON
+                               select haz;
+
+            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            {
+                hazelton = hazelton.Select(x => x);
+            }
+            else
+            {
+                hazelton = hazelton.Where(haz => haz.HWY_HAZ_DATE >= searchString1 && haz.HWY_HAZ_DATE <= searchString2);
+            }
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    hazelton = hazelton.OrderByDescending(haz => haz.HWY_HAZ_DATE);
+                    break;
+                default:
+                    hazelton = hazelton.OrderBy(haz => haz.HWY_HAZ_DATE);
+                    break;
+            }
+            return View(await hazelton.AsNoTracking().ToListAsync());
         }
 
         // GET: HWY37N_HAZELTON/Details/5

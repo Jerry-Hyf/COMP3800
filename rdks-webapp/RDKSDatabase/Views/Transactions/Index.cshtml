@@ -1,197 +1,62 @@
-﻿@model IEnumerable<RDKSDatabase.Models.Transaction>
+﻿@model  IEnumerable<RDKSDatabase.Models.Transaction>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "transactions";
 }
 
-<h1>Index</h1>
+<h1>Transactions</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-action="Index" asp-controller="Transactions">
+    <p>
+        Transanction Number: <input type="text" name="tranNum"/>
+        <input type="submit" value="Search"/>
+
+    </p>
+</form>
+<form asp-action="Index" asp-controller="Transactions">
+    <p>
+        <input type="submit" value="Back to full list"/>
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.LICENSE_PLATE)
+                Trans_Num
+            </th>
+            <th>Total Price</th>
+            <th>
+                Customer ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TRANS_COMPLETION_DATE)
+                Company Name
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_COMPLETION_TIME)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_LOAD_NUM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_NETWEIGHT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_TOTALPRICE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_HAULER)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_DRIVER_EXEMPT_STATUS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VALID_IMPORT_CODE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_CONTRACT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_OPERATION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_STATUS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_ISMANUAL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_HASEXCEPTION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_SOURCE_TYPE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_ADJUSTED_PRICE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_FACILITY_CODE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_TONNES)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_CUBIC_METERS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_IN_SERVICE_AREA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_ASC_NON_ASC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_FUNCTION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_CURBSIDE_AREA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_CURBSIDE_STREAM)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_ANNUAL_REPORTING_GROUP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_ANNUAL_REPORTING_SOURCE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TRANS_SERVICE_AREA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th></th>
+           
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LICENSE_PLATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_COMPLETION_DATE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_COMPLETION_TIME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_LOAD_NUM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_NETWEIGHT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_TOTALPRICE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_HAULER)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_DRIVER_EXEMPT_STATUS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VALID_IMPORT_CODE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_CONTRACT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_OPERATION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_STATUS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_ISMANUAL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_HASEXCEPTION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_SOURCE_TYPE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_ADJUSTED_PRICE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_FACILITY_CODE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_TONNES)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_CUBIC_METERS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_IN_SERVICE_AREA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_ASC_NON_ASC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_FUNCTION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_CURBSIDE_AREA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_CURBSIDE_STREAM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_ANNUAL_REPORTING_GROUP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_ANNUAL_REPORTING_SOURCE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRANS_SERVICE_AREA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CUS_FNAME)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TRANS_NUM">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TRANS_NUM">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TRANS_NUM">Delete</a>
-            </td>
-        </tr>
+            string selecteRow = "";
+            if (item.TRANS_NUM.Equals((ViewData["TransactionID"])))
+            {
+                selecteRow = "table-success";
+            }
+            <tr class="@selecteRow">
+                <td> @Html.DisplayFor(modelItem => item.TRANS_NUM)</td>
+                <td>@Html.DisplayFor(modelItem => item.TRANS_TOTALPRICE)</td>
+                <td> @Html.DisplayFor(modelItem => item.CUS_ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.CUS_COMPNAME)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TRANS_NUM">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TRANS_NUM">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TRANS_NUM">Delete</a>
+                </td>
+            </tr>
 }
     </tbody>
 </table>
+

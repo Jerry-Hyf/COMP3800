@@ -10,6 +10,9 @@ using RDKSDatabase.Models;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// This class is the controller for permit model
+    /// </summary>
     public class PermitsController : Controller
     {
         private readonly RDKSDatabaseContext _context;

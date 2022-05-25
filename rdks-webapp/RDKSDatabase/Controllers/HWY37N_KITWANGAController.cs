@@ -10,6 +10,9 @@ using RDKSDatabase.Data;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of HWY37N_KITWANGA.
+    /// </summary>
     public class HWY37N_KITWANGAController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,35 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_KITWANGA
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
         {
-              return _context.HWY37N_KITWANGA != null ? 
-                          View(await _context.HWY37N_KITWANGA.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.HWY37N_KITWANGA'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter1"] = searchString1;
+            ViewData["CurrentFilter2"] = searchString2;
+            String defaultDate = "0001-01-01 12:00:00 AM";
+
+            var kitwanga = from kit in _context.HWY37N_KITWANGA
+                               select kit;
+
+            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            {
+                kitwanga = kitwanga.Select(x => x);
+            }
+            else
+            {
+                kitwanga = kitwanga.Where(kit => kit.HWY_KIT_DATE >= searchString1 && kit.HWY_KIT_DATE <= searchString2);
+            }
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    kitwanga = kitwanga.OrderByDescending(kit => kit.HWY_KIT_DATE);
+                    break;
+                default:
+                    kitwanga = kitwanga.OrderBy(kit => kit.HWY_KIT_DATE);
+                    break;
+            }
+            return View(await kitwanga.AsNoTracking().ToListAsync());
         }
 
         // GET: HWY37N_KITWANGA/Details/5

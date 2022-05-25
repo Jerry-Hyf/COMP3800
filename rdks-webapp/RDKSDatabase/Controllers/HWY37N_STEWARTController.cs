@@ -10,6 +10,9 @@ using RDKSDatabase.Data;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of HWY37N_STEWART.
+    /// </summary>
     public class HWY37N_STEWARTController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,35 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_STEWART
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
         {
-              return _context.HWY37N_STEWART != null ? 
-                          View(await _context.HWY37N_STEWART.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.HWY37N_STEWART'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter1"] = searchString1;
+            ViewData["CurrentFilter2"] = searchString2;
+            String defaultDate = "0001-01-01 12:00:00 AM";
+
+            var stewart = from ste in _context.HWY37N_STEWART
+                               select ste;
+
+            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            {
+                stewart = stewart.Select(x => x);
+            }
+            else
+            {
+                stewart = stewart.Where(ste => ste.HWY_STE_DATE >= searchString1 && ste.HWY_STE_DATE <= searchString2);
+            }
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    stewart = stewart.OrderByDescending(ste => ste.HWY_STE_DATE);
+                    break;
+                default:
+                    stewart = stewart.OrderBy(ste => ste.HWY_STE_DATE);
+                    break;
+            }
+            return View(await stewart.AsNoTracking().ToListAsync());
         }
 
         // GET: HWY37N_STEWART/Details/5

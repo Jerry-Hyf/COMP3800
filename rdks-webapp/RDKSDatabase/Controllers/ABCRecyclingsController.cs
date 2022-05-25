@@ -10,6 +10,9 @@ using RDKSDatabase.Models;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// The controller of ABCRecycling.
+    /// </summary>
     public class ABCRecyclingsController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -20,11 +23,34 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: ABCRecyclings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
         {
-              return _context.ABCRecycling != null ? 
-                          View(await _context.ABCRecycling.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.ABCRecycling'  is null.");
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter1"] = searchString1;
+            ViewData["CurrentFilter2"] = searchString2;
+            String defaultDate = "0001-01-01 12:00:00 AM";
+
+            var abcRecycling = from abc in _context.ABCRecycling
+                               select abc;
+
+            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            {
+                abcRecycling = abcRecycling.Select(x => x);
+            } else
+            {
+                abcRecycling = abcRecycling.Where(abc => abc.ABCDateID >= searchString1 && abc.ABCDateID <= searchString2);
+            }
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    abcRecycling = abcRecycling.OrderByDescending(abc => abc.ABCDateID);
+                    break;
+                default:
+                    abcRecycling = abcRecycling.OrderBy(abc => abc.ABCDateID);
+                    break;
+            }
+            return View(await abcRecycling.AsNoTracking().ToListAsync());
         }
 
         // GET: ABCRecyclings/Details/5

@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CUS_ID" class="control-label"></label>
-                <select asp-for="CUS_ID" class ="form-control" asp-items="ViewBag.CUS_ID"></select>
+                <input asp-for="CUS_ID" class ="form-control"></input>
             </div>
             <div class="form-group">
                 <label asp-for="LICENSE_PLATE" class="control-label"></label>
@@ -73,12 +73,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_OPERATION" class="control-label"></label>
-                <input asp-for="TRANS_OPERATION" class="form-control" />
+                <select asp-for="TRANS_OPERATION" class="form-control" >
+                    <option>Operation status..</option>
+                    <option>Received</option>
+                    <option>Shipped</option>
+                    <option>Either</option>
+                </select>
                 <span asp-validation-for="TRANS_OPERATION" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_STATUS" class="control-label"></label>
-                <input asp-for="TRANS_STATUS" class="form-control" />
+                <select asp-for="TRANS_STATUS" class="form-control" >
+                    <option>Transaction status...</option>
+                    <option>Complete</option>
+                    <option>Modified</option>
+                    <option>Void</option>
+                </select>
                 <span asp-validation-for="TRANS_STATUS" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -93,7 +103,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_SOURCE_TYPE" class="control-label"></label>
-                <input asp-for="TRANS_SOURCE_TYPE" class="form-control" />
+                <select asp-for="TRANS_SOURCE_TYPE" class="form-control" >
+                    <option>Transaction source type...</option>
+                    <option>CGL</option>
+                    <option>LNG</option>
+                    <option>Other</option>
+                </select>
                 <span asp-validation-for="TRANS_SOURCE_TYPE" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -103,7 +118,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_FACILITY_CODE" class="control-label"></label>
-                <input asp-for="TRANS_FACILITY_CODE" class="form-control" />
+                <select asp-for="TRANS_FACILITY_CODE" class="form-control" >
+                    <option>Transaction facility code...</option>
+                    <option>DYP</option>
+                    <option>FR</option>
+                    <option>HWMF</option>
+                    <option>IL</option>
+                    <option>KTS</option>
+                    <option>ML</option>
+                     <option>RL</option>
+                    <option>TTS</option>
+                    <option>NA</option>
+
+                </select>
                 <span asp-validation-for="TRANS_FACILITY_CODE" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -118,27 +145,62 @@
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_IN_SERVICE_AREA" class="control-label"></label>
-                <input asp-for="TRANS_IN_SERVICE_AREA" class="form-control" />
+                <select asp-for="TRANS_IN_SERVICE_AREA" class="form-control" >
+                    <option>Transaction service area</option>
+                    <option>In</option>
+                    <option>Internal</option>
+                    <option>Out</option>
+                    <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_IN_SERVICE_AREA" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_ASC_NON_ASC" class="control-label"></label>
-                <input asp-for="TRANS_ASC_NON_ASC" class="form-control" />
+                <select asp-for="TRANS_ASC_NON_ASC" class="form-control" >
+                    <option>Transaction ASC Non ASC...</option>
+                    <option>ASC</option>
+                    <option>NonASC</option>
+                    <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_ASC_NON_ASC" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_FUNCTION" class="control-label"></label>
-                <input asp-for="TRANS_FUNCTION" class="form-control" />
+                <select asp-for="TRANS_FUNCTION" class="form-control" >
+                    <option>Function type...</option>
+                    <option>Consolidated</option>
+                    <option>Curbside</option>
+                    <option>External</option>
+                    <option>Operational</option>
+                    <option>Oper_Internal</option>
+                    <option>Transaction</option>
+                     <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_FUNCTION" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_CURBSIDE_AREA" class="control-label"></label>
-                <input asp-for="TRANS_CURBSIDE_AREA" class="form-control" />
+                <select asp-for="TRANS_CURBSIDE_AREA" class="form-control" >
+                    <option>Curbside Area...</option>
+                    <option>Kitselas</option>
+                    <option>Kitsumkalum</option>
+                    <option>Kitvanga</option>
+                    <option>RDKS</option>
+                    <option>Stewart</option>
+                    <option>Terrace</option>
+                     <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_CURBSIDE_AREA" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_CURBSIDE_STREAM" class="control-label"></label>
-                <input asp-for="TRANS_CURBSIDE_STREAM" class="form-control" />
+                <select asp-for="TRANS_CURBSIDE_STREAM" class="form-control" >
+                    <option>Curbside Stream...</option>
+                    <option>Organics</option>
+                    <option>Recycle</option>
+                    <option>Refuse</option>
+                    <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_CURBSIDE_STREAM" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -153,7 +215,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="TRANS_SERVICE_AREA" class="control-label"></label>
-                <input asp-for="TRANS_SERVICE_AREA" class="form-control" />
+                <select asp-for="TRANS_SERVICE_AREA" class="form-control" >
+                    <option>Service area...</option>
+                    <option>HazeltonHwy37N</option>
+                    <option>TerraceArea</option>
+                    <option>NA</option>
+                </select>
                 <span asp-validation-for="TRANS_SERVICE_AREA" class="text-danger"></span>
             </div>
             <div class="form-group">

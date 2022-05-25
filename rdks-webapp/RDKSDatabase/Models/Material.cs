@@ -2,6 +2,12 @@
 
 namespace RDKSDatabase.Models
 {
+
+
+    /// <summary>
+    /// The Material class which has all the attributes of the Material table.
+    /// MaterialCode is the primary key.
+    /// </summary>
     public class Material
     {
         [Key]

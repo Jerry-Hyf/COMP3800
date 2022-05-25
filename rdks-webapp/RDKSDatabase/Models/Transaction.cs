@@ -5,14 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RDKSDatabase.Models
 {
+    /// <summary>
+    /// The Transaction class which has all the attributes of the master table.
+    /// TRANS_NUM is the primary key.
+    /// </summary>
     public class Transaction
     {
 
-        public enum OStatus {
-            Received,
-            Shipped,
-            Either
-        }
 
         public enum TStatus { 
             Complete,
@@ -89,11 +88,7 @@ namespace RDKSDatabase.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [StringLength(10, MinimumLength = 3)]
         [Display(Name = "Transaction Number")]
-        public string? TRANS_NUM { get; set; }
-
-        [Required]
-        [Display(Name = "Customer ID")]
-        public int CUS_ID { get; set; }
+        public string? TRANS_NUM { get; set; }  
 
         [StringLength(10)]
         [Display(Name = "Licence Plate")]
@@ -139,11 +134,11 @@ namespace RDKSDatabase.Models
 
         [StringLength(10)]
         [Display(Name = "Operation Status")]
-        public OStatus? TRANS_OPERATION { get; set; }
+        public string? TRANS_OPERATION { get; set; }
 
         [StringLength(10)]
         [Display(Name = "Completion Status")]
-        public TStatus? TRANS_STATUS { get; set; }
+        public string? TRANS_STATUS { get; set; }
 
         [Required]
         [Display(Name = "Is Manual")]
@@ -163,7 +158,7 @@ namespace RDKSDatabase.Models
 
         [StringLength(10)]
         [Display(Name = "Source Type")]
-        public SourceType? TRANS_SOURCE_TYPE { get; set; }
+        public string? TRANS_SOURCE_TYPE { get; set; }
 
         [Column(TypeName = "money")]
         [Range(0.0, float.MaxValue)]
@@ -184,23 +179,23 @@ namespace RDKSDatabase.Models
 
         [StringLength(10)]
         [Display(Name = "Service Area")]
-        public ServiceArea? TRANS_IN_SERVICE_AREA { get; set; }
+        public string? TRANS_IN_SERVICE_AREA { get; set; }
 
         [StringLength(10)]
         [Display(Name = "Asc / Non-Asc")]
-        public Asc? TRANS_ASC_NON_ASC { get; set; }
+        public string? TRANS_ASC_NON_ASC { get; set; }
 
         [StringLength(20)]
         [Display(Name = "Type of Function")]
-        public FunctionType? TRANS_FUNCTION { get; set; }
+        public string? TRANS_FUNCTION { get; set; }
 
         [StringLength(15)]
         [Display(Name = "Curbside Area")]
-        public CurbsideArea? TRANS_CURBSIDE_AREA { get; set; }
+        public string? TRANS_CURBSIDE_AREA { get; set; }
 
         [StringLength(10)]
         [Display(Name = "Curbside Stream")]
-        public CurbsideStream? TRANS_CURBSIDE_STREAM { get; set; }
+        public string? TRANS_CURBSIDE_STREAM { get; set; }
 
         [StringLength(20)]
         [Display(Name = "Annual Reporting Group")]
@@ -212,9 +207,11 @@ namespace RDKSDatabase.Models
 
         [StringLength(15)]
         [Display(Name = "Service Area")]
-        public ServiceRegion? TRANS_SERVICE_AREA { get; set; }
+        public string? TRANS_SERVICE_AREA { get; set; }
 
-        [ForeignKey("CUS_ID")]
+
+        [Display(Name = "Customer ID")]
+        public int CUS_ID { get; set; }
         public Customer? Customer { get; set; }
         [ForeignKey("LICENSE_PLATE")]
         public Vehicle? Vehicle { get; set; }

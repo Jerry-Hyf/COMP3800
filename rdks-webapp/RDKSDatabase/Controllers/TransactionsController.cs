@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RDKSDatabase.Data;
 using RDKSDatabase.Models;
+using RDKSDatabase.Models.ViewModels;
 
 namespace RDKSDatabase.Controllers
 {
+    /// <summary>
+    /// This class is Transaction model controller
+    /// </summary>
     public class TransactionsController : Controller
     {
         private readonly RDKSDatabaseContext _context;
@@ -18,15 +22,36 @@ namespace RDKSDatabase.Controllers
         {
             _context = context;
         }
-
         // GET: Transactions
-        public async Task<IActionResult> Index()
+       /// <summary>
+       /// The index page shows the transaction records in the database
+       /// </summary>
+       /// <param name="tranNum">The user input transanction number</param>
+       /// <returns>All the transanction records if parameter if null, ohterwise return the record which transaction 
+       /// number contains tranNum</returns>
+        public async Task<IActionResult> Index(string? tranNum)
         {
-            var rDKSDatabaseContext = _context.Transaction.Include(t => t.Customer);
-            return View(await rDKSDatabaseContext.ToListAsync());
+            var transactions = from m in _context.Transaction select m;
+            
+            if (!String.IsNullOrEmpty(tranNum))
+            {
+                transactions = transactions.Where(x => x.TRANS_NUM.Contains(tranNum));
+                return View(await transactions.ToListAsync());
+            }
+            else
+            {
+                return _context.Transaction != null ?
+                                         View(await _context.Transaction.ToListAsync()) :
+                                         Problem("Entity set 'RDKSDatabaseContext.Transaction'  is null.");
+            }
         }
 
         // GET: Transactions/Details/5
+        /// <summary>
+        /// The details page shows all the attributes of a certain transaction and related record of customer informaiton
+        /// </summary>
+        /// <param name="id">The transaction number</param>
+        /// <returns>Transaction attributes in view and related customer record</returns>
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Transaction == null)
@@ -35,12 +60,13 @@ namespace RDKSDatabase.Controllers
             }
 
             var transaction = await _context.Transaction
-                .Include(t => t.Customer)
                 .FirstOrDefaultAsync(m => m.TRANS_NUM == id);
+            var customer = await _context.Customer.FirstOrDefaultAsync(m => m.CUS_ID == transaction.CUS_ID);
             if (transaction == null)
             {
                 return NotFound();
             }
+
 
             return View(transaction);
         }
@@ -65,7 +91,7 @@ namespace RDKSDatabase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
+            //ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
@@ -82,7 +108,7 @@ namespace RDKSDatabase.Controllers
             {
                 return NotFound();
             }
-            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
+            //ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
@@ -118,7 +144,7 @@ namespace RDKSDatabase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
+            //ViewData["CUS_ID"] = new SelectList(_context.Customer, "CUS_ID", "CUS_FNAME", transaction.CUS_ID);
             return View(transaction);
         }
 
