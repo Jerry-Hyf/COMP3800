@@ -20,45 +20,10 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Vehicles
-        public async Task<IActionResult> Index(string sortOrder, string searchString1, string searchString2)
+        public async Task<IActionResult> Index()
         {
-            //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter1"] = searchString1;
-            ViewData["CurrentFilter2"] = searchString2;
-
-            var vehicle = from v in _context.Vehicle
-                          select v;
-            if (!String.IsNullOrEmpty(searchString1) && String.IsNullOrEmpty(searchString2))
-            {
-                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1));
-            }
-            if (String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
-            {
-                vehicle = vehicle.Where(v => v.BADGE.ToString().Contains(searchString2));
-            }
-            if (!String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
-            {
-                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1) && v.BADGE.ToString().Contains(searchString2));
-            }
-
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        students = students.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        students = students.OrderBy(s => s.EnrollmentDate);
-            //        break;
-            //    case "date_desc":
-            //        students = students.OrderByDescending(s => s.EnrollmentDate);
-            //         break;
-            //     default:
-            //         students = students.OrderBy(s => s.LastName);
-            //         break;
-            // }
-
-            return View(await vehicle.AsNoTracking().ToListAsync());
+            var rDKSDatabaseContext = _context.Vehicle.Include(v => v.Customer);
+            return View(await rDKSDatabaseContext.ToListAsync());
         }
 
         // GET: Vehicles/Details/5

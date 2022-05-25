@@ -23,24 +23,17 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: ABCRecyclings
-        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter1"] = searchString1;
-            ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            ViewData["CurrentFilter"] = searchString;
 
             var abcRecycling = from abc in _context.ABCRecycling
                                select abc;
-
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                abcRecycling = abcRecycling.Select(x => x);
-            } else
-            {
-                abcRecycling = abcRecycling.Where(abc => abc.ABCDateID >= searchString1 && abc.ABCDateID <= searchString2);
+                abcRecycling = abcRecycling.Where(abc => abc.ABCDateID.ToString().Contains(searchString));
             }
-
             switch (sortOrder)
             {
                 case "date_desc":

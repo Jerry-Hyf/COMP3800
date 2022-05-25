@@ -23,25 +23,17 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_STEWART
-        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter1"] = searchString1;
-            ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            ViewData["CurrentFilter"] = searchString;
 
             var stewart = from ste in _context.HWY37N_STEWART
                                select ste;
-
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                stewart = stewart.Select(x => x);
+                stewart = stewart.Where(ste => ste.HWY_STE_DATE.ToString().Contains(searchString));
             }
-            else
-            {
-                stewart = stewart.Where(ste => ste.HWY_STE_DATE >= searchString1 && ste.HWY_STE_DATE <= searchString2);
-            }
-
             switch (sortOrder)
             {
                 case "date_desc":

@@ -20,45 +20,11 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Addresses
-        public async Task<IActionResult> Index(string sortOrder, string searchString1, string searchString2)
+        public async Task<IActionResult> Index()
         {
-            //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter1"] = searchString1;
-            ViewData["CurrentFilter2"] = searchString2;
-
-            var address = from addr in _context.Address
-                           select addr;
-            if (!String.IsNullOrEmpty(searchString1) && String.IsNullOrEmpty(searchString2))
-            {
-                address = address.Where(addr => addr.ADDR_CITY.Contains(searchString1));
-            }
-            if (String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
-            {
-                address = address.Where(addr => addr.ADDR_PROV.Contains(searchString2));
-            }
-            if (!String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
-            {
-                address = address.Where(addr => addr.ADDR_CITY.Contains(searchString1) && addr.ADDR_PROV.Contains(searchString2));
-            }
-
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        students = students.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        students = students.OrderBy(s => s.EnrollmentDate);
-            //        break;
-            //    case "date_desc":
-            //        students = students.OrderByDescending(s => s.EnrollmentDate);
-            //         break;
-            //     default:
-            //         students = students.OrderBy(s => s.LastName);
-            //         break;
-            // }
-
-            return View(await address.AsNoTracking().ToListAsync());
+              return _context.Address != null ? 
+                          View(await _context.Address.ToListAsync()) :
+                          Problem("Entity set 'RDKSDatabaseContext.Address'  is null.");
         }
 
         // GET: Addresses/Details/5

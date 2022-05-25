@@ -23,25 +23,17 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: HWY37N_HAZELTON
-        public async Task<IActionResult> Index(string sortOrder, DateTime searchString1, DateTime searchString2)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["CurrentFilter1"] = searchString1;
-            ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            ViewData["CurrentFilter"] = searchString;
 
             var hazelton = from haz in _context.HWY37N_HAZELTON
                                select haz;
-
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                hazelton = hazelton.Select(x => x);
+                hazelton = hazelton.Where(haz => haz.HWY_HAZ_DATE.ToString().Contains(searchString));
             }
-            else
-            {
-                hazelton = hazelton.Where(haz => haz.HWY_HAZ_DATE >= searchString1 && haz.HWY_HAZ_DATE <= searchString2);
-            }
-
             switch (sortOrder)
             {
                 case "date_desc":
