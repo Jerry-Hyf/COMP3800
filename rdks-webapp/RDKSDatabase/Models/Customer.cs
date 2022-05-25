@@ -84,24 +84,12 @@ namespace RDKSDatabase.Models
 
         //The Addresses property is a navigation property.
         //The customer entity can be related to any number of Addresses entities.
-        public ICollection<Address>? Addresses { get; set; }
-<<<<<<< HEAD
+
         public ICollection<Vehicle>? Vehicle { get; set; }
         public ICollection<Transaction>? Transaction { get; set; }
         
-=======
-
-        //The Vehicle property is a navigation property.
-        //The customer entity can be related to any number of Vehicle entities.
-        public Vehicle? Vehicle { get; set; }
-
-        //The Transaction property is a navigation property.
-        //The customer entity can be related to any number of Transaction entities.
-        public Transaction? Transaction { get; set; }
-
         //The Permit property is a navigation property.
         //The customer entity can be related to any number of Permit entities.
->>>>>>> f0465070f968104d2cf7b64353f70a2a4080a411
         public ICollection<Permit>? Permit { get; set; }
     }
 }
