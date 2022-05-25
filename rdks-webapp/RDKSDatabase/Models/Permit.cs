@@ -11,18 +11,18 @@ namespace RDKSDatabase.Models
     /// </summary>
     public enum FacilityCode
     {
-
-        ML = 53600902,
-        HWMF = 53600901,
-        FRWMF = 536008
+        
+        ML=53600902,
+        HWMF=53600901,
+        FRWMF=536008
 
     }
     public enum Units
     {
         Bags,
         Imperial_Gallon,
-        Kg, Lbs, Litre,
-        Cubic_Meter, Tonnes, US_Gallon, Cubic_Yard
+        Kg,Lbs,Litre,
+        Cubic_Meter,Tonnes,US_Gallon,Cubic_Yard
     }
 
     public enum Frequency
@@ -44,7 +44,7 @@ namespace RDKSDatabase.Models
 
     public enum HardCopyPermitSavedInFile
     {
-        Y, N
+        Y,N
     }
 
     public enum PermitSavedOnServerAndFiled
@@ -63,7 +63,7 @@ namespace RDKSDatabase.Models
 
     public enum ApplicationFeeInvoiced
     {
-        Y, N
+        Y,N
     }
 
     public enum ContaminatedLoads
@@ -230,8 +230,8 @@ namespace RDKSDatabase.Models
 
         //The MaterialCode property represents FK referencing Material table
         [Required]
-        public int MaterialCode { get; set; }
-        [ForeignKey("MaterialCode")]
-        public Material Material { get; set; }
+        public string MaterialCode { get; set; }
+        public Material? Material { get; set; }
+       
     }
 }
