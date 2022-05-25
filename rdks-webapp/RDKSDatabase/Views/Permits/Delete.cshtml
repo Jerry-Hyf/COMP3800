@@ -12,16 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PermitNumberPrefix)
+            @Html.DisplayNameFor(model => model.PermitId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PermitNumberPrefix)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PermitNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PermitNumber)
+            @Html.DisplayFor(model => model.PermitId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FacilityCode)
@@ -186,15 +180,16 @@
             @Html.DisplayFor(model => model.WasteGenerator)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaterialCode)
+            @Html.DisplayNameFor(model => model.Material)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaterialCode)
+            @Html.DisplayFor(model => model.Material.MaterialType)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="PermitId" />
+        <input type="hidden" asp-for="PermitNumberPrefix" />
+        <input type="hidden" asp-for="PermitNumber" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

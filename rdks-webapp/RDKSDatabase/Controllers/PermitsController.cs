@@ -22,13 +22,12 @@ namespace RDKSDatabase.Controllers
         // GET: Permits
         public async Task<IActionResult> Index()
         {
-              return _context.Permit != null ? 
-                          View(await _context.Permit.ToListAsync()) :
-                          Problem("Entity set 'RDKSDatabaseContext.Permit'  is null.");
+            var rDKSDatabaseContext = _context.Permit.Include(p => p.Material);
+            return View(await rDKSDatabaseContext.ToListAsync());
         }
 
         // GET: Permits/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -36,7 +35,8 @@ namespace RDKSDatabase.Controllers
             }
 
             var permit = await _context.Permit
-                .FirstOrDefaultAsync(m => m.PermitId == id);
+                .Include(p => p.Material)
+                .FirstOrDefaultAsync(m => m.PermitNumberPrefix == id);
             if (permit == null)
             {
                 return NotFound();
@@ -48,6 +48,7 @@ namespace RDKSDatabase.Controllers
         // GET: Permits/Create
         public IActionResult Create()
         {
+            ViewData["MaterialCode"] = new SelectList(_context.Set<Material>(), "MaterialCode", "MaterialType");
             return View();
         }
 
@@ -64,11 +65,12 @@ namespace RDKSDatabase.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MaterialCode"] = new SelectList(_context.Set<Material>(), "MaterialCode", "MaterialType", permit.MaterialCode);
             return View(permit);
         }
 
         // GET: Permits/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -80,6 +82,7 @@ namespace RDKSDatabase.Controllers
             {
                 return NotFound();
             }
+            ViewData["MaterialCode"] = new SelectList(_context.Set<Material>(), "MaterialCode", "MaterialType", permit.MaterialCode);
             return View(permit);
         }
 
@@ -88,9 +91,9 @@ namespace RDKSDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PermitId,PermitNumberPrefix,PermitNumber,FacilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,Frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,ContaminatedLoads,PermitSentToOperatorAndWMF,PermitSavedOnServerAndFiled,HardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,PermitStatus,PermitType,PermitFee,ExpirationDate,ApplicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
+        public async Task<IActionResult> Edit(int id, [Bind("PermitId,PermitNumberPrefix,PermitNumber,FacilityCode,PermitApplicationDate,EstimatedVolume,units,EstimatedLoads,Frequency,Comments,ContaminateLoadsDate,ContaminateLoadsComments,ContaminatedLoads,PermitSentToOperatorAndWMF,PermitSavedOnServerAndFiled,HardCopyPermitSavedInFile,ApprovedBy,PermitClosedCardPermissionsRevolked,PermitStatus,PermitType,PermitFee,ExpirationDate,ApplicationFeeInvoiced,ApplicantName,ApplicantPhone,ApplicantEmail,Hauler,Hauler2,CUS_ID,WasteGenerator,MaterialCode")] Permit permit)
         {
-            if (id != permit.PermitId)
+            if (id != permit.PermitNumberPrefix)
             {
                 return NotFound();
             }
@@ -104,7 +107,7 @@ namespace RDKSDatabase.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PermitExists(permit.PermitId))
+                    if (!PermitExists(permit.PermitNumberPrefix))
                     {
                         return NotFound();
                     }
@@ -115,11 +118,12 @@ namespace RDKSDatabase.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MaterialCode"] = new SelectList(_context.Set<Material>(), "MaterialCode", "MaterialType", permit.MaterialCode);
             return View(permit);
         }
 
         // GET: Permits/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Permit == null)
             {
@@ -127,7 +131,8 @@ namespace RDKSDatabase.Controllers
             }
 
             var permit = await _context.Permit
-                .FirstOrDefaultAsync(m => m.PermitId == id);
+                .Include(p => p.Material)
+                .FirstOrDefaultAsync(m => m.PermitNumberPrefix == id);
             if (permit == null)
             {
                 return NotFound();
@@ -139,7 +144,7 @@ namespace RDKSDatabase.Controllers
         // POST: Permits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Permit == null)
             {
@@ -155,9 +160,9 @@ namespace RDKSDatabase.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PermitExists(string id)
+        private bool PermitExists(int id)
         {
-          return (_context.Permit?.Any(e => e.PermitId == id)).GetValueOrDefault();
+          return (_context.Permit?.Any(e => e.PermitNumberPrefix == id)).GetValueOrDefault();
         }
     }
 }

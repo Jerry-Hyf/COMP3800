@@ -216,8 +216,9 @@ namespace RDKSDatabase.Models
 
         [ForeignKey("CUS_ID")]
         public Customer? Customer { get; set; }
+        [ForeignKey("LICENSE_PLATE")]
         public Vehicle? Vehicle { get; set; }
+        [ForeignKey("VALID_IMPORT_CODE")]
         public Validation? Validation { get; set; }
-
     }
 }

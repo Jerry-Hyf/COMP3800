@@ -184,7 +184,8 @@ namespace RDKSDatabase.Models
         public WasteSource WasteSource { get; set; }
 
         [Required]
-        public string MaterialCode { get; set; }
+        public int MaterialCode { get; set; }
+        [ForeignKey("MaterialCode")]
         public Material Material { get; set; }
     }
 }

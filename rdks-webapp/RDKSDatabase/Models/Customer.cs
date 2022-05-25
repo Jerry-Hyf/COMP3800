@@ -11,10 +11,12 @@ namespace RDKSDatabase.Models
         [Key]
         public int CUS_ID { get; set; }
 
+        [Required]
         [StringLength(12)]
         [Display(Name ="Customer Account Number")]
         public string? CUS_ACCNUM { get; set; }
 
+        [Required]
         [StringLength(30)]
         [Display(Name = "Company Name")]
         public string? CUS_COMPNAME { get; set; }
@@ -67,8 +69,9 @@ namespace RDKSDatabase.Models
         public string? CUS_NOTE { get; set; }
 
         public ICollection<Address>? Addresses { get; set; }
-        public Vehicle? Vehicle { get; set; }
-        public Transaction? Transaction { get; set; }
+        public ICollection<Vehicle>? Vehicles { get; set; }
+        public ICollection<Transaction>? Transactions { get; set; }
+        public ICollection<Permit>? Permits { get; set; }
 
     }
 }
