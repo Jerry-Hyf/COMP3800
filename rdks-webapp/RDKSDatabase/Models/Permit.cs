@@ -233,5 +233,6 @@ namespace RDKSDatabase.Models
         public int MaterialCode { get; set; }
         [ForeignKey("MaterialCode")]
         public Material Material { get; set; }
+        public string MaterialType { get; internal set; }
     }
 }
