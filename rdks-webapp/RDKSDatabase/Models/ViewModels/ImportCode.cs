@@ -8,6 +8,6 @@ namespace RDKSDatabase.Models.ViewModels
     public class ImportCode
     {
         public IEnumerable<Validation> Validations { get; set; }
-        public IEnumerable<Material> Materials { get; set; }
+        public IEnumerable<Validation> Results { get; set; }
     }
 }

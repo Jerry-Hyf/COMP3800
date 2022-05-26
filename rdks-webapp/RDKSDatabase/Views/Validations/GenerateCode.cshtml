@@ -1,0 +1,88 @@
+﻿@model RDKSDatabase.Models.ViewModels.ImportCode
+
+@{
+    ViewData["Title"] = "GenerateCode";
+}
+<h1>Validations</h1>
+<form asp-action="GenerateCode" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Enter the material group : <input type="text" name="material_group" value="@ViewData["material_group"]" />
+                Enter the facility : <input type="text" name="facility" value="@ViewData["facility"]" />
+                <input type="submit" value="Search" class="btn btn-default" /> |
+            </p>
+        </div>
+    </form>
+
+    <a asp-action="Index">Back to the list</a>
+
+@if (ViewData["recordFound"].Equals(true))
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_IMPORT_CODE)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_MATERIAL_NAME)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_IN_AND_OUT)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_AIRSPACE_OR_NONAIRSPACE)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_FUNCTION)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_FACILITY)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_MATERIAL_GROUP)))
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_TIPPING_RATE)))
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Results) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_IMPORT_CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_MATERIAL_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_IN_AND_OUT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_AIRSPACE_OR_NONAIRSPACE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_FUNCTION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_FACILITY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_MATERIAL_GROUP)
+                </td>           
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALID_TIPPING_RATE)
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        No Records Found!
+    </p>
+}

@@ -30,34 +30,33 @@ namespace RDKSDatabase.Controllers
                         Problem("Entity set 'RDKSDatabaseContext.Validation'  is null.");
         }
 
-        public async Task<IActionResult> GenerateCode(string? material_type, string? matrial_group, string? facility)
+public async Task<IActionResult> GenerateCode( string? material_group, string? facility)
         {
             var viewModel = new ImportCode();
             viewModel.Validations = await _context.Validation
-                .Include(c => c.Transactions)
-                .Include(c => c.Material)
                 .AsNoTracking()
                 .OrderBy(i => i.VALID_CODE)
                 .ToListAsync();
 
-            if(material_type != null)
-            {
-                ViewData["material_type"] = material_type;
-                Material matrial = viewModel.Materials.Single(c => c.MaterialCode.Equals(material_type));
 
+
+            ViewData["material_group"] = material_group;
+            ViewData["facility"] = facility;
+            IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Equals(facility));
+            material = material.Where(c => c.VALID_MATERIAL_GROUP.Equals(material_group));
+                
+            viewModel.Results = material;
+
+
+            if (ViewData["recordFound"].Equals(false))
+            {
+                ViewData["recordFound"] = viewModel.Results.Any();
+                return View();
             }
 
-            if(matrial_group != null)
-            {
-                ViewData["matrial_group"] = matrial_group;
-                Material matrial = viewModel.Materials.Single(c => c.MaterialType.Equals(material_type));
-            }
 
-            if (facility != null)
-            {
-                ViewData["facility"] = facility;
-                Validation validation = viewModel.Validations.Single(c => c.VALID_FACILITY.Equals(facility));
-            }
+
+
 
             return View(viewModel);
         }
