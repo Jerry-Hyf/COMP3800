@@ -1,9 +1,10 @@
 ﻿@model RDKSDatabase.Models.ViewModels.ImportCode
 
 @{
-    ViewData["Title"] = "GenerateCode";
+    ViewData["Title"] = "Generate Import Codes";
 }
-<h1>Validations</h1>
+<h1>@ViewData["Title"]</h1>
+
 <form asp-action="GenerateCode" method="get">
         <div class="form-actions no-color">
             <p>
@@ -18,33 +19,34 @@
 
 @if (ViewData["recordFound"].Equals(true))
 {
+    Validation validation = Model.Results.Single(r => r.VALID_MATERIAL_GROUP.Contains(ViewData["material_group"].ToString()));
 
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_IMPORT_CODE)
+                    @Html.DisplayNameFor(model => validation.VALID_IMPORT_CODE)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_MATERIAL_NAME)
+                    @Html.DisplayNameFor(model => validation.VALID_MATERIAL_NAME)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_IN_AND_OUT)
+                    @Html.DisplayNameFor(model => validation.VALID_IN_AND_OUT)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_AIRSPACE_OR_NONAIRSPACE)
+                    @Html.DisplayNameFor(model => validation.VALID_AIRSPACE_OR_NONAIRSPACE)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_FUNCTION)
+                    @Html.DisplayNameFor(model => validation.VALID_FUNCTION)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_FACILITY)
+                    @Html.DisplayNameFor(model => validation.VALID_FACILITY)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_MATERIAL_GROUP)
+                    @Html.DisplayNameFor(model => validation.VALID_MATERIAL_GROUP)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Results.Single(r => r.VALID_MATERIAL_GROUP.Equals(ViewData["material_group"])).VALID_TIPPING_RATE)
+                    @Html.DisplayNameFor(model => validation.VALID_TIPPING_RATE)
                 </th>
             </tr>
         </thead>

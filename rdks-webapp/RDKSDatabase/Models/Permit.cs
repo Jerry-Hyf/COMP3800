@@ -76,11 +76,13 @@ namespace RDKSDatabase.Models
         //The PermitNumberPrefix property represents the permit prefix based on facility
         //Used for the Primary Key
         [Required]
+        [Display(Name ="Permit Prefix")]
         public int PermitNumberPrefix { get; set; }
 
         //The PermitNumber property represents the permit number based on permit number prefix
         //Used for the Primary Key
         [Required]
+        [Display(Name ="Permit Number")]
         public int PermitNumber { get; set; }
 
         //The FacilityCode property represents the facility

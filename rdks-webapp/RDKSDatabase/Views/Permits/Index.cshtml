@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<RDKSDatabase.Models.Permit>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Permits";
 }
 
-<h1>Permits</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
 </p>
 <table class="table">
     <thead>

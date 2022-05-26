@@ -44,7 +44,6 @@ namespace RDKSDatabase.Controllers
 
             if (cus_accnum != null)
             {
-                ViewData["cus_accnum"] = cus_accnum;
                 viewModel.Results = viewModel.Customers.Where(c => c.CUS_ACCNUM.Contains(cus_accnum));
 
                 ViewData["recordFound"] = viewModel.Results.Any();
@@ -57,7 +56,6 @@ namespace RDKSDatabase.Controllers
             }
             else
             {
-                ViewData["cus_compname"] = cus_compname;
                 viewModel.Results = viewModel.Customers.Where(c => c.CUS_COMPNAME.Contains(cus_compname));
 
                 ViewData["recordFound"] = viewModel.Results.Any();

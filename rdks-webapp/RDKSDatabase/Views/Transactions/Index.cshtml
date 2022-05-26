@@ -7,14 +7,14 @@
 <h1>Transactions</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
 </p>
 
 <form asp-action="Index" asp-controller="Transactions">
     <p>
         Transanction Number: <input type="text" name="tranNum"/>
         <input type="submit" value="Search"  class="btn btn-default" style="background: lightblue"/>
-        <input type="submit" value="Back to full list"v class="btn btn-default" style="background: lightblue"/>
+        <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
     </p>
 </form>
 
@@ -22,16 +22,18 @@
     <thead>
         <tr>
             <th>
-                Trans_Num
-            </th>
-            <th>Total Price</th>
-            <th>
-               Customer ID 
+                @Html.DisplayNameFor(model => model.TRANS_NUM)
             </th>
             <th>
-                Vehicle
+                @Html.DisplayNameFor(model => model.TRANS_TOTALPRICE)
             </th>
-           
+            <th>
+                @Html.DisplayNameFor(model => model.CUS_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LICENSE_PLATE)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -42,7 +44,7 @@
                 selecteRow = "table-success";
             }
             <tr class="@selecteRow">
-                <td> @Html.DisplayFor(modelItem => item.TRANS_NUM)</td>
+                <td>@Html.DisplayFor(modelItem => item.TRANS_NUM)</td>
                 <td>@Html.DisplayFor(modelItem => item.TRANS_TOTALPRICE)</td>
                 <td> @Html.DisplayFor(modelItem => item.CUS_ID)</td>
                 <td>@Html.DisplayFor(modelItem => item.LICENSE_PLATE)</td>

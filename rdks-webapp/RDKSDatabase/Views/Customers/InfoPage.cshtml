@@ -7,7 +7,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<a asp-action="Index">Back to Customers Index</a>
+
 
 <h4>Customer Info</h4>
 
@@ -60,7 +60,6 @@
                 @Html.DisplayFor(modelItem => modelItem.SelectedCustomer.CUS_EMAIL)
             </td>
             <td>
-                <a asp-action="CustomerInfo" asp-route-id="@cus_id">Select</a> |
                 <a asp-action="Edit" asp-route-id="@cus_id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@cus_id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@cus_id">Delete</a>
@@ -266,3 +265,5 @@ else
         No Records Found!
     </p>
 }
+
+<input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>

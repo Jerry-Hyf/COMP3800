@@ -10,22 +10,13 @@
 <form asp-action="Search" method="get">
     <div class="form-actions no-color">
         <p>
-            Find by Account Number: <input type="text" name="cus_accnum" value="@ViewData["cus_acc"]" required/>
+            Find by Account Number: <input type="text" name="cus_accnum" />
+            Find by Company Name: <input type="text" name="cus_compname" />
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
+            <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
 </form>
-
-<form asp-action="Search" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by Company Name: <input type="text" name="cus_compname" value="@ViewData["cus_compname"]" required/>
-            <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
-        </p>
-    </div>
-</form>
-
-<a asp-action="Index">Back to Customers Index</a>
 
 <h4>Customer Info</h4>
 
@@ -55,9 +46,9 @@
                         @Html.DisplayFor(modelItem => item.CUS_COMPNAME)
                     </td>
                     <td>
-                        <a asp-action="InfoPage" asp-route-id="@item.CUS_ID">Select</a> |
-                        <a asp-action="Edit" asp-route-id="@item.CUS_ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.CUS_ID">Details</a> |
+                        <a asp-action="InfoPage" asp-route-id="@item.CUS_ID">Select</a>
+                        <a asp-action="Edit" asp-route-id="@item.CUS_ID">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.CUS_ID">Details</a>
                         <a asp-action="Delete" asp-route-id="@item.CUS_ID">Delete</a>
                     </td>
                 </tr>

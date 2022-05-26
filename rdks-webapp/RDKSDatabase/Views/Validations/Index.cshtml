@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<RDKSDatabase.Models.Validation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Import Codes";
 }
 
-<h1>Validations</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
 </p>
     <form asp-action="GenerateCode" method="get">
     <div class="form-actions no-color">
