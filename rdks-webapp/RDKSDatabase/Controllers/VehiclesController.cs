@@ -31,7 +31,7 @@ namespace RDKSDatabase.Controllers
                           select v;
             if (!String.IsNullOrEmpty(searchString1) && String.IsNullOrEmpty(searchString2))
             {
-                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1));
+                vehicle = vehicle.Where(v => v.LICENSE_PLATE.Contains(searchString1));
             }
             if (String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
             {
@@ -39,7 +39,7 @@ namespace RDKSDatabase.Controllers
             }
             if (!String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
             {
-                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1) && v.BADGE.Contains(searchString2));
+                vehicle = vehicle.Where(v => v.LICENSE_PLATE.Contains(searchString1) && v.BADGE.Contains(searchString2));
             }
 
             //switch (sortOrder)
