@@ -4,7 +4,7 @@ Team 9: Kyung Min Song, Jerry Hu, Guang Yang, Kwanyong Jo
 
 Project: Database for Regional District Kitimat-Stikine.
 
-Date: 2022-05-27
+Edition Date: 2022-05-27
 
 
 **Release Notes**
