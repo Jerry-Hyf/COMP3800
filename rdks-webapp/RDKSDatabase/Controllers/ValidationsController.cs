@@ -46,11 +46,11 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
             material = material.Where(c => c.VALID_MATERIAL_GROUP.Equals(material_group));
                 
             viewModel.Results = material;
-
+            ViewData["recordFound"] = viewModel.Results.Any();
 
             if (ViewData["recordFound"].Equals(false))
             {
-                ViewData["recordFound"] = viewModel.Results.Any();
+
                 return View();
             }
 
