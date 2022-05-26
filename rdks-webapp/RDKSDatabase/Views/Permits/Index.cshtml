@@ -7,7 +7,9 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    <form asp-action="Create" method="get">
+         <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    </form> 
 </p>
 <table class="table">
     <thead>
