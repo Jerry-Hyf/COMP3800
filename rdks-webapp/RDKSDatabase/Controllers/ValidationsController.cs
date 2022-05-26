@@ -42,8 +42,8 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
 
             ViewData["material_group"] = material_group;
             ViewData["facility"] = facility;
-            IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Equals(facility));
-            material = material.Where(c => c.VALID_MATERIAL_GROUP.Equals(material_group));
+            IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Contains(facility));
+            material = material.Where(c => c.VALID_MATERIAL_GROUP.Contains(material_group));
                 
             viewModel.Results = material;
             ViewData["recordFound"] = viewModel.Results.Any();
