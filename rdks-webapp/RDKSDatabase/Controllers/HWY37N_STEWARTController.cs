@@ -28,12 +28,12 @@ namespace RDKSDatabase.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter1"] = searchString1;
             ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            String defaultDate = "0001";
 
             var stewart = from ste in _context.HWY37N_STEWART
                                select ste;
 
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (searchString1.ToString().Contains(defaultDate) || searchString2.ToString().Contains(defaultDate))
             {
                 stewart = stewart.Select(x => x);
             }

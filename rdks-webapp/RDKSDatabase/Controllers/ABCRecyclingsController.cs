@@ -28,12 +28,12 @@ namespace RDKSDatabase.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter1"] = searchString1;
             ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            String defaultDate = "0001";
 
             var abcRecycling = from abc in _context.ABCRecycling
                                select abc;
 
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (searchString1.ToString().Contains(defaultDate) || searchString2.ToString().Contains(defaultDate))
             {
                 abcRecycling = abcRecycling.Select(x => x);
             } else

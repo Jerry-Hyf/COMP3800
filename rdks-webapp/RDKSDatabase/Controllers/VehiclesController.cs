@@ -29,6 +29,7 @@ namespace RDKSDatabase.Controllers
 
             var vehicle = from v in _context.Vehicle
                           select v;
+
             if (!String.IsNullOrEmpty(searchString1) && String.IsNullOrEmpty(searchString2))
             {
                 vehicle = vehicle.Where(v => v.LICENSE_PLATE.Contains(searchString1));

@@ -28,12 +28,15 @@ namespace RDKSDatabase.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter1"] = searchString1;
             ViewData["CurrentFilter2"] = searchString2;
-            String defaultDate = "0001-01-01 12:00:00 AM";
+            string defaultDate = "0001";
+
+            System.Diagnostics.Debug.WriteLine(searchString1);
+            System.Diagnostics.Debug.WriteLine(searchString2);
 
             var hazelton = from haz in _context.HWY37N_HAZELTON
                                select haz;
 
-            if (searchString1.ToString().Equals(defaultDate) || searchString2.ToString().Equals(defaultDate))
+            if (searchString1.ToString().Contains(defaultDate) || searchString2.ToString().Contains(defaultDate))
             {
                 hazelton = hazelton.Select(x => x);
             }

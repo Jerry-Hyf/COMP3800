@@ -22,10 +22,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VALID_CODE)
+                @Html.DisplayNameFor(model => model.VALID_IMPORT_CODE)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VALID_MATERIAL_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VALID_FACILITY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VALID_MATERIAL_GROUP)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VALID_IN_AND_OUT)
@@ -35,12 +41,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VALID_FUNCTION)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VALID_FACILITY)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VALID_MATERIAL_GROUP)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VALID_CURBSIED_AREA)
@@ -69,10 +69,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.VALID_CODE)
+                @Html.DisplayFor(modelItem => item.VALID_IMPORT_CODE)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VALID_MATERIAL_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VALID_FACILITY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VALID_MATERIAL_GROUP)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VALID_IN_AND_OUT)
@@ -82,12 +88,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VALID_FUNCTION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VALID_FACILITY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VALID_MATERIAL_GROUP)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VALID_CURBSIED_AREA)
