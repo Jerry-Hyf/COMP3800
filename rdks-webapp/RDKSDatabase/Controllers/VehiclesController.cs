@@ -35,11 +35,11 @@ namespace RDKSDatabase.Controllers
             }
             if (String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
             {
-                vehicle = vehicle.Where(v => v.BADGE.ToString().Contains(searchString2));
+                vehicle = vehicle.Where(v => v.BADGE.Contains(searchString2));
             }
             if (!String.IsNullOrEmpty(searchString1) && !String.IsNullOrEmpty(searchString2))
             {
-                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1) && v.BADGE.ToString().Contains(searchString2));
+                vehicle = vehicle.Where(v => v.Customer.ToString().Contains(searchString1) && v.BADGE.Contains(searchString2));
             }
 
             //switch (sortOrder)

@@ -13,12 +13,15 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="PermitId" class="control-label"></label>
-                <input asp-for="PermitId" class="form-control" />
-                <span asp-validation-for="PermitId" class="text-danger"></span>
+                <label asp-for="PermitNumberPrefix" class="control-label"></label>
+                <select asp-for="PermitNumberPrefix" class="form-control"></select>
+                <span asp-validation-for="PermitNumberPrefix" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="PermitNumberPrefix" />
-            <input type="hidden" asp-for="PermitNumber" />
+            <div class="form-group">
+                <label asp-for="PermitNumber" class="control-label"></label>
+                <select asp-for="PermitNumber" class="form-control"></select>
+                <span asp-validation-for="PermitNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="FacilityCode" class="control-label"></label>
                 <select asp-for="FacilityCode" class="form-control"></select>

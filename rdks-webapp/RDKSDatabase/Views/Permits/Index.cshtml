@@ -13,7 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PermitId)
+                @Html.DisplayNameFor(model => model.PermitNumberPrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FacilityCode)
@@ -106,7 +109,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PermitId)
+                @Html.DisplayFor(modelItem => item.PermitNumberPrefix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermitNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FacilityCode)
@@ -193,9 +199,9 @@
                 @Html.DisplayFor(modelItem => item.Material.MaterialType)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { prefix=item.PermitNumberPrefix, id=item.PermitNumber }, null) |
+                @Html.ActionLink("Details", "Details",  new { prefix=item.PermitNumberPrefix, id=item.PermitNumber }, null) |
+                @Html.ActionLink("Delete", "Delete",  new { prefix=item.PermitNumberPrefix, id=item.PermitNumber }, null)
             </td>
         </tr>
 }

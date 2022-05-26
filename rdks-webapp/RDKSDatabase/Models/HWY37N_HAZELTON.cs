@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RDKS.Models
+namespace RDKSDatabase.Models
 {
     /// <summary>
     /// The model of HWY37N_HAZELTON which has all the attributes of the HWY37N_HAZELTON table.

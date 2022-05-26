@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RDKSDatabase.Models;
 using RDKSDatabase.ViewModels;
-using RDKS.Models;
 
 namespace RDKSDatabase.Data
 {

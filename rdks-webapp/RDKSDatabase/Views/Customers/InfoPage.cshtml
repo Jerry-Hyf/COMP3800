@@ -134,6 +134,12 @@ else
         <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => permit.PermitNumberPrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => permit.PermitNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => permit.ApplicantName)
             </th>
             <th>
@@ -162,6 +168,12 @@ else
             @foreach (var item in Model.Permits) {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.PermitNumberPrefix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermitNumber)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.ApplicantName)
                     </td>
                     <td>
@@ -183,9 +195,9 @@ else
                         @Html.DisplayFor(modelItem => item.ExpirationDate)
                     </td>
                     <td>
-                        <a asp-controller="Permits" asp-action="Edit" asp-route-id="@item.PermitId">Edit</a> |
-                        <a asp-controller="Permits" asp-action="Details" asp-route-id="@item.PermitId">Details</a> |
-                        <a asp-controller="Permits" asp-action="Delete" asp-route-id="@item.PermitId">Delete</a>
+                        <a asp-controller="Permits" asp-action="Edit" asp-route-prefix="@item.PermitNumberPrefix" asp-route-id="@item.PermitNumber">Edit</a> |
+                        <a asp-controller="Permits" asp-action="Details" asp-route-prefix="@item.PermitNumberPrefix" asp-route-id="@item.PermitNumber">Details</a> |
+                        <a asp-controller="Permits" asp-action="Delete" asp-route-prefix="@item.PermitNumberPrefix" asp-route-id="@item.PermitNumber">Delete</a>
                     </td>
                 </tr>
             }

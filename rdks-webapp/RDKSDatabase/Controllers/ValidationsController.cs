@@ -38,8 +38,6 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
                 .OrderBy(i => i.VALID_CODE)
                 .ToListAsync();
 
-
-
             ViewData["material_group"] = material_group;
             ViewData["facility"] = facility;
             IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Equals(facility));
@@ -50,13 +48,8 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
 
             if (ViewData["recordFound"].Equals(false))
             {
-
                 return View();
             }
-
-
-
-
 
             return View(viewModel);
         }
