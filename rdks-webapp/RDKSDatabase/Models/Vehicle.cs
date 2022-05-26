@@ -31,7 +31,7 @@ namespace RDKSDatabase.Models
 
         //The BADGE property represents the vehicle badge.
         [Display(Name = "Badge")]
-        public int BADGE { get; set; }
+        public string? BADGE { get; set; }
 
         //The NOTES property represents notes.
         [Display(Name = "Notes")]

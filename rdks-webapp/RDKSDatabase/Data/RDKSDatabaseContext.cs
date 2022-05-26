@@ -36,6 +36,10 @@ namespace RDKSDatabase.Data
 
         public DbSet<Vehicle>? Vehicle { get; set; }
 
+        public DbSet<Material>? Material { get; set; }
+
+        public DbSet<WasteSource>? WasteSource { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Permit>()

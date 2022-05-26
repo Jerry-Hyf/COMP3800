@@ -9,7 +9,6 @@ namespace RDKSDatabase.Models.ViewModels
     {
         public IEnumerable<Transaction> Transactions { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
-
-        public IEnumerable<Permit> Permits { get; set; }
+        public IEnumerable<Vehicle> Vehicles { get; set; }
     }
 }

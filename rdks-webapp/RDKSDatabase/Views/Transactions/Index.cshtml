@@ -30,10 +30,10 @@
             </th>
             <th>Total Price</th>
             <th>
-                Customer ID
+               Customer ID 
             </th>
             <th>
-                Company Name
+                Vehicle
             </th>
            
         </tr>
@@ -49,7 +49,7 @@
                 <td> @Html.DisplayFor(modelItem => item.TRANS_NUM)</td>
                 <td>@Html.DisplayFor(modelItem => item.TRANS_TOTALPRICE)</td>
                 <td> @Html.DisplayFor(modelItem => item.CUS_ID)</td>
-                <td>@Html.DisplayFor(modelItem => item.Customer.CUS_COMPNAME)</td>
+                <td>@Html.DisplayFor(modelItem => item.LICENSE_PLATE)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.TRANS_NUM">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.TRANS_NUM">Details</a> |

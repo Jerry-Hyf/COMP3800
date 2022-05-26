@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using RDKSDatabase.Data;
 using RDKSDatabase.Models;
+using RDKS.Models;
 using System;
 using System.Linq;
 
@@ -14,35 +15,28 @@ namespace RDKSDatabase.Data
         {
             context.Database.EnsureCreated();
 
+            // Check the database for any existing records
             if (context.Customer.Any())
             {
                 return;   // DB has been seeded
             }
 
-            /* 
-             * abc, hwy37 x3
-             * 
-             * address, customer, transaction, validation
-             * 
-             * material, permit, vehicle, waste
-             * 
-             */
-
+            // Create mock data for Customer
             var customers = new Customer[]
             {
-                new Customer{CUS_ACCNUM="ABCD0123",CUS_COMPNAME="ABC Company Inc", CUS_FNAME="John", CUS_LNAME="Doe", 
+                new Customer{CUS_ACCNUM="ABCD0123",CUS_COMPNAME="ABC Company Inc", CUS_FNAME="John", CUS_LNAME="Doe",
                     CUS_PHONE="222-333-4567", CUS_EMAIL="jdoe@abccompany.com", CUS_FR=false, CUS_TTS=false, CUS_MEZ=true, CUS_DEACTIVATED_COUNT=0},
 
-                new Customer{CUS_ACCNUM="LASJ1234",CUS_COMPNAME="Construction Co.", CUS_FNAME="Kevin", CUS_LNAME="Smith", 
+                new Customer{CUS_ACCNUM="LASJ1234",CUS_COMPNAME="Construction Co.", CUS_FNAME="Kevin", CUS_LNAME="Smith",
                     CUS_PHONE="234-532-3838", CUS_EMAIL="ksmith@construction.com", CUS_FR=true, CUS_TTS=false, CUS_MEZ=false, CUS_DEACTIVATED_COUNT=1},
 
-                new Customer{CUS_ACCNUM="FJAS2231",CUS_COMPNAME="123 Company Inc", CUS_FNAME="Jane", CUS_LNAME="Doe", 
+                new Customer{CUS_ACCNUM="FJAS2231",CUS_COMPNAME="123 Company Inc", CUS_FNAME="Jane", CUS_LNAME="Doe",
                     CUS_PHONE="432-123-9888", CUS_EMAIL="jdoe@123company.com", CUS_FR=false, CUS_TTS=true, CUS_MEZ=true, CUS_DEACTIVATED_COUNT=0},
 
-                new Customer{CUS_ACCNUM="SFAF8272",CUS_COMPNAME="BCIT Construction", CUS_FNAME="Chris", CUS_LNAME="Adams", 
+                new Customer{CUS_ACCNUM="SFAF8272",CUS_COMPNAME="BCIT Construction", CUS_FNAME="Chris", CUS_LNAME="Adams",
                     CUS_PHONE="563-854-7347", CUS_EMAIL="cadams@bcitcon.com", CUS_FR=false, CUS_TTS=false, CUS_MEZ=true, CUS_DEACTIVATED_COUNT=0},
 
-                new Customer{CUS_ACCNUM="HEEW9188",CUS_COMPNAME="Farms Inc", CUS_FNAME="Taylor", CUS_LNAME="Klein", 
+                new Customer{CUS_ACCNUM="HEEW9188",CUS_COMPNAME="Farms Inc", CUS_FNAME="Taylor", CUS_LNAME="Klein",
                     CUS_PHONE="323-381-5629", CUS_EMAIL="tklein@farmsinc.com", CUS_FR=true, CUS_TTS=false, CUS_MEZ=false, CUS_DEACTIVATED_COUNT=2}
             };
 
@@ -52,7 +46,7 @@ namespace RDKSDatabase.Data
             }
             context.SaveChanges();
 
-
+            // Create mock data for Address
             var addressses = new Address[]
             {
                 new Address{ADDR_STREET="238 King Street",ADDR_CITY="Vancouver",ADDR_PROV="BC", ADDR_POCODE="A1B1C1", CUS_ID=1},
@@ -69,6 +63,127 @@ namespace RDKSDatabase.Data
             context.SaveChanges();
 
 
+            // Create mock data for Vehicle
+            var vehicles = new Vehicle[]
+            {
+                new Vehicle{LICENSE_PLATE="AB1234", DESCRIPTION="Black F-150", BADGE="00178152", CUS_ID=1},
+                new Vehicle{LICENSE_PLATE="BC1234", DESCRIPTION="5 Ton Dump Truck", BADGE="00628451", CUS_ID=2},
+                new Vehicle{LICENSE_PLATE="CD2356", DESCRIPTION="2019 Grey Chevy", BADGE="00682133", CUS_ID=3},
+                new Vehicle{LICENSE_PLATE="FE1234", DESCRIPTION="2006 GMC Sierra", BADGE="Deactivated", CUS_ID=4},
+                new Vehicle{LICENSE_PLATE="BCD234", DESCRIPTION="Ford 350", BADGE="00633212", CUS_ID=5}
+            };
+
+            foreach (Vehicle v in vehicles)
+            {
+                context.Vehicle.Add(v);
+            }
+            context.SaveChanges();
+
+
+
+            // Create mock data for Material
+            var materials = new Material[]
+            {
+                new Material{MaterialCode=44,MaterialType="Asbestos"},
+                new Material{MaterialCode=40,MaterialType="DLC Over 5m3"},
+                new Material{MaterialCode=45,MaterialType="DLC Concrete - no rebar"},
+                new Material{MaterialCode=10,MaterialType="Refuse"},
+                new Material{MaterialCode=22,MaterialType="Organic Cleanwood Burn"},
+            };
+
+            foreach (Material m in materials)
+            {
+                context.Material.Add(m);
+            }
+            context.SaveChanges();
+
+
+            // Create mock data for ABCRecycling
+            var abcRecycling = new ABCRecycling[]
+            {
+                new ABCRecycling{ABCDateID=new DateTime(2022, 05, 16),ABC_LOCATION="somewhere",ABC_MATERIAL="qwe",TOTAL_POUND_NETWEIGHT=1,TOTAL_TONNAGE_NETWEIGHT=2,TOTAL_TONNAGE_MATERIAL=3},
+                new ABCRecycling{ABCDateID=new DateTime(2022, 05, 27),ABC_LOCATION="Vancouver",ABC_MATERIAL="qwe",TOTAL_POUND_NETWEIGHT=(float)100.35,TOTAL_TONNAGE_NETWEIGHT=2,TOTAL_TONNAGE_MATERIAL=3},
+                new ABCRecycling{ABCDateID=new DateTime(2010, 07, 02),ABC_LOCATION="BCIT",ABC_MATERIAL="qwe",TOTAL_POUND_NETWEIGHT=1,TOTAL_TONNAGE_NETWEIGHT=(float)13.45,TOTAL_TONNAGE_MATERIAL=3},
+                new ABCRecycling{ABCDateID=new DateTime(2009, 08, 24),ABC_LOCATION="Granville Island",ABC_MATERIAL="qwe",TOTAL_POUND_NETWEIGHT=1,TOTAL_TONNAGE_NETWEIGHT=2,TOTAL_TONNAGE_MATERIAL=(float)457.13},
+                new ABCRecycling{ABCDateID=new DateTime(2018, 04, 29),ABC_LOCATION="Burnaby",ABC_MATERIAL="qwe",TOTAL_POUND_NETWEIGHT=1,TOTAL_TONNAGE_NETWEIGHT=2,TOTAL_TONNAGE_MATERIAL=3,ABC_COMPLETED=true},
+            };
+
+            foreach (ABCRecycling c in abcRecycling)
+            {
+                context.ABCRecycling.Add(c);
+            }
+            context.SaveChanges();
+
+
+            // Create mock data for HWY37N_HAZELTON
+            var hwy37Haz = new HWY37N_HAZELTON[]
+            {
+                new HWY37N_HAZELTON{HWY_HAZ_DATE=new DateTime(2022, 05, 16),HWY_HAZ_EST_OCC_TONNES=(float)123.6,HWY_HAZ_OCC_BIN_BILLING=123,HWY_HAZ_MARR_INCOME=-231},
+                new HWY37N_HAZELTON{HWY_HAZ_DATE=new DateTime(2022, 05, 27),HWY_HAZ_EST_OCC_TONNES=34,HWY_HAZ_SCRAP_METAL_TONNES=(float)100.35},
+                new HWY37N_HAZELTON{HWY_HAZ_DATE=new DateTime(2010, 07, 02),HWY_HAZ_EST_OCC_TONNES=(float)62.7,HWY_HAZ_TIRE_COUNTS=(float)13.45,HWY_HAZ_ABC_INCOME=(float)-23.04},
+                new HWY37N_HAZELTON{HWY_HAZ_DATE=new DateTime(2009, 08, 24),HWY_HAZ_EST_OCC_TONNES=(float)24.0,HWY_HAZ_TIRE_COLLECTION_CHARGES=(float)457.13},
+                new HWY37N_HAZELTON{HWY_HAZ_DATE=new DateTime(2018, 04, 29),HWY_HAZ_EST_OCC_TONNES=1,HWY_HAZ_FREON_REMOVAL_CHARGES=1267},
+            };
+            foreach (HWY37N_HAZELTON c in hwy37Haz)
+            {
+                context.HWY37N_HAZELTON.Add(c);
+            }
+            context.SaveChanges();
+
+
+            // Create mock data for HWY37N_KITWANGA
+            var hwy37Kit = new HWY37N_KITWANGA[]
+            {
+                new HWY37N_KITWANGA{HWY_KIT_DATE=new DateTime(2022, 05, 16),HWY_KIT_OCC_TONNAGE_EST=(float)123.6,HWY_KIT_PPP_TONNAGE=123,HWY_KIT_EPRA_INCOME=-231},
+                new HWY37N_KITWANGA{HWY_KIT_DATE=new DateTime(2022, 05, 27),HWY_KIT_OCC_TONNAGE_EST=34,HWY_KIT_OCC_HAULING_BIN_RENTAL=(float)100.35},
+                new HWY37N_KITWANGA{HWY_KIT_DATE=new DateTime(2010, 07, 02),HWY_KIT_OCC_TONNAGE_EST=(float)62.7,HWY_KIT_PPP_HAULING=(float)13.45,HWY_KIT_CESA_INCOME=(float)-23.04},
+                new HWY37N_KITWANGA{HWY_KIT_DATE=new DateTime(2009, 08, 24),HWY_KIT_OCC_TONNAGE_EST=(float)24.0,HWY_KIT_RECYCLE_BC_TONNAGE=(float)457.13},
+                new HWY37N_KITWANGA{HWY_KIT_DATE=new DateTime(2018, 04, 29),HWY_KIT_OCC_TONNAGE_EST=1,HWY_KIT_CESA_TONNES=1267},
+            };
+
+
+            foreach (HWY37N_KITWANGA c in hwy37Kit)
+            {
+                context.HWY37N_KITWANGA.Add(c);
+            }
+            context.SaveChanges();
+
+
+            // Create mock data for HWY37N_STEWART
+            var hwy37Ste = new HWY37N_STEWART[]
+            {
+                new HWY37N_STEWART{HWY_STE_DATE=new DateTime(2022, 05, 16),HWY_STE_OCC_TONNES=(float)123.6,HWY_STE_EPRA_TONNES=123,HWY_STE_RECYCLE_BC_INCOME=-231},
+                new HWY37N_STEWART{HWY_STE_DATE=new DateTime(2022, 05, 27),HWY_STE_BANDSTRA_OCC_HAULING=34,HWY_STE_EPRA_TONNES=(float)100.35},
+                new HWY37N_STEWART{HWY_STE_DATE=new DateTime(2010, 07, 02),HWY_STE_OCC_TOTAL=(float)62.7,HWY_STE_LIGHT_RECYCLE_COUNTS=(float)13.45,HWY_STE_CESA_INCOME=(float)-23.04},
+                new HWY37N_STEWART{HWY_STE_DATE=new DateTime(2009, 08, 24),HWY_STE_RECYCLE_BC_TONNAGE=(float)24.0,HWY_STE_LIGHT_RECYCLE_COUNTS=(float)457.13},
+                new HWY37N_STEWART{HWY_STE_DATE=new DateTime(2018, 04, 29),HWY_STE_CESA_TONNES=1,HWY_STE_PAINT_RECYCLE_COUNTS=1267},
+            };
+
+            foreach (HWY37N_STEWART c in hwy37Ste)
+            {
+                context.HWY37N_STEWART.Add(c);
+            }
+            context.SaveChanges();
+
+
+            // Create mock data for WasteSource
+            var wasteSources = new WasteSource[]
+            {
+                new WasteSource{WasteGenerator="first",WasteSourceSiteAddress="4901 Walsh"},
+                new WasteSource{WasteGenerator="second",WasteSourceSiteAddress="4620 Lakelse Ave"},
+                new WasteSource{WasteGenerator="third",WasteSourceSiteAddress="3747 River Dr"},
+                new WasteSource{WasteGenerator="fourth",WasteSourceSiteAddress="5022 Mcrae Cres"},
+                new WasteSource{WasteGenerator="fifth",WasteSourceSiteAddress="520 Keith Ave"},
+            };
+
+            foreach (WasteSource w in wasteSources)
+            {
+                context.WasteSource.Add(w);
+            }
+            context.SaveChanges();
+
+            
+            // Create mock data for Validation
             var validations = new Validation[]
             {
                 new Validation{VALID_IMPORT_CODE="DYP1", VALID_MATERIAL_NAME="Recycle Curbside - Terrace", VALID_IN_AND_OUT="In SA", 
@@ -99,6 +214,7 @@ namespace RDKSDatabase.Data
             context.SaveChanges();
 
 
+            // Create mock data for Transaction
             var transactions = new Transaction[]
             {
                 new Transaction{TRANS_NUM="TTS89002", LICENSE_PLATE="AB1234", TRANS_COMPLETION_DATE=new DateTime(2021, 10, 27, 2, 48, 00),
@@ -140,6 +256,22 @@ namespace RDKSDatabase.Data
             foreach (Transaction t in transactions)
             {
                 context.Transaction.Add(t);
+            }
+            context.SaveChanges();
+
+            
+            // Create mock data for Permit
+            var permits = new Permit[]
+            {
+                new Permit{PermitNumberPrefix=536008, PermitNumber=1, FacilityCode="FRWMF",PermitApplicationDate = new DateTime(2016,11,03),EstimatedLoads=0,EstimatedVolume=0,units="NA",Frequency="Bi_Weekly",Comments="NA",ContaminateLoadsDate=new DateTime(2016,11,2),ContaminateLoadsComments="NA",ContaminatedLoads=0,PermitSentToOperatorAndWMF="N",PermitSavedOnServerAndFiled="N",HardCopyPermitSavedInFile="N",ApprovedBy="NA",PermitClosedCardPermissionsRevolked="N",PermitStatus="Permit Issued",PermitType="Single Event",PermitFee=25,ExpirationDate=new DateTime(2016,11,10),ApplicationFeeInvoiced="N",ApplicantName="Universal Restoration Systems LTD",Hauler="Universal",MaterialCode=44, WasteGenerator="first"},
+                new Permit{PermitNumberPrefix=536008, PermitNumber=3, FacilityCode="FRWMF",PermitApplicationDate = new DateTime(2016,11,16),EstimatedLoads=0,EstimatedVolume=0,units="NA",Frequency="Bi_Monthly",Comments="NA",ContaminateLoadsDate=new DateTime(2016,11,22),ContaminateLoadsComments="NA",ContaminatedLoads=0,PermitSentToOperatorAndWMF="N",PermitSavedOnServerAndFiled="N",HardCopyPermitSavedInFile="N",ApprovedBy="NA",PermitClosedCardPermissionsRevolked="N",PermitStatus="Permit Issued",PermitType="Single Event",PermitFee=25,ExpirationDate=new DateTime(2016,11,30),ApplicationFeeInvoiced="N",ApplicantName="Days Inn",Hauler="Waste Management",MaterialCode=40,WasteGenerator="second"},
+                new Permit{PermitNumberPrefix=536008, PermitNumber=8, FacilityCode="FRWMF",PermitApplicationDate = new DateTime(2016,11,28),EstimatedLoads=0,EstimatedVolume=0,units="NA",Frequency="Monthly",Comments="NA",ContaminateLoadsComments="NA",ContaminatedLoads=0,PermitSentToOperatorAndWMF="N",PermitSavedOnServerAndFiled="N",HardCopyPermitSavedInFile="N",ApprovedBy="NA",PermitClosedCardPermissionsRevolked="N",PermitStatus="Permit Issued",PermitType="Single Event",PermitFee=25,ExpirationDate=new DateTime(2016,12,30),ApplicationFeeInvoiced="N",ApplicantName="Lafarge concrete",Hauler="Provac",MaterialCode=45,WasteGenerator="third"},
+                new Permit{PermitNumberPrefix=536008, PermitNumber=9, FacilityCode="FRWMF",PermitApplicationDate = new DateTime(2016,11,29),EstimatedLoads=0,EstimatedVolume=0,units="NA",Frequency="Monthly",Comments="NA",ContaminateLoadsComments="NA",ContaminatedLoads=0,PermitSentToOperatorAndWMF="N",PermitSavedOnServerAndFiled="N",HardCopyPermitSavedInFile="N",ApprovedBy="NA",PermitClosedCardPermissionsRevolked="N",PermitStatus="Permit Issued",PermitType="Single Event",PermitFee=25,ExpirationDate=new DateTime(2017,1,4),ApplicationFeeInvoiced="Y",ApplicantName="Technicon",Hauler="Technicon",MaterialCode=10,WasteGenerator="fourth"},
+                new Permit{PermitNumberPrefix=536008, PermitNumber=17,FacilityCode="FRWMF",PermitApplicationDate = new DateTime(2016,11,29),EstimatedLoads=0,EstimatedVolume=0,units="NA",Frequency="Semi_Annual",Comments="NA",ContaminateLoadsComments="NA",ContaminatedLoads=0,PermitSentToOperatorAndWMF="N",PermitSavedOnServerAndFiled="N",HardCopyPermitSavedInFile="N",ApprovedBy="NA",PermitClosedCardPermissionsRevolked="N",PermitStatus="Permit Issued",PermitType="Single Event",PermitFee=25,ExpirationDate=new DateTime(2017,1,4),ApplicationFeeInvoiced="Y",ApplicantName="Ministry of Forest",Hauler="NBC",MaterialCode=10,WasteGenerator="fifth"},
+            };
+            foreach (Permit p in permits)
+            {
+                context.Permit.Add(p);
             }
             context.SaveChanges();
 

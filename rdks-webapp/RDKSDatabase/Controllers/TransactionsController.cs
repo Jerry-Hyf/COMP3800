@@ -62,6 +62,7 @@ namespace RDKSDatabase.Controllers
             var transaction = await _context.Transaction
                 .FirstOrDefaultAsync(m => m.TRANS_NUM == id);
             var customer = await _context.Customer.FirstOrDefaultAsync(m => m.CUS_ID == transaction.CUS_ID);
+            var Vehicle = await _context.Vehicle.FirstOrDefaultAsync(m => m.LICENSE_PLATE == transaction.LICENSE_PLATE);
             if (transaction == null)
             {
                 return NotFound();
