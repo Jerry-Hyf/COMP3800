@@ -7,17 +7,19 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    <form asp-action="Create" method="get">
+         <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    </form> 
 </p>
-    <form asp-action="GenerateCode" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Enter the material group : <input type="text" name="material_group" value="@ViewData["material_group"]" required/>
-            Enter the facility : <input type="text" name="facility" value="@ViewData["facility"]" required/>
-            <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/> 
-        </p>
-    </div>
-    </form>
+<form asp-action="GenerateCode" method="get">
+<div class="form-actions no-color">
+    <p>
+        Enter the material group : <input type="text" name="material_group" value="@ViewData["material_group"]" required/>
+        Enter the facility : <input type="text" name="facility" value="@ViewData["facility"]" required/>
+        <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/> 
+    </p>
+</div>
+</form>
 <table class="table">
     <thead>
         <tr>
