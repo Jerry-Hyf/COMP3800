@@ -35,24 +35,6 @@
                 @Html.DisplayNameFor(model => model.CUS_COMPNAME)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CUS_FNAME)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_LNAME)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_PHONE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_ALT_PHONE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_EMAIL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CUS_ALT_EMAIL)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CUS_FR)
             </th>
             <th>
@@ -83,24 +65,6 @@
                 @Html.DisplayFor(modelItem => item.CUS_COMPNAME)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CUS_FNAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_LNAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_PHONE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_ALT_PHONE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_EMAIL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUS_ALT_EMAIL)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CUS_FR)
             </td>
             <td>
@@ -116,6 +80,7 @@
                 @Html.DisplayFor(modelItem => item.CUS_NOTE)
             </td>
             <td>
+                <a asp-action="InfoPage" asp-route-id="@item.CUS_ID">Select</a>
                 <a asp-action="Edit" asp-route-id="@item.CUS_ID">Edit</a>
                 <a asp-action="Details" asp-route-id="@item.CUS_ID">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.CUS_ID">Delete</a>

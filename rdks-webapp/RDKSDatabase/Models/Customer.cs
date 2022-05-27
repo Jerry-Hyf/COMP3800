@@ -12,6 +12,7 @@ namespace RDKSDatabase.Models
     {
         //The CUS_ID property which is the PK represents the customer ID.
         [Key]
+        [Display(Name ="Customer ID")]
         public int CUS_ID { get; set; }
 
         //The CUS_ACCNUM property represents the customer's account number.
@@ -46,7 +47,7 @@ namespace RDKSDatabase.Models
 
         //The CUS_ALT_PHONE property represents the customer's alternative phone number.
         [StringLength(15)]
-        [Display(Name = "Alternative Phone Numbe")]
+        [Display(Name = "Alternative Phone Number")]
         public string? CUS_ALT_PHONE { get; set; }
 
         //The CUS_EMAIL property represents the customer's email address.

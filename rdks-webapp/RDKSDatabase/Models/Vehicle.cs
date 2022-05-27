@@ -20,7 +20,7 @@ namespace RDKSDatabase.Models
         //The CUS_ID property is a foreign key,
         //and the corresponding corresponding navigation property is Customer.
         [Required]
-        [Display(Name = "Customer account number")]
+        [Display(Name = "Customer ID")]
         public int CUS_ID { get; set; }
         [ForeignKey("CUS_ID")]
         public Customer? Customer { get; set; }
