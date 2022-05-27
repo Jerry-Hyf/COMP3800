@@ -30,9 +30,6 @@ namespace RDKSDatabase.Controllers
             ViewData["CurrentFilter2"] = searchString2;
             string defaultDate = "0001";
 
-            System.Diagnostics.Debug.WriteLine(searchString1);
-            System.Diagnostics.Debug.WriteLine(searchString2);
-
             var hazelton = from haz in _context.HWY37N_HAZELTON
                                select haz;
 

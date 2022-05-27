@@ -7,14 +7,16 @@
 <h1>Transactions</h1>
 
 <p>
-    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    <form asp-action="Create" method="get">
+        <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    </form>
 </p>
 
 <form asp-action="Index" asp-controller="Transactions">
     <p>
         Transanction Number: <input type="text" name="tranNum"/>
         <input type="submit" value="Search"  class="btn btn-default" style="background: lightblue"/>
-        <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+        <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
     </p>
 </form>
 

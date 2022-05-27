@@ -7,18 +7,23 @@
 <h1>Vehicles</h1>
 
 <p>
-    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    <form>
+        <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+    </form>
 </p>
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Search by License Plate: <input type="text" name="SearchString1" value="@ViewData["CurrentFilter1"]" />
+            Search by License Plate: <input type="text" name="SearchString1" value="@ViewData["CurrentFilter1"]"/>
             Search by Badge: <input type="text" name="SearchString2" value="@ViewData["CurrentFilter2"]" />
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
-            <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
+</form>
+
+<form>
+    <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
 </form>
 
 <table class="table">

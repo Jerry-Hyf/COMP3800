@@ -1,4 +1,5 @@
 ﻿@model RDKSDatabase.Models.ViewModels.ImportCode
+@using RDKSDatabase.Models
 
 @{
     ViewData["Title"] = "Generate Import Codes";
@@ -19,7 +20,7 @@
 
 @if (ViewData["recordFound"].Equals(true))
 {
-    Validation validation = Model.Results.Single(r => r.VALID_MATERIAL_GROUP.Contains(ViewData["material_group"].ToString()));
+    Validation validation = Model.Results.First();
 
     <table class="table">
         <thead>

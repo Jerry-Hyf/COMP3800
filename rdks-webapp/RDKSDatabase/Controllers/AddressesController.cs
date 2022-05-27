@@ -22,8 +22,7 @@ namespace RDKSDatabase.Controllers
         // GET: Addresses
         public async Task<IActionResult> Index(string sortOrder, string searchString1, string searchString2)
         {
-            //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
             ViewData["CurrentFilter1"] = searchString1;
             ViewData["CurrentFilter2"] = searchString2;
 
@@ -41,22 +40,6 @@ namespace RDKSDatabase.Controllers
             {
                 address = address.Where(addr => addr.ADDR_CITY.Contains(searchString1) && addr.ADDR_PROV.Contains(searchString2));
             }
-
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        students = students.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        students = students.OrderBy(s => s.EnrollmentDate);
-            //        break;
-            //    case "date_desc":
-            //        students = students.OrderByDescending(s => s.EnrollmentDate);
-            //         break;
-            //     default:
-            //         students = students.OrderBy(s => s.LastName);
-            //         break;
-            // }
 
             return View(await address.AsNoTracking().ToListAsync());
         }

@@ -20,10 +20,9 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Vehicles
-        public async Task<IActionResult> Index(string sortOrder, string searchString1, string searchString2)
+        public async Task<IActionResult> Index(string searchString1, string searchString2)
         {
-            //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
             ViewData["CurrentFilter1"] = searchString1;
             ViewData["CurrentFilter2"] = searchString2;
 
@@ -43,21 +42,6 @@ namespace RDKSDatabase.Controllers
                 vehicle = vehicle.Where(v => v.LICENSE_PLATE.Contains(searchString1) && v.BADGE.Contains(searchString2));
             }
 
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        students = students.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        students = students.OrderBy(s => s.EnrollmentDate);
-            //        break;
-            //    case "date_desc":
-            //        students = students.OrderByDescending(s => s.EnrollmentDate);
-            //         break;
-            //     default:
-            //         students = students.OrderBy(s => s.LastName);
-            //         break;
-            // }
 
             return View(await vehicle.AsNoTracking().ToListAsync());
         }

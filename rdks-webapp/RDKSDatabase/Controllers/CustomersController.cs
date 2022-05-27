@@ -36,36 +36,45 @@ namespace RDKSDatabase.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Search(string? cus_accnum, string? cus_compname)
         {
+
             var viewModel = new CustomerInfo();
             viewModel.Customers = await _context.Customer
                   .AsNoTracking()
                   .OrderBy(c => c.CUS_COMPNAME)
                   .ToListAsync();
 
+            var customers = from customer in _context.Customer
+                            select customer;
+
+   
+
+            ViewData["recordFound"] = customers.Any();
+
             if (cus_accnum != null)
             {
-                viewModel.Results = viewModel.Customers.Where(c => c.CUS_ACCNUM.Contains(cus_accnum));
-
-                ViewData["recordFound"] = viewModel.Results.Any();
+                customers = customers.Where(c => c.CUS_ACCNUM.Contains(cus_accnum));
 
                 if (ViewData["recordFound"].Equals(false))
                 {
                     return View();
                 }
-                return View(viewModel);
             }
-            else
+            if (cus_compname != null)
             {
-                viewModel.Results = viewModel.Customers.Where(c => c.CUS_COMPNAME.Contains(cus_compname));
-
-                ViewData["recordFound"] = viewModel.Results.Any();
+                customers = customers.Where(c => c.CUS_COMPNAME.Contains(cus_compname));
 
                 if (ViewData["recordFound"].Equals(false)) 
                 {
                     return View();
                 } 
-                return View(viewModel);
             }
+
+            viewModel.Results = await customers
+                  .AsNoTracking()
+                  .OrderBy(c => c.CUS_COMPNAME)
+                  .ToListAsync();
+
+            return View(viewModel);
         }
 
 

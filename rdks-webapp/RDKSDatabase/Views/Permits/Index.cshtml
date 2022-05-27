@@ -9,11 +9,23 @@
 <p>
     <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Filter by Permit Prefix: <input type="text" name="search_prefix" value="@ViewData["prefix"]" />
+            Filter by Facility: <input type="text" name="search_facility" value="@ViewData["facility"]" />
+            <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
+            <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PermitNumberPrefix)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortParm"]">@Html.DisplayNameFor(model => model.PermitNumberPrefix)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PermitNumber)

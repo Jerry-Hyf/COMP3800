@@ -23,10 +23,38 @@ namespace RDKSDatabase.Controllers
         }
 
         // GET: Permits
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? sortOrder, string? search_prefix, string? search_facility)
         {
-            var rDKSDatabaseContext = _context.Permit.Include(p => p.Material);
-            return View(await rDKSDatabaseContext.ToListAsync());
+
+            ViewData["SortParm"] = sortOrder == "desc" ? "desc" : "ascending";
+            ViewData["prefix"] = search_prefix;
+            ViewData["facility"] = search_facility;
+
+            var rDKSDatabaseContext = from permit in _context.Permit select permit;
+
+            System.Diagnostics.Debug.WriteLine(search_prefix != null);
+            System.Diagnostics.Debug.WriteLine(search_facility != null);
+
+            if (search_prefix != null)
+            {
+                rDKSDatabaseContext = rDKSDatabaseContext.Where(p => p.PermitNumberPrefix.ToString().Contains(search_prefix));
+            }
+            if (search_facility != null)
+            {
+                rDKSDatabaseContext = rDKSDatabaseContext.Where(p => p.FacilityCode.Contains(search_facility));
+            }
+
+            switch (sortOrder)
+            {
+                case "desc":
+                    rDKSDatabaseContext = rDKSDatabaseContext.OrderByDescending(permit => permit.PermitNumberPrefix);
+                    break;
+                default:
+                    rDKSDatabaseContext = rDKSDatabaseContext.OrderBy(permit => permit.PermitNumberPrefix);
+                    break;
+            }
+
+            return View(await rDKSDatabaseContext.AsNoTracking().ToListAsync());
         }
 
         // GET: Permits/Details/5

@@ -92,7 +92,6 @@ namespace RDKSDatabase.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [StringLength(10, MinimumLength = 3)]
         [Display(Name = "Transaction Number")]
         public string? TRANS_NUM { get; set; }  
 
@@ -110,7 +109,7 @@ namespace RDKSDatabase.Models
 
         [Range(0.0, int.MaxValue)]
         [Display(Name = "Load Number")]
-        public int TRANS_LOAD_NUM { get; set; }
+        public int? TRANS_LOAD_NUM { get; set; }
 
         [Range(0.0, float.MaxValue)]
         [Display(Name = "Processed Net Weight")]
@@ -138,11 +137,11 @@ namespace RDKSDatabase.Models
         [Display(Name = "Contract Number")]
         public string? TRANS_CONTRACT { get; set; }
 
-        [StringLength(10)]
+        [StringLength(15)]
         [Display(Name = "Operation Status")]
         public string? TRANS_OPERATION { get; set; }
 
-        [StringLength(10)]
+        [StringLength(15)]
         [Display(Name = "Completion Status")]
         public string? TRANS_STATUS { get; set; }
 
@@ -191,27 +190,27 @@ namespace RDKSDatabase.Models
         [Display(Name = "Asc / Non-Asc")]
         public string? TRANS_ASC_NON_ASC { get; set; }
 
-        [StringLength(20)]
+        [StringLength(30)]
         [Display(Name = "Type of Function")]
         public string? TRANS_FUNCTION { get; set; }
 
-        [StringLength(15)]
+        [StringLength(30)]
         [Display(Name = "Curbside Area")]
         public string? TRANS_CURBSIDE_AREA { get; set; }
 
-        [StringLength(10)]
+        [StringLength(30)]
         [Display(Name = "Curbside Stream")]
         public string? TRANS_CURBSIDE_STREAM { get; set; }
 
-        [StringLength(20)]
+        [StringLength(30)]
         [Display(Name = "Annual Reporting Group")]
         public string? TRANS_ANNUAL_REPORTING_GROUP { get; set; }
 
-        [StringLength(20)]
+        [StringLength(30)]
         [Display(Name = "Annual Reporting Source")]
         public string? TRANS_ANNUAL_REPORTING_SOURCE { get; set; }
 
-        [StringLength(15)]
+        [StringLength(30)]
         [Display(Name = "Service Area")]
         public string? TRANS_SERVICE_AREA { get; set; }
 
