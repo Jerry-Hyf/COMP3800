@@ -1,3 +1,2 @@
 ﻿Microsoft.EntityFrameworkCore (6.0.5)
 Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore (6.0.5)
-Npgsql.EntityFrameworkCore.PostgreSQL (6.0.4)

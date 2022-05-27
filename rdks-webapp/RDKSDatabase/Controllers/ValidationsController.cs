@@ -36,18 +36,48 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
                 .OrderBy(i => i.VALID_CODE)
                 .ToListAsync();
 
-            ViewData["material_group"] = material_group;
-            ViewData["facility"] = facility;
-            IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Contains(facility));
-            material = material.Where(c => c.VALID_MATERIAL_GROUP.Contains(material_group));
-                
-            viewModel.Results = material;
-            ViewData["recordFound"] = viewModel.Results.Any();
+            var validations = from validation in _context.Validation
+                            select validation;
 
-            if (ViewData["recordFound"].Equals(false))
+            //IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Contains(facility));
+            //material = material.Where(c => c.VALID_MATERIAL_GROUP.Contains(material_group));
+
+            //viewModel.Results = material;
+            //ViewData["recordFound"] = viewModel.Results.Any();
+
+            //if (ViewData["recordFound"].Equals(false))
+            //{
+            //    return View();
+            //}
+
+            ViewData["facility"] = facility;
+            ViewData["material_group"] = material_group;
+
+            ViewData["recordFound"] = validations.Any();
+
+            if (material_group != null)
             {
-                return View();
+                validations = validations.Where(v => v.VALID_MATERIAL_GROUP.Contains(material_group));
+
+                if (ViewData["recordFound"].Equals(false))
+                {
+                    return View();
+                }
             }
+            if (facility != null)
+            {
+                validations = validations.Where(v => v.VALID_FACILITY.Contains(facility));
+
+                if (ViewData["recordFound"].Equals(false))
+                {
+                    return View();
+                }
+            }
+
+            viewModel.Results = await validations
+                  .AsNoTracking()
+                  .OrderBy(v => v.VALID_FACILITY)
+                  .ToListAsync();
 
             return View(viewModel);
         }

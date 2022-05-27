@@ -50,13 +50,14 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <div>
+                <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+            </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

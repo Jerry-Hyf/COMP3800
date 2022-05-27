@@ -7,8 +7,6 @@
 
 <h1>@ViewData["Title"]</h1>
 
-
-
 <h4>Customer Info</h4>
 
 <table class="table">
@@ -265,5 +263,6 @@ else
         No Records Found!
     </p>
 }
-
-<input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+<form asp-action="Index" method="get">
+    <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+</form> 
