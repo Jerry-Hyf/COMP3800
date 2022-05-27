@@ -7,16 +7,18 @@
 <h1>@ViewData["Title"]</h1>
 
 <form asp-action="GenerateCode" method="get">
-        <div class="form-actions no-color">
-            <p>
-                Enter the material group : <input type="text" name="material_group" value="@ViewData["material_group"]" />
-                Enter the facility : <input type="text" name="facility" value="@ViewData["facility"]" />
-                <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/> 
-                <a asp-action="Index">Back to the list</a>
-            </p>
-        </div>
-    </form>
+    <div class="form-actions no-color">
+        <p>
+            Enter the material group : <input type="text" name="material_group" value="@ViewData["material_group"]" />
+            Enter the facility : <input type="text" name="facility" value="@ViewData["facility"]" />
+            <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/> 
+        </p>
+    </div>
+</form>
 
+<form>
+    <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+</form>
 
 @if (ViewData["recordFound"].Equals(true))
 {

@@ -13,9 +13,12 @@
             Find by Account Number: <input type="text" name="cus_accnum" value="@ViewData["search_accnum"]" />
             Find by Company Name: <input type="text" name="cus_compname" value="@ViewData["search_compname"]" />
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
-            <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
+</form>
+
+<form>
+    <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
 </form>
 
 <h4>Customer Info</h4>

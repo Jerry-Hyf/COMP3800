@@ -6,21 +6,22 @@
 
 <h1>ABC Recycling</h1>
 
-<p>
-    <form asp-action="Create" method="get">
-         <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
-    </form> 
-</p>
-
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Start date: <input type="date" name="SearchString1" value="@ViewData["CurrentFilter1"]" />
             End date: <input type="date" name="SearchString2" value="@ViewData["CurrentFilter2"]" />
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
-            <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
+</form>
+
+<form>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+</form>
+
+<form>
+    <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
 </form>
 
 <table class="table">

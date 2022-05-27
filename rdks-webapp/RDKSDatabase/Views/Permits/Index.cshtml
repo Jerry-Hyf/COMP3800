@@ -6,22 +6,24 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <form asp-action="Create" method="get">
-         <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
-    </form> 
-</p>
-
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Filter by Permit Prefix: <input type="text" name="search_prefix" value="@ViewData["prefix"]" />
             Filter by Facility: <input type="text" name="search_facility" value="@ViewData["facility"]" />
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
-            <input type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
 </form>
+
+<form>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
+</form>
+
+<form>
+    <input asp-action="Index" type="submit" value="Back to full list" class="btn btn-default" style="background: lightblue"/>
+</form>
+
 
 <table class="table">
     <thead>

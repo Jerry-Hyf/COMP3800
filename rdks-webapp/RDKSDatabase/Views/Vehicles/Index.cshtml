@@ -6,12 +6,6 @@
 
 <h1>Vehicles</h1>
 
-<p>
-    <form asp-action="Create" method="get">
-         <input type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
-    </form> 
-</p>
-
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -20,6 +14,10 @@
             <input type="submit" value="Search" class="btn btn-default" style="background: lightblue"/>
         </p>
     </div>
+</form>
+
+<form>
+    <input asp-action="Create" type="submit" value="Create new record" class="btn btn-default" style="background: lightblue"/>
 </form>
 
 <form>
