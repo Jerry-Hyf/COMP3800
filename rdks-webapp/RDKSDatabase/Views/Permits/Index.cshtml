@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<RDKSDatabase.Models.Permit>
+@using RDKSDatabase.Models
 
 @{
     ViewData["Title"] = "Permits";
@@ -41,82 +42,10 @@
                 @Html.DisplayNameFor(model => model.PermitApplicationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstimatedVolume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.units)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstimatedLoads)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Frequency)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContaminateLoadsDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContaminateLoadsComments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContaminatedLoads)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitSentToOperatorAndWMF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitSavedOnServerAndFiled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HardCopyPermitSavedInFile)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApprovedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitClosedCardPermissionsRevolked)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PermitFee)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ExpirationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApplicationFeeInvoiced)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicantName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicantPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicantEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hauler)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hauler2)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CUS_ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WasteGenerator)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Material)
             </th>
             <th></th>
         </tr>
@@ -137,82 +66,10 @@
                 @Html.DisplayFor(modelItem => item.PermitApplicationDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EstimatedVolume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.units)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstimatedLoads)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Frequency)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContaminateLoadsDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContaminateLoadsComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContaminatedLoads)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitSentToOperatorAndWMF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitSavedOnServerAndFiled)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HardCopyPermitSavedInFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApprovedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitClosedCardPermissionsRevolked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PermitFee)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplicationFeeInvoiced)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicantName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicantPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicantEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hauler)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hauler2)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CUS_ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WasteGenerator)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Material.MaterialType)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { prefix=item.PermitNumberPrefix, id=item.PermitNumber }, null) |

@@ -30,6 +30,10 @@ namespace RDKSDatabase.Controllers
 
 public async Task<IActionResult> GenerateCode( string? material_group, string? facility)
         {
+
+            ViewData["facility"] = facility;
+            ViewData["material_group"] = material_group;
+
             var viewModel = new ImportCode();
             viewModel.Validations = await _context.Validation
                 .AsNoTracking()
@@ -39,45 +43,58 @@ public async Task<IActionResult> GenerateCode( string? material_group, string? f
             var validations = from validation in _context.Validation
                             select validation;
 
-            //IEnumerable<Validation> material = viewModel.Validations.Where(c => c.VALID_FACILITY.Contains(facility));
-            //material = material.Where(c => c.VALID_MATERIAL_GROUP.Contains(material_group));
-
-            //viewModel.Results = material;
-            //ViewData["recordFound"] = viewModel.Results.Any();
-
-            //if (ViewData["recordFound"].Equals(false))
-            //{
-            //    return View();
-            //}
-
-            ViewData["facility"] = facility;
-            ViewData["material_group"] = material_group;
-
-            ViewData["recordFound"] = validations.Any();
+            try
+            {
+                ViewData["recordFound"] = viewModel.Results.Any();
+            }
+            catch (ArgumentNullException)
+            {
+                ViewData["recordFound"] = false;
+            }
 
             if (material_group != null)
             {
                 validations = validations.Where(v => v.VALID_MATERIAL_GROUP.Contains(material_group));
 
-                if (ViewData["recordFound"].Equals(false))
+                try
                 {
-                    return View();
+                    ViewData["recordFound"] = validations.Any();
+                }
+                catch (ArgumentNullException)
+                {
+                    ViewData["recordFound"] = false;
+                }
+
+                if (ViewData["recordFound"].Equals(true))
+                {
+
+                    viewModel.Results = await validations
+                        .AsNoTracking()
+                        .OrderBy(v => v.VALID_FACILITY)
+                        .ToListAsync();
                 }
             }
             if (facility != null)
             {
                 validations = validations.Where(v => v.VALID_FACILITY.Contains(facility));
 
-                if (ViewData["recordFound"].Equals(false))
+                try
                 {
-                    return View();
+                    ViewData["recordFound"] = validations.Any();
+                }
+                catch (ArgumentNullException)
+                {
+                    ViewData["recordFound"] = false;
+                }
+
+                if (ViewData["recordFound"].Equals(true))
+                {
+                    viewModel.Results = await validations
+                        .AsNoTracking()
+                        .OrderBy(v => v.VALID_FACILITY)
+                        .ToListAsync();
                 }
             }
-
-            viewModel.Results = await validations
-                  .AsNoTracking()
-                  .OrderBy(v => v.VALID_FACILITY)
-                  .ToListAsync();
 
             return View(viewModel);
         }

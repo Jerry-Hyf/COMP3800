@@ -36,6 +36,8 @@ namespace RDKSDatabase.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Search(string? cus_accnum, string? cus_compname)
         {
+            ViewData["cus_accnum"] = cus_accnum;
+            ViewData["cus_compname"] = cus_compname;
 
             var viewModel = new CustomerInfo();
             viewModel.Customers = await _context.Customer
@@ -45,34 +47,57 @@ namespace RDKSDatabase.Controllers
 
             var customers = from customer in _context.Customer
                             select customer;
-
-   
-
-            ViewData["recordFound"] = customers.Any();
-
+            try
+            {
+                ViewData["recordFound"] = viewModel.Results.Any();
+            }
+            catch (ArgumentNullException)
+            {
+                ViewData["recordFound"] = false;
+            }
+     
             if (cus_accnum != null)
             {
                 customers = customers.Where(c => c.CUS_ACCNUM.Contains(cus_accnum));
 
-                if (ViewData["recordFound"].Equals(false))
+                try
                 {
-                    return View();
+                    ViewData["recordFound"] = customers.Any();
+                }
+                catch (ArgumentNullException)
+                {
+                    ViewData["recordFound"] = false;
+                }
+
+                if (ViewData["recordFound"].Equals(true))
+                {
+                    viewModel.Results = await customers
+                        .AsNoTracking()
+                        .OrderBy(c => c.CUS_COMPNAME)
+                        .ToListAsync();
                 }
             }
             if (cus_compname != null)
             {
                 customers = customers.Where(c => c.CUS_COMPNAME.Contains(cus_compname));
 
-                if (ViewData["recordFound"].Equals(false)) 
+                try
                 {
-                    return View();
-                } 
-            }
+                    ViewData["recordFound"] = customers.Any();
+                }
+                catch (ArgumentNullException)
+                {
+                    ViewData["recordFound"] = false;
+                }
 
-            viewModel.Results = await customers
-                  .AsNoTracking()
-                  .OrderBy(c => c.CUS_COMPNAME)
-                  .ToListAsync();
+                if (ViewData["recordFound"].Equals(true))
+                {
+                    viewModel.Results = await customers
+                        .AsNoTracking()
+                        .OrderBy(c => c.CUS_COMPNAME)
+                        .ToListAsync();
+                }
+            }
 
             return View(viewModel);
         }

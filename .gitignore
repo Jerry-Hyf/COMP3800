@@ -2,6 +2,5 @@
 /rdks-webapp/RDKSDatabase/bin/
 /rdks-webapp/RDKSDatabase/obj/
 /rdks-webapp/RDKSDatabase/Properties/
-/rdks-webapp/RDKSDatabase/wwwroot/
 /rdks-webapp/RDKSDatabase/Migrations/
 .vs/
