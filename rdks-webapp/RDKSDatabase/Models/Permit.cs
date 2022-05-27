@@ -217,6 +217,7 @@ namespace RDKSDatabase.Models
         //The CUS_ID property represents FK referencing Customer table
         
         [Column("Customer ID")]
+        [Display(Name ="Customer ID")]
         public int CUS_ID { get; set; }
         public Customer? Customer { get; set; }
 
