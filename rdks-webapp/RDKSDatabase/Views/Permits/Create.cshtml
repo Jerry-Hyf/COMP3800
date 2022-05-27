@@ -166,10 +166,9 @@
                 <input asp-for="Hauler2" class="form-control" />
                 <span asp-validation-for="Hauler2" class="text-danger"></span>
             </div>
-            <div class="form-group">
+<div class="form-group">
                 <label asp-for="CUS_ID" class="control-label"></label>
-                <input asp-for="CUS_ID" class="form-control" />
-                <span asp-validation-for="CUS_ID" class="text-danger"></span>
+                <select asp-for="CUS_ID" class ="form-control" asp-items="ViewBag.CUS_ID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="WasteGenerator" class="control-label"></label>
