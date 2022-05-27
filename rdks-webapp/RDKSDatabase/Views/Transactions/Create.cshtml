@@ -120,6 +120,16 @@
                 <label asp-for="TRANS_FACILITY_CODE" class="control-label"></label>
                 <select asp-for="TRANS_FACILITY_CODE" class="form-control" asp-items="@Html.GetEnumSelectList<Transaction.FacilityCode>()">
                     <option>Transaction facility code...</option>
+                  @*  <option>DYP</option>
+                    <option>FR</option>
+                    <option>HWMF</option>
+                    <option>IL</option>
+                    <option>KTS</option>
+                    <option>ML</option>
+                     <option>RL</option>
+                    <option>TTS</option>
+                    <option>NA</option>*@
+
                 </select>
                 <span asp-validation-for="TRANS_FACILITY_CODE" class="text-danger"></span>
             </div>
