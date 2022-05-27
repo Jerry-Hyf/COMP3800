@@ -59,17 +59,22 @@ namespace RDKSDatabase.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction
-                .FirstOrDefaultAsync(m => m.TRANS_NUM == id);
-            var customer = await _context.Customer.FirstOrDefaultAsync(m => m.CUS_ID == transaction.CUS_ID);
-            var Vehicle = await _context.Vehicle.FirstOrDefaultAsync(m => m.LICENSE_PLATE == transaction.LICENSE_PLATE);
+            TransactionIndexData viewmodel = new TransactionIndexData();
+
+            Transaction transaction = await _context.Transaction.FirstOrDefaultAsync(m => m.TRANS_NUM == id);
+            Customer customer = await _context.Customer.FirstOrDefaultAsync(m => m.CUS_ID == transaction.CUS_ID);
+            Vehicle vehicle = await _context.Vehicle.FirstOrDefaultAsync(m => m.LICENSE_PLATE == transaction.LICENSE_PLATE);
+
+            viewmodel.Transaction = transaction;
+            viewmodel.Customer = customer;
+            viewmodel.Vehicle = vehicle;
+
             if (transaction == null)
             {
                 return NotFound();
             }
 
-
-            return View(transaction);
+            return View(viewmodel);
         }
 
         // GET: Transactions/Create

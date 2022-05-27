@@ -7,8 +7,8 @@ namespace RDKSDatabase.Models.ViewModels
 {
     public class TransactionIndexData
     {
-        public IEnumerable<Transaction> Transactions { get; set; }
-        public IEnumerable<Customer> Customers { get; set; }
-        public IEnumerable<Vehicle> Vehicles { get; set; }
+        public Transaction Transaction { get; set; }
+        public Customer Customer { get; set; }
+        public Vehicle Vehicle { get; set; }
     }
 }
